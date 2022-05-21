@@ -1,5 +1,5 @@
 tool
-extends Node2D
+extends Control
 
 const suit_colors = [
 	Color("d21414"),

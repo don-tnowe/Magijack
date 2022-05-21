@@ -5,52 +5,57 @@
 [ext_resource path="res://assets/graphics/card/values_suits.png" type="Texture" id=3]
 [ext_resource path="res://src/scenes/card.gd" type="Script" id=4]
 
-[node name="card" type="Node2D"]
-scale = Vector2( 1.5, 1.5 )
+[node name="card" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -85.5
+margin_top = -128.0
+margin_right = 65.5
+margin_bottom = 108.0
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="border" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 75, 118 )
 texture = ExtResource( 2 )
 hframes = 2
 vframes = 2
 frame = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="back" type="Sprite" parent="."]
 self_modulate = Color( 0.47451, 0.47451, 0.47451, 1 )
+position = Vector2( 75, 118 )
 texture = ExtResource( 2 )
 hframes = 2
 vframes = 2
 frame = 2
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="color" type="Sprite" parent="."]
 self_modulate = Color( 0.823529, 0.0784314, 0.0784314, 1 )
+position = Vector2( 75, 118 )
 texture = ExtResource( 2 )
 hframes = 2
 vframes = 2
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="l" type="Node2D" parent="."]
+position = Vector2( 75, 118 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="value" type="Sprite" parent="l"]
-position = Vector2( -48, -93.3333 )
+position = Vector2( -48, -92.3333 )
 texture = ExtResource( 3 )
 hframes = 4
 vframes = 4
 
 [node name="suit" type="Sprite" parent="l"]
-position = Vector2( -48, -61.3333 )
+position = Vector2( -48, -60.3333 )
 texture = ExtResource( 3 )
 hframes = 4
 vframes = 4
@@ -72,7 +77,6 @@ texture = ExtResource( 3 )
 hframes = 4
 vframes = 4
 frame = 1
-script = ExtResource( 4 )
 
 [node name="runes" type="Node2D" parent="l"]
-position = Vector2( -49.3333, 18.6667 )
+position = Vector2( -49.3333, 19.6667 )

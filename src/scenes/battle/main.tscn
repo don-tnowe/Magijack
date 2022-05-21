@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://wip/Mockup.png" type="Texture" id=1]
-[ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/scenes/hpmp_bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
+[ext_resource path="res://src/scenes/battle/hpmp_bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/graphics/battle_ui/ui_bar_textures/mp_safe.tres" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/battle_ui/ui_bar_textures/hp.tres" type="Texture" id=5]
+[ext_resource path="res://src/scenes/battle/hand.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=7]
+[ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 resource_local_to_scene = true
@@ -43,6 +46,7 @@ region = Rect2( 384, 0, 128, 128 )
 [node name="control" type="Control" parent="enemy_ui"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -50,6 +54,7 @@ __meta__ = {
 [node name="mockup" type="TextureRect" parent="enemy_ui"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {
@@ -61,6 +66,7 @@ __meta__ = {
 [node name="control" type="Control" parent="player_ui"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -70,54 +76,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+margin_top = -64.0
+margin_bottom = -64.0
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="card1" parent="player_ui/control/hand" instance=ExtResource( 2 )]
-position = Vector2( -135, -19 )
-suit = 1
-value = 5
-
-[node name="card2" parent="player_ui/control/hand" instance=ExtResource( 2 )]
-position = Vector2( -59, -56 )
-suit = 2
-value = 3
-metal_value = 2
-
-[node name="border" parent="player_ui/control/hand/card2" index="0"]
-self_modulate = Color( 0.372549, 1, 0.384314, 1 )
-
-[node name="color" parent="player_ui/control/hand/card2" index="2"]
-self_modulate = Color( 0.356863, 0.145098, 0.533333, 1 )
-
-[node name="value" parent="player_ui/control/hand/card2/l" index="0"]
-frame = 3
-
-[node name="suit" parent="player_ui/control/hand/card2/l" index="1"]
-frame = 14
-
-[node name="metal_bg" parent="player_ui/control/hand/card2/l" index="2"]
-visible = true
-
-[node name="metal_value" parent="player_ui/control/hand/card2/l" index="3"]
-visible = true
-self_modulate = Color( 0.356863, 0.145098, 0.533333, 1 )
-frame = 2
-
-[node name="card3" parent="player_ui/control/hand" instance=ExtResource( 2 )]
-position = Vector2( 39, -23 )
-value = 2
-metal_value = 1
-
-[node name="card4" parent="player_ui/control/hand" instance=ExtResource( 2 )]
-position = Vector2( 136, -20 )
-value = 5
-
-[node name="card5" parent="player_ui/control/hand" instance=ExtResource( 2 )]
-position = Vector2( 234, -17 )
-suit = 3
-value = 6
+card_scene = ExtResource( 8 )
+deck = ExtResource( 2 )
 
 [node name="bar_mp" parent="player_ui/control" instance=ExtResource( 3 )]
 anchor_top = 1.0
@@ -146,4 +112,16 @@ texture_under = SubResource( 4 )
 texture_over = SubResource( 5 )
 texture_progress = SubResource( 6 )
 
-[editable path="player_ui/control/hand/card2"]
+[node name="button_draw" type="Button" parent="player_ui/control"]
+margin_left = 224.0
+margin_top = 432.0
+margin_right = 448.0
+margin_bottom = 512.0
+rect_rotation = -15.0
+custom_fonts/font = ExtResource( 7 )
+text = "Draw"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="player_ui/control/button_draw" to="player_ui/control/hand" method="draw_from_deck"]
