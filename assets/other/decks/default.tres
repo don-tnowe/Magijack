@@ -4,4 +4,27 @@
 
 [resource]
 script = ExtResource( 1 )
-cards = [  ]
+stringified = "red 2
+red 3
+red 4
+red 5
+red 6
+red flawless
+blue 2
+blue 3
+blue 4
+blue 5
+blue 6
+blue flawless
+purple 2
+purple 3
+purple 4
+purple 5
+purple 6
+purple flawless
+orange 2
+orange 3
+orange 4
+orange 5
+orange 6
+orange flawless"

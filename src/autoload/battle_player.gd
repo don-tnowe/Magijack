@@ -12,6 +12,7 @@ var node_bar_limit : Control
 
 func battle_start():
 	randomize()
+	between_battles_data.deck.initialize()
 	data = between_battles_data.duplicate()
 
 
