@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/values_suits.png-8d03c74b83f54ae7ad0ade98dc9f3f8a.stex"
+path="res://.import/card_base.png-2f2386b9a3f1c65d119b5e2509e38e43.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/values_suits.png"
-dest_files=[ "res://.import/values_suits.png-8d03c74b83f54ae7ad0ade98dc9f3f8a.stex" ]
+source_file="res://assets/graphics/card/card_base.png"
+dest_files=[ "res://.import/card_base.png-2f2386b9a3f1c65d119b5e2509e38e43.stex" ]
 
 [params]
 
