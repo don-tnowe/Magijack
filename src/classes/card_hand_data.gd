@@ -12,6 +12,11 @@ func add_card(card_data, limit) -> int:
 	return cards.size() - 1
 
 
+func discard_all():
+	cards = []
+	calculate_sum(9999)
+
+
 func calculate_sum(limit: int):
 	sum = 0
 	sum_power = 0
@@ -27,3 +32,4 @@ func calculate_sum(limit: int):
 		sum -= first_pass[i]
 		sum_power += cards[i].get_power(i, self, limit)
 		sum += cards[i].get_value(i, self, limit)
+

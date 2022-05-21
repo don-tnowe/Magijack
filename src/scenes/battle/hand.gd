@@ -9,36 +9,74 @@ var card_selected_v_offset := -96
 var card_selected_idx_to_offset := -32
 
 var hand_data : CardHandData
+var used_card_nodes = []
 var selected_card_idx := -1
 
 
 func _ready():
 	BattlePlayer.view_parent = get_parent()
-	for i in hand_data.cards.size():
-		add_card(hand_data.cards[i], i)
+	for i in 32:
+		var new_node = card_scene.instance()
+		new_node.visible = false
+		add_child(new_node)
 
 
 func _process(delta):
-	var count = get_child_count()
-	var selection_offset = 0 if selected_card_idx == -1 else card_selected_idx_to_offset * (selected_card_idx - count * 0.5)
-	for i in count:
+	var selection_offset = 0 if selected_card_idx == -1 else card_selected_idx_to_offset * (selected_card_idx - used_card_nodes.size() * 0.5)
+	for i in used_card_nodes.size():
 		var selection_distance_offset = 48 * sign(i - selected_card_idx)  # Move cards away from selected card to see it better
-		get_child(i).rect_position = lerp(
-			get_child(i).rect_position,
+		used_card_nodes[i].rect_position = lerp(
+			used_card_nodes[i].rect_position,
 			Vector2(
-				i * card_spacing - count * 0.5 * card_spacing + card_h_offset + selection_offset + selection_distance_offset,
+				i * card_spacing 
+				- used_card_nodes.size() * 0.5 * card_spacing 
+				+ card_h_offset 
+				+ selection_offset 
+				+ selection_distance_offset,
 				card_selected_v_offset if selected_card_idx == i else 0
-				) - get_child(i).rect_size * 0.5,
+				) - used_card_nodes[i].rect_size * 0.5,
 			0.2
 		)
 
 
 func add_card(card_data, new_idx):
-	var new_node = card_scene.instance()
-	add_child(new_node)
+	var new_node = find_unused_card()
+	used_card_nodes.append(new_node)
+	for x in used_card_nodes:
+		x.raise()  # Keep 'em ordered.
+	
+	new_node.visible = true
 	new_node.rect_position = Vector2(0, 256)
 	new_node.connect("mouse_entered", self, "card_mouse_entered", [new_idx])
 	hand_data.cards[new_idx].display_on_card_node(new_node)
+	selected_card_idx = -1
+
+
+func find_unused_card():
+	for x in get_children():
+		if !x.visible: return x
+
+
+func discard_card(card_idx, animation = 0):
+	var node = used_card_nodes.pop_at(card_idx)
+	node.disconnect("mouse_entered", self, "card_mouse_entered")
+
+	$"../tween".interpolate_property(
+		node, "rect_position:y",
+		node.rect_position.y, 512.0, 0.5,
+		Tween.TRANS_BACK, Tween.EASE_IN
+	)
+	$"../tween".interpolate_property(
+		node, "visible",
+		true, false, 1
+	)
+	$"../tween".start()  # Didn't forget.	
+	selected_card_idx = -1
+
+
+func discard_all(animation = 0):
+	for i in used_card_nodes.size():
+		discard_card(0, animation)
 
 
 func display_all():

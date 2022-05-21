@@ -30,11 +30,25 @@ func set_view_parent(v):
 	set_limit(0)
 
 	v.get_node("button_draw").connect("pressed", self, "draw_from_deck")
+	v.get_node("button_endturn").connect("pressed", self, "end_turn")
 
 
 func draw_from_deck():
 	var new_card = data.deck.draw_from_deck()
 	node_hand.add_card(new_card, hand_data.add_card(new_card, data.limit))
+	set_limit(hand_data.sum)
+
+
+func end_turn():
+	hand_data.discard_all()
+	node_hand.discard_all()
+	data.deck.turn_start()
+	set_limit(0)
+	yield(get_tree().create_timer(1), "timeout")
+	draw_from_deck()
+	set_limit(hand_data.sum)
+	yield(get_tree().create_timer(0.2), "timeout")
+	draw_from_deck()
 	set_limit(hand_data.sum)
 
 

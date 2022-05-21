@@ -83,6 +83,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="button_endturn" type="Button" parent="player_ui/control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -416.0
+margin_top = 376.0
+margin_right = -192.0
+margin_bottom = 456.0
+rect_rotation = 15.0
+custom_fonts/font = ExtResource( 7 )
+text = "End Turn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="hand" type="Control" parent="player_ui/control"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -123,3 +137,5 @@ value = 63.0
 texture_under = SubResource( 4 )
 texture_over = SubResource( 5 )
 texture_progress = SubResource( 6 )
+
+[node name="tween" type="Tween" parent="player_ui/control"]
