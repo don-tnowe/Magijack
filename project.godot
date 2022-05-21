@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "CardHandData",
 "language": "GDScript",
 "path": "res://src/classes/card_hand_data.gd"
+}, {
+"base": "BattlerData",
+"class": "EnemyBattlerData",
+"language": "GDScript",
+"path": "res://src/classes/enemy_battler_data.gd"
 } ]
 _global_script_class_icons={
 "BattlerData": "",
 "CardData": "",
 "CardDeck": "",
-"CardHandData": ""
+"CardHandData": "",
+"EnemyBattlerData": ""
 }
 
 [application]
@@ -91,4 +97,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0.141176, 0.0156863, 0.0156863, 1 )
 environment/default_environment="res://default_env.tres"

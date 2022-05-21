@@ -1,5 +1,6 @@
 extends Control
 
+export var is_players = true
 export var card_scene : PackedScene
 export(Resource) var deck
 
@@ -14,7 +15,9 @@ var selected_card_idx := -1
 
 
 func _ready():
-	BattlePlayer.view_parent = get_parent()
+	if is_players:
+		BattlePlayer.view_parent = get_parent()
+		
 	for i in 32:
 		var new_node = card_scene.instance()
 		new_node.visible = false
@@ -47,7 +50,8 @@ func add_card(card_data, new_idx):
 	
 	new_node.visible = true
 	new_node.rect_position = Vector2(0, 256)
-	new_node.connect("mouse_entered", self, "card_mouse_entered", [new_idx])
+	if is_players:
+		new_node.connect("mouse_entered", self, "card_mouse_entered", [new_idx])
 	hand_data.cards[new_idx].display_on_card_node(new_node)
 	selected_card_idx = -1
 
