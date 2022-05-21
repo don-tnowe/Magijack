@@ -29,51 +29,69 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1.05, 0.9 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("body/hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 13.6842, -8.28431 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("hand:position")
+tracks/0/path = NodePath("body:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( -2, -2 ),
-"update": 0,
-"values": [ Vector2( 12, -2 ), Vector2( 13, -8 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("body:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2, 3 ),
 "transitions": PoolRealArray( -2, -2, -2, -2 ),
 "update": 0,
 "values": [ Vector2( 0.95, 1.02 ), Vector2( 1.02, 0.95 ), Vector2( 0.95, 1.02 ), Vector2( 1.02, 0.95 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.6842, -12.2059 ), Vector2( 13.6842, -8.28431 ) ]
+}
 
 [node name="enemy" instance=ExtResource( 1 )]
 
 [node name="body" parent="." index="0"]
-position = Vector2( 0, 4 )
+position = Vector2( 0, -73.55 )
 scale = Vector2( 1.05, 0.9 )
 offset = Vector2( 4, -5 )
 region_rect = Rect2( 3, 1, 46, 151 )
 
+[node name="hand" type="RemoteTransform2D" parent="body" index="0"]
+position = Vector2( 13.6842, -8.28431 )
+remote_path = NodePath("../../hand")
+update_scale = false
+
 [node name="stick" type="Sprite" parent="." index="1"]
-position = Vector2( -1, 51 )
+position = Vector2( -1, -26.55 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 54, 3, 57, 102 )
 
 [node name="hand" parent="." index="2"]
+scale = Vector2( 1.00979, 0.960214 )
 region_rect = Rect2( 60, 114, 19, 15 )
 
 [node name="anim" parent="." index="3"]
