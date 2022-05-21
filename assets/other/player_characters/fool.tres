@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource( 1 )
-hp = 60
 hpmax = 60
-damage = 10
 limit = 16
+damage = 10
+greed_damage = 10
 deck = ExtResource( 2 )
 spells = [  ]
