@@ -5,7 +5,7 @@ export var card_scene : PackedScene
 export(Resource) var deck
 
 var card_spacing := 64
-var card_h_offset := 64
+var card_h_offset := 0
 var card_selected_v_offset := -96
 var card_selected_idx_to_offset := -32
 
