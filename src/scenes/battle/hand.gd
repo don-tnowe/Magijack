@@ -42,7 +42,7 @@ func _process(delta):
 		)
 
 
-func add_card(card_data, new_idx):
+func add_card(card_data, new_idx, is_face_down = false):
 	var new_node = find_unused_card()
 	used_card_nodes.append(new_node)
 	for x in used_card_nodes:
@@ -50,8 +50,11 @@ func add_card(card_data, new_idx):
 	
 	new_node.visible = true
 	new_node.rect_position = Vector2(0, 256)
+	new_node.set_face_down(is_face_down)
+
 	if is_players:
 		new_node.connect("mouse_entered", self, "card_mouse_entered", [new_idx])
+
 	hand_data.cards[new_idx].display_on_card_node(new_node)
 	selected_card_idx = -1
 

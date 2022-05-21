@@ -11,6 +11,7 @@ const suit_colors = [
 export var suit := 0 setget set_suit
 export var value := 0 setget set_value
 export var metal_value := 0 setget set_metal_value
+export var is_face_down := false setget set_face_down
 
 
 func _ready():
@@ -47,3 +48,8 @@ func set_metal_value(v):
 	else:
 		$"l/metal_bg".visible = false
 		$"l/metal_value".visible = false
+
+
+func set_face_down(v):
+	is_face_down = v
+	$"back".visible = v

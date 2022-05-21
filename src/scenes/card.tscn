@@ -14,6 +14,7 @@ margin_left = -85.5
 margin_top = -128.0
 margin_right = 65.5
 margin_bottom = 108.0
+rect_pivot_offset = Vector2( 132.5, 238 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -26,14 +27,6 @@ texture = ExtResource( 2 )
 hframes = 2
 vframes = 2
 frame = 1
-
-[node name="back" type="Sprite" parent="."]
-self_modulate = Color( 0.47451, 0.47451, 0.47451, 1 )
-position = Vector2( 75, 118 )
-texture = ExtResource( 2 )
-hframes = 2
-vframes = 2
-frame = 2
 
 [node name="color" type="Sprite" parent="."]
 self_modulate = Color( 0.823529, 0.0784314, 0.0784314, 1 )
@@ -80,3 +73,12 @@ frame = 1
 
 [node name="runes" type="Node2D" parent="l"]
 position = Vector2( -49.3333, 19.6667 )
+
+[node name="back" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 0.47451, 0.47451, 0.47451, 1 )
+position = Vector2( 75, 118 )
+texture = ExtResource( 2 )
+hframes = 2
+vframes = 2
+frame = 2
