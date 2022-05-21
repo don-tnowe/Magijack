@@ -29,5 +29,6 @@ func set_texture(v):
 
 func set_value(v):
 	value = v
+	$"label".text = str(v)
 
 
