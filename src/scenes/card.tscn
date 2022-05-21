@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/graphics/card_decorations.png" type="Texture" id=1]
+[ext_resource path="res://assets/graphics/card_base.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/values_suits.png" type="Texture" id=3]
+[ext_resource path="res://src/scenes/card.gd" type="Script" id=4]
+
+[node name="card" type="Node2D"]
+scale = Vector2( 1.5, 1.5 )
+script = ExtResource( 4 )
+
+[node name="border" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 2 )
+hframes = 2
+vframes = 2
+frame = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="back" type="Sprite" parent="."]
+self_modulate = Color( 0.47451, 0.47451, 0.47451, 1 )
+texture = ExtResource( 2 )
+hframes = 2
+vframes = 2
+frame = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="color" type="Sprite" parent="."]
+self_modulate = Color( 0.823529, 0.0784314, 0.0784314, 1 )
+texture = ExtResource( 2 )
+hframes = 2
+vframes = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="l" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="value" type="Sprite" parent="l"]
+position = Vector2( -48, -93.3333 )
+texture = ExtResource( 3 )
+hframes = 4
+vframes = 4
+
+[node name="suit" type="Sprite" parent="l"]
+position = Vector2( -48, -61.3333 )
+texture = ExtResource( 3 )
+hframes = 4
+vframes = 4
+frame = 12
+
+[node name="metal_bg" type="Sprite" parent="l"]
+visible = false
+self_modulate = Color( 0.858824, 0.941176, 0.976471, 1 )
+position = Vector2( -41.3333, -13.3333 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+
+[node name="metal_value" type="Sprite" parent="l"]
+visible = false
+self_modulate = Color( 0.823529, 0.0784314, 0.0784314, 1 )
+position = Vector2( -29.3333, -20.3333 )
+texture = ExtResource( 3 )
+hframes = 4
+vframes = 4
+frame = 1
+script = ExtResource( 4 )
+
+[node name="runes" type="Node2D" parent="l"]
+position = Vector2( -49.3333, 18.6667 )

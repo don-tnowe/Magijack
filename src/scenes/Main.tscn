@@ -1,3 +1,89 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="root" type="Node2D"]
+[ext_resource path="res://wip/Mockup.png" type="Texture" id=1]
+[ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=2]
+
+[node name="root" type="Node"]
+
+[node name="enemy_ui" type="CanvasLayer" parent="."]
+
+[node name="control" type="Control" parent="enemy_ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mockup" type="TextureRect" parent="enemy_ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_ui" type="CanvasLayer" parent="."]
+
+[node name="control" type="Control" parent="player_ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hand" type="Control" parent="player_ui/control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card1" parent="player_ui/control/hand" instance=ExtResource( 2 )]
+position = Vector2( -135, -19 )
+suit = 1
+value = 5
+
+[node name="card2" parent="player_ui/control/hand" instance=ExtResource( 2 )]
+position = Vector2( -59, -56 )
+suit = 2
+value = 3
+metal_value = 2
+
+[node name="border" parent="player_ui/control/hand/card2" index="0"]
+self_modulate = Color( 0.372549, 1, 0.384314, 1 )
+
+[node name="color" parent="player_ui/control/hand/card2" index="2"]
+self_modulate = Color( 0.356863, 0.145098, 0.533333, 1 )
+
+[node name="value" parent="player_ui/control/hand/card2/l" index="0"]
+frame = 3
+
+[node name="suit" parent="player_ui/control/hand/card2/l" index="1"]
+frame = 14
+
+[node name="metal_bg" parent="player_ui/control/hand/card2/l" index="2"]
+visible = true
+
+[node name="metal_value" parent="player_ui/control/hand/card2/l" index="3"]
+visible = true
+self_modulate = Color( 0.356863, 0.145098, 0.533333, 1 )
+frame = 2
+
+[node name="card3" parent="player_ui/control/hand" instance=ExtResource( 2 )]
+position = Vector2( 39, -23 )
+value = 2
+metal_value = 1
+
+[node name="card4" parent="player_ui/control/hand" instance=ExtResource( 2 )]
+position = Vector2( 136, -20 )
+value = 5
+
+[node name="card5" parent="player_ui/control/hand" instance=ExtResource( 2 )]
+position = Vector2( 234, -17 )
+suit = 3
+value = 6
+
+[editable path="player_ui/control/hand/card2"]
