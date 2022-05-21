@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/scenes/hpmp_bar.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/battle_ui/ui_bar_textures/hp.tres" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 384, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 384, 256, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=3]
+resource_local_to_scene = true
+atlas = ExtResource( 2 )
+region = Rect2( 384, 0, 128, 128 )
+
+[node name="texture_progress" type="TextureProgress"]
+margin_right = 128.0
+margin_bottom = 128.0
+value = 100.0
+texture_under = SubResource( 1 )
+texture_over = SubResource( 2 )
+texture_progress = SubResource( 3 )
+fill_mode = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+texture = ExtResource( 2 )
+
+[node name="label" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -96.0
+custom_fonts/font = ExtResource( 3 )
+text = "100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
