@@ -8,11 +8,12 @@ var card_h_offset := 64
 var card_selected_v_offset := -96
 var card_selected_idx_to_offset := -32
 
-var hand_data := CardHandData.new()
+var hand_data : CardHandData
 var selected_card_idx := -1
 
 
 func _ready():
+	BattlePlayer.view_parent = get_parent()
 	for i in hand_data.cards.size():
 		add_card(hand_data.cards[i], i)
 
@@ -43,11 +44,6 @@ func add_card(card_data, new_idx):
 func display_all():
 	for i in get_child_count():
 		hand_data.cards[i].display_on_card_node(get_child(i))
-
-
-func draw_from_deck():
-	var new_card = deck.draw_from_deck()
-	add_card(new_card, hand_data.add_card(new_card))
 
 
 func card_mouse_entered(card_idx):

@@ -18,10 +18,14 @@ func display_on_card_node(node):
 	node.metal_value = metal_value
 
 
-func get_value(hand_data = null):
+func get_value(my_index = 0, hand_data = null, limit = -1):
 	if value == 11:
 		if hand_data == null:
 			return 11
-		return 10 if hand_data.sum + 10 <= hand_data.limit else 1
+		return 10 if hand_data.sum + 10 <= limit else 1
 
 	return value
+
+
+func get_power(my_index = 0, hand_data = null, limit = -1):
+	return get_value(my_index, hand_data, limit) + metal_value

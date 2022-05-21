@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "BattlerData",
+"language": "GDScript",
+"path": "res://src/classes/battler_data.gd"
+}, {
+"base": "Resource",
 "class": "CardData",
 "language": "GDScript",
 "path": "res://src/classes/card_data.gd"
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://src/classes/card_hand_data.gd"
 } ]
 _global_script_class_icons={
+"BattlerData": "",
 "CardData": "",
 "CardDeck": "",
 "CardHandData": ""
@@ -35,6 +41,10 @@ _global_script_class_icons={
 config/name="Magijack"
 run/main_scene="res://src/scenes/battle/main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+BattlePlayer="*res://src/autoload/battle_player.gd"
 
 [debug]
 
