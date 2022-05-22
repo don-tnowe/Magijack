@@ -39,8 +39,11 @@ func is_of_suit(suit_idx):
 
 func compare(a, b):
 	if a.special_index > b.special_index: return true
+	if a.special_index < b.special_index: return false
 	if a.suit < b.suit: return true
+	if a.suit > b.suit: return false
 	if a.value > b.value: return true
+	if a.value < b.value: return false
 	if a.metal_value > b.metal_value: return true
 	
 	return false
