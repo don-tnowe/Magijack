@@ -9,10 +9,10 @@
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=7]
 [ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scenes/enemy_types/tutorial_phoenix.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/scenes/battle/enemy_brain.gd" type="Script" id=10]
+[ext_resource path="res://src/autoload/battle_enemy.gd" type="Script" id=10]
 [ext_resource path="res://assets/graphics/battle/table.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/battle_ui/icons.png" type="Texture" id=12]
-[ext_resource path="res://src/scenes/battle/vfx.gd" type="Script" id=13]
+[ext_resource path="res://src/scenes/battle/player_view.gd" type="Script" id=14]
 
 [sub_resource type="AtlasTexture" id=1]
 resource_local_to_scene = true
@@ -157,7 +157,7 @@ hframes = 8
 vframes = 8
 frame = 2
 
-[node name="label_selfdamage" type="Label" parent="enemy_ui/control/enemy"]
+[node name="label_greeddamage" type="Label" parent="enemy_ui/control/enemy"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -176,7 +176,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon4" type="Sprite" parent="enemy_ui/control/enemy/label_selfdamage"]
+[node name="icon4" type="Sprite" parent="enemy_ui/control/enemy/label_greeddamage"]
 position = Vector2( 225.636, 48 )
 texture = ExtResource( 12 )
 hframes = 8
@@ -203,6 +203,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -275,7 +276,7 @@ texture_under = SubResource( 4 )
 texture_over = SubResource( 5 )
 texture_progress = SubResource( 6 )
 
-[node name="label_damage2" type="Label" parent="player_ui/control"]
+[node name="label_damage" type="Label" parent="player_ui/control"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -293,14 +294,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon3" type="Sprite" parent="player_ui/control/label_damage2"]
+[node name="icon3" type="Sprite" parent="player_ui/control/label_damage"]
 position = Vector2( -32, 48 )
 texture = ExtResource( 12 )
 hframes = 8
 vframes = 8
 frame = 2
 
-[node name="label_selfdamage2" type="Label" parent="player_ui/control"]
+[node name="label_greeddamage" type="Label" parent="player_ui/control"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -319,14 +320,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon4" type="Sprite" parent="player_ui/control/label_selfdamage2"]
+[node name="icon4" type="Sprite" parent="player_ui/control/label_greeddamage"]
 position = Vector2( -28.9089, 48 )
 texture = ExtResource( 12 )
 hframes = 8
 vframes = 8
 frame = 3
 
-[node name="label_damage3" type="Label" parent="player_ui/control"]
+[node name="label_chance_crit" type="Label" parent="player_ui/control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = -16.0
@@ -343,14 +344,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon3" type="Sprite" parent="player_ui/control/label_damage3"]
+[node name="icon3" type="Sprite" parent="player_ui/control/label_chance_crit"]
 position = Vector2( 288, 48 )
 texture = ExtResource( 12 )
 hframes = 8
 vframes = 8
 frame = 4
 
-[node name="label_selfdamage3" type="Label" parent="player_ui/control"]
+[node name="label_chance_overload" type="Label" parent="player_ui/control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 48.0001
@@ -368,7 +369,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon4" type="Sprite" parent="player_ui/control/label_selfdamage3"]
+[node name="icon4" type="Sprite" parent="player_ui/control/label_chance_overload"]
 position = Vector2( 237.758, 48 )
 texture = ExtResource( 12 )
 hframes = 8
@@ -376,9 +377,3 @@ vframes = 8
 frame = 3
 
 [node name="tween" type="Tween" parent="player_ui/control"]
-
-[node name="vfx" type="Control" parent="player_ui/control"]
-script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}

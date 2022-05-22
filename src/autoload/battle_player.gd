@@ -1,63 +1,56 @@
-extends Node
+extends Timer
+
+signal card_drawn(card_just_drawn, hand, limit)
+signal turn_ended(hand, limit_left, power)
 
 var between_battles_data := preload("res://assets/other/player_characters/fool.tres")
 var data : BattlerData
 var hand_data := CardHandData.new()
 
-var view_parent : Control setget set_view_parent
-var node_hand : Control 
-var node_bar_hp : Control 
-var node_bar_limit : Control 
+var hp := 60
+var limit_used := 0
+
+var view_node : Control
 
 
 func battle_start():
 	randomize()
 	between_battles_data.deck.initialize()
 	data = between_battles_data.duplicate()
-
-
-func set_view_parent(v):
-	battle_start()
-	view_parent = v
-
-	node_hand = v.get_node("hand")
-	node_hand.hand_data = hand_data
-
-	node_bar_hp = v.get_node("bar_hp")
-	set_hp(data.hp)
-
-	node_bar_limit = v.get_node("bar_mp")
-	set_limit(0)
-
-	v.get_node("button_draw").connect("pressed", self, "draw_from_deck")
-	v.get_node("button_endturn").connect("pressed", self, "end_turn")
+	view_node.update_all()
 
 
 func draw_from_deck():
 	var new_card = data.deck.draw_from_deck()
-	node_hand.add_card(new_card, hand_data.add_card(new_card, data.limit))
-	set_limit(hand_data.sum)
+	view_node.node_hand.add_card(new_card, hand_data.add_card(new_card, data.limit))
+
+	limit_used = hand_data.sum
+
+	emit_signal("card_drawn", new_card, hand_data, data.limit - limit_used)
+	view_node.update_hand()
 
 
 func end_turn():
+	emit_signal("turn_ended", hand_data, data.limit - limit_used, hand_data.sum_power)
+	view_node.update_hand()
+	view_node.set_draw_available(false)
+	view_node.set_endturn_available(false)
+
 	hand_data.discard_all()
-	node_hand.discard_all()
+	view_node.node_hand.discard_all()
 	data.deck.turn_start()
-	set_limit(0)
-	yield(get_tree().create_timer(1), "timeout")
+
+	start(1.0)
+	yield(self, "timeout")
+
 	draw_from_deck()
-	set_limit(hand_data.sum)
-	yield(get_tree().create_timer(0.2), "timeout")
+	view_node.update_hand()
+
+	start(0.2)
+	yield(self, "timeout")
+
 	draw_from_deck()
-	set_limit(hand_data.sum)
+	view_node.update_hand()
 
-
-func set_limit(cur): 
-	node_bar_limit.max_value = data.limit
-	node_bar_limit.set_value(data.limit - cur)
-
-
-func set_hp(v):
-	data.hp = v
-	node_bar_hp.max_value = data.hpmax
-	node_bar_hp.set_value(data.hp)
+	view_node.set_draw_available(true)
+	view_node.set_endturn_available(true)

@@ -15,9 +15,6 @@ var selected_card_idx := -1
 
 
 func _ready():
-	if is_players:
-		BattlePlayer.view_parent = get_parent()
-		
 	for i in 32:
 		var new_node = card_scene.instance()
 		new_node.visible = false
