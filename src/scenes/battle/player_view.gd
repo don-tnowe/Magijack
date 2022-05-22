@@ -1,5 +1,6 @@
 extends Control
 
+export(Array, Texture) var mpbar_textures
 
 onready var node_hand = $"hand"
 
@@ -28,8 +29,10 @@ func update_hand():
 	node_bar_mp.set_value(BattlePlayer.data.limit - BattlePlayer.limit_used)
 	
 	var crit_overload_chance = BattlePlayer.data.deck.get_crit_overload_chance(BattlePlayer.hand_data, BattlePlayer.data.limit)
-	node_chance_crit.text = str(floor(crit_overload_chance[0] * 100)) + "%"  # TODO
-	node_chance_overload.text = str(ceil(crit_overload_chance[1] * 100)) + "%"  # Also TODO
+	node_chance_crit.text = str(floor(crit_overload_chance[0] * 100)) + "%"
+	node_chance_overload.text = str(ceil(crit_overload_chance[1] * 100)) + "%"
+	
+	node_bar_mp.texture = mpbar_textures[0 if crit_overload_chance[1] == 0.0 else 1 if crit_overload_chance[1] < 0.5 else 2]
 	set_draw_available(BattlePlayer.drawn_this_turn >= 2 && crit_overload_chance[1] < 1.0)
 
 
