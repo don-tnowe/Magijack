@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
@@ -13,6 +13,22 @@
 [ext_resource path="res://assets/graphics/battle/table.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/battle_ui/icons.png" type="Texture" id=12]
 [ext_resource path="res://src/scenes/battle/player_view.gd" type="Script" id=14]
+
+[sub_resource type="InputEventAction" id=7]
+action = "battle_draw"
+pressed = true
+strength = 0.0
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="InputEventAction" id=9]
+action = "battle_endturn"
+pressed = true
+strength = 0.0
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
 
 [sub_resource type="AtlasTexture" id=1]
 resource_local_to_scene = true
@@ -217,7 +233,9 @@ margin_top = 420.0
 margin_right = 459.0
 margin_bottom = 500.0
 rect_rotation = -15.0
+focus_mode = 0
 custom_fonts/font = ExtResource( 7 )
+shortcut = SubResource( 8 )
 text = "Draw"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -231,7 +249,9 @@ margin_top = 361.0
 margin_right = -227.0
 margin_bottom = 441.0
 rect_rotation = 15.0
+focus_mode = 0
 custom_fonts/font = ExtResource( 7 )
+shortcut = SubResource( 10 )
 text = "End Turn"
 __meta__ = {
 "_edit_use_anchors_": false

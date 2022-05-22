@@ -30,6 +30,7 @@ func update_hand():
 	var crit_overload_chance = BattlePlayer.data.deck.get_crit_overload_chance(BattlePlayer.hand_data, BattlePlayer.data.limit)
 	node_chance_crit.text = str(floor(crit_overload_chance[0] * 100)) + "%"  # TODO
 	node_chance_overload.text = str(ceil(crit_overload_chance[1] * 100)) + "%"  # Also TODO
+	set_draw_available(BattlePlayer.drawn_this_turn >= 2 && crit_overload_chance[1] < 1.0)
 
 
 func update_all():
