@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://src/scenes/battle/vfx_slash.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/shaders/offset_with_shadow.tres" type="Shader" id=19]
 [ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=20]
+[ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=21]
 
 [sub_resource type="InputEventAction" id=7]
 action = "battle_draw"
@@ -118,7 +119,7 @@ tracks/3/keys = {
 "values": [ PoolVector2Array( -32, 40, -128, 64, -184, 96, -192, 160, -168, 200, -80, 224, 64, 208, 224, 160 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../enemy_ui/control/enemy/label_hp:rect_scale")
+tracks/4/path = NodePath("lightning:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -127,10 +128,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 496, 280 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("lightning:position")
+tracks/5/path = NodePath("lightning2:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -139,10 +140,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 496, 280 ) ]
+"values": [ Vector2( 1072.45, 440.259 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("lightning2:position")
+tracks/6/path = NodePath("lightning2:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -151,10 +152,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1072.45, 440.259 ) ]
+"values": [ Vector2( 0.640925, 1 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("lightning2:scale")
+tracks/7/path = NodePath("lightning:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -163,27 +164,15 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.640925, 1 ) ]
+"values": [ Vector2( 0.559227, 0.739531 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("lightning:scale")
+tracks/8/path = NodePath("../../control/bar_hp/flash:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.559227, 0.739531 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("../../control/bar_hp/flash:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -875,11 +864,13 @@ focus_mode = 0
 custom_fonts/font = ExtResource( 7 )
 shortcut_in_tooltip = false
 shortcut = SubResource( 8 )
-text = "Draw"
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="label" parent="player_ui/control/button_draw" instance=ExtResource( 21 )]
+text = "button_draw_card"
 
 [node name="button_endturn" type="Button" parent="player_ui/control"]
 anchor_left = 1.0
@@ -894,11 +885,13 @@ focus_mode = 0
 custom_fonts/font = ExtResource( 7 )
 shortcut_in_tooltip = false
 shortcut = SubResource( 10 )
-text = "End Turn"
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="label" parent="player_ui/control/button_endturn" instance=ExtResource( 21 )]
+text = "button_end_turn"
 
 [node name="hand" type="Control" parent="player_ui/control"]
 anchor_left = 0.5
@@ -1093,7 +1086,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 404.589, 70 )
+texture_offset = Vector2( 384.559, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1102,7 +1095,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = 0.439918
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 240.813, 70 )
+texture_offset = Vector2( 405.156, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
