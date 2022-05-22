@@ -33,8 +33,6 @@ func draw_from_deck(face_up = false):
 	emit_signal("card_drawn", new_card, hand_data, data.limit - limit_used)
 	
 	if limit_used > data.limit:		
-		start(1.0)
-		yield(self, "timeout")
 		end_turn(true)
 
 

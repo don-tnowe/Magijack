@@ -33,8 +33,6 @@ func draw_from_deck():
 
 	if limit_used > data.limit:
 		view_node.overloaded()
-		start(1.5)
-		yield(self, "timeout")
 		end_turn(true)
 
 

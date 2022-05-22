@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/graphics/battle/ligtning.png" type="Texture" id=1]
+[ext_resource path="res://src/scenes/battle/vfx_lightning.gd" type="Script" id=2]
+
+[node name="lightning" type="Polygon2D"]
+scale = Vector2( 1.64706, 1 )
+offset = Vector2( 335.143, 312 )
+texture = ExtResource( 1 )
+texture_offset = Vector2( -129605, 70 )
+texture_scale = Vector2( 2, 1 )
+polygon = PoolVector2Array( -336, -312, -74, -388, 176, -312, 176, -312, -82, -252, -336, -312, -78, -318 )
+uv = PoolVector2Array( 0, 0, 260, 0, 510, 0, 510, 130, 260, 130, 0, 130, 260, 70 )
+internal_vertex_count = 1
+script = ExtResource( 2 )
+
+[node name="lghtn" type="Polygon2D" parent="."]
+show_behind_parent = true
+position = Vector2( -2.42857, -8.00001 )
+color = Color( 0.39, 0.58, 0.93, 1 )
+offset = Vector2( 335.143, 312 )
+texture = ExtResource( 1 )
+texture_offset = Vector2( 537.809, 70 )
+texture_scale = Vector2( 0.75, 1 )
+polygon = PoolVector2Array( -336, -304, -72.0002, -384, 176, -304, 176, -304, -80.0002, -248, -336, -304, -76.0002, -314 )
+uv = PoolVector2Array( 0, 0, 260, 0, 510, 0, 510, 130, 260, 130, 0, 130, 260, 70 )
+internal_vertex_count = 1

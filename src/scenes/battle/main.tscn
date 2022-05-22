@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
@@ -12,7 +12,14 @@
 [ext_resource path="res://src/scenes/battle/enemy_view.gd" type="Script" id=10]
 [ext_resource path="res://assets/graphics/battle/table.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/battle_ui/icons.png" type="Texture" id=12]
+[ext_resource path="res://src/scenes/battle/battle_vfx.gd" type="Script" id=13]
 [ext_resource path="res://src/scenes/battle/player_view.gd" type="Script" id=14]
+[ext_resource path="res://assets/graphics/battle_ui/ui_bar_textures/mp_crit.tres" type="Texture" id=15]
+[ext_resource path="res://assets/graphics/battle_ui/ui_bar_textures/mp_danger.tres" type="Texture" id=16]
+[ext_resource path="res://src/scenes/battle/vfx_lightning.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/scenes/battle/vfx_slash.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/shaders/offset_with_shadow.tres" type="Shader" id=19]
+[ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=20]
 
 [sub_resource type="InputEventAction" id=7]
 action = "battle_draw"
@@ -30,35 +37,659 @@ strength = 0.0
 [sub_resource type="ShortCut" id=10]
 shortcut = SubResource( 9 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=37]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=38]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=39]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=40]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=41]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=42]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 0, 128, 128 )
+
+[sub_resource type="Animation" id=19]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("lightning:processing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lightning2:processing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("slash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("slash:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -32, 40, -128, 64, -184, 96, -192, 160, -168, 200, -80, 224, 64, 208, 224, 160 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../enemy_ui/control/enemy/label_hp:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("lightning:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 496, 280 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("lightning2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1072.45, 440.259 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("lightning2:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.640925, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("lightning:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.559227, 0.739531 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../../control/bar_hp/flash:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "enemy_overload"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("lightning:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 496, 280 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lightning2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1072.45, 440.259 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("lightning:processing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("lightning2:processing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("lightning2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 1, 1.5 ),
+"transitions": PoolRealArray( 2, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.65, 1e-05 ), Vector2( 0.640925, 1 ), Vector2( 0.640925, 1 ), Vector2( 0.65, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("lightning:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 1, 1.5 ),
+"transitions": PoolRealArray( 2, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.55, 1e-05 ), Vector2( 0.559227, 0.739531 ), Vector2( 0.559227, 0.739531 ), Vector2( 0.55, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("lightning2:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -149.914 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("lightning:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "enemy_win"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("slash:material:shader_param/bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.352941, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("slash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.65 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("slash:material:shader_param/offset_min")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("slash:material:shader_param/offset_max")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.33, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("slash:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( 0, -16, -128, 48, -184, 96, -192, 160, -160, 208, -96, 240, 8, 264, 272, 280 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../control/bar_hp/flash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.65 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../control/bar_hp/flash:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "player_crit"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("slash:material:shader_param/bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.65, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.376471, 0.447059, 0.933333, 1 ), Color( 0.376471, 0.447059, 0.933333, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0.227451, 0.0196078, 1 ), Color( 1, 0.772549, 0, 1 ), Color( 1, 0.227451, 0.0196078, 1 ), Color( 1, 0.772549, 0, 1 ), Color( 1, 0.227451, 0.0196078, 1 ), Color( 1, 0.772549, 0, 1 ), Color( 1, 0.227452, 0.0196078, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("slash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("slash:material:shader_param/offset_min")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.65, 0.85, 1.1, 1.3 ),
+"transitions": PoolRealArray( 3, 1, 3, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 1.0, 0.875, 0.875, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("slash:material:shader_param/offset_max")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.65, 0.85, 1.1, 1.3 ),
+"transitions": PoolRealArray( 0.33, 1, 0.33, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 1.0, 0.122402, 0.122402, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("slash:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.65 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -32, 40, -128, 64, -184, 96, -192, 160, -168, 200, -80, 224, 80, 208, 232, 152 ), PoolVector2Array( -32, 40, -128, 64, -184, 96, -192, 160, -168, 200, -80, 224, 80, 208, 232, 152 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../../enemy_ui/control/enemy/label_hp:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.179307, 0.2, 0.4, 0.65, 0.8, 0.85, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 0.25, 1, 1, 1, 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("lightning:processing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.85, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("lightning:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.85, 1.1, 1.3 ),
+"transitions": PoolRealArray( 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 1 ), Vector2( 0.75, 1 ), Vector2( 0.75, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("lightning:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.85 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 784, -104 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("lightning:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.85 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 89.9999 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "player_overload"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("lightning:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 216, 512 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lightning2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 480, 232 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("lightning:processing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("lightning2:processing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("lightning2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 1, 1.5 ),
+"transitions": PoolRealArray( -2, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1.25, 1e-05 ), Vector2( 1.2454, 1 ), Vector2( 1.2454, 1 ), Vector2( 1.25, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("lightning:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 1, 1.5 ),
+"transitions": PoolRealArray( -2, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1.65, 1e-05 ), Vector2( 1.64706, 1 ), Vector2( 1.64706, 1 ), Vector2( 1.65, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("lightning2:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 25.2054 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("lightning:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "player_win"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("slash:material:shader_param/bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.376471, 0.447059, 0.933333, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("slash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.65 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("slash:material:shader_param/offset_min")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("slash:material:shader_param/offset_max")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.33, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("slash:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -32, 40, -128, 64, -184, 96, -192, 160, -168, 200, -80, 224, 80, 208, 232, 152 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../../enemy_ui/control/enemy/label_hp:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.179307, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="ShaderMaterial" id=26]
+resource_local_to_scene = true
+shader = ExtResource( 19 )
+shader_param/offset_min = 1.0
+shader_param/offset_max = 1.0
+shader_param/bg_scale = 0.2
+shader_param/bg_color = Color( 1, 0.352941, 0, 1 )
+
+[sub_resource type="Curve" id=35]
+_data = [ Vector2( 0, 0.137427 ), 0.0, 1.07498, 0, 0, Vector2( 1, 1 ), 0.626939, 0.0, 0, 0 ]
 
 [node name="root" type="Node"]
 
@@ -226,6 +857,7 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+mpbar_textures = [ ExtResource( 4 ), ExtResource( 16 ), ExtResource( 15 ) ]
 
 [node name="button_draw" type="Button" parent="player_ui/control"]
 margin_left = 235.0
@@ -279,9 +911,9 @@ margin_top = -240.0
 margin_right = 256.0
 margin_bottom = -112.0
 value = 63.0
-texture_under = SubResource( 1 )
-texture_over = SubResource( 2 )
-texture_progress = SubResource( 3 )
+texture_under = SubResource( 37 )
+texture_over = SubResource( 38 )
+texture_progress = SubResource( 39 )
 texture = ExtResource( 4 )
 
 [node name="bar_hp" parent="player_ui/control" instance=ExtResource( 3 )]
@@ -294,9 +926,18 @@ margin_top = -239.0
 margin_right = -128.0
 margin_bottom = -111.0
 value = 63.0
-texture_under = SubResource( 4 )
-texture_over = SubResource( 5 )
-texture_progress = SubResource( 6 )
+texture_under = SubResource( 40 )
+texture_over = SubResource( 41 )
+texture_progress = SubResource( 42 )
+
+[node name="flash" type="Sprite" parent="player_ui/control/bar_hp"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 64, 63 )
+scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 8, 0, 184, 191 )
 
 [node name="label_damage" type="Label" parent="player_ui/control"]
 anchor_left = 1.0
@@ -399,3 +1040,59 @@ vframes = 8
 frame = 3
 
 [node name="tween" type="Tween" parent="player_ui/control"]
+
+[node name="control2" type="Control" parent="player_ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anim" type="AnimationPlayer" parent="player_ui/control2"]
+root_node = NodePath("../control")
+anims/RESET = SubResource( 19 )
+anims/enemy_overload = SubResource( 28 )
+anims/enemy_win = SubResource( 11 )
+anims/player_crit = SubResource( 36 )
+anims/player_overload = SubResource( 18 )
+anims/player_win = SubResource( 27 )
+
+[node name="control" type="Control" parent="player_ui/control2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -640.0
+margin_top = -720.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lightning" parent="player_ui/control2/control" instance=ExtResource( 17 )]
+visible = false
+position = Vector2( 496, 280 )
+rotation = 1.57079
+scale = Vector2( 0.559227, 0.739531 )
+texture_offset = Vector2( 250.396, 70 )
+back_color = Color( 1, 0.211765, 0, 1 )
+processing = false
+
+[node name="lightning2" parent="player_ui/control2/control" instance=ExtResource( 17 )]
+visible = false
+position = Vector2( 1072.45, 440.259 )
+rotation = -2.61649
+scale = Vector2( 0.640925, 1 )
+texture_offset = Vector2( 34.6366, 70 )
+back_color = Color( 1, 0.211765, 0, 1 )
+processing = false
+
+[node name="slash" parent="player_ui/control2/control" instance=ExtResource( 18 )]
+visible = false
+material = SubResource( 26 )
+position = Vector2( 816, 240 )
+points = PoolVector2Array( -32, 40, -128, 64, -184, 96, -192, 160, -168, 200, -80, 224, 64, 208, 224, 160 )
+width = 96.0
+width_curve = SubResource( 35 )

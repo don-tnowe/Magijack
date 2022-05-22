@@ -1,0 +1,21 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float offset_min = 0.0;
+uniform float offset_max = 1.0;
+uniform float bg_scale;
+uniform vec4 bg_color : hint_color;
+
+void fragment()
+{
+	vec2 uv = UV;
+	uv.x -= offset_min;
+	uv.x /= offset_max - offset_min;
+	vec4 color_f = texture(TEXTURE, uv);
+	uv.x = mix(uv.x, 0.5, bg_scale);
+	vec4 color_b = texture(TEXTURE, uv) * bg_color;
+	COLOR = mix(color_b, color_f, color_f.a);
+//	COLOR = vec4(uv.x, uv.y, 0.0, 1.0); // test
+}"

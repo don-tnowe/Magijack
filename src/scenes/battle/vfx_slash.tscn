@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/graphics/battle/slash.png" type="Texture" id=1]
+[ext_resource path="res://assets/shaders/offset_with_shadow.tres" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/offset_min = 0.0
+shader_param/offset_max = 1.0
+shader_param/bg_scale = 0.5
+shader_param/bg_color = Color( 0.345098, 0.341176, 0.933333, 1 )
+
+[node name="slash" type="Line2D"]
+material = SubResource( 1 )
+points = PoolVector2Array( 0, 0, 56, 40, 128, 64, 216, 56, 256, 0 )
+width = 64.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 1 )
+texture_mode = 2
+joint_mode = 2
