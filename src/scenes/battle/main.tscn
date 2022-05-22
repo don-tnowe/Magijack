@@ -192,7 +192,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id=28]
 resource_name = "enemy_overload"
-length = 3.0
+length = 2.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("lightning:position")
 tracks/0/interp = 1
@@ -381,7 +381,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=36]
 resource_name = "player_crit"
-length = 3.0
+length = 1.4
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("slash:material:shader_param/bg_color")
@@ -506,7 +506,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id=18]
 resource_name = "player_overload"
-length = 3.0
+length = 1.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("lightning:position")
 tracks/0/interp = 1
@@ -538,7 +538,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -550,7 +550,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -606,6 +606,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id=27]
 resource_name = "player_win"
+length = 0.7
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("slash:material:shader_param/bg_color")
@@ -683,10 +684,10 @@ tracks/5/keys = {
 [sub_resource type="ShaderMaterial" id=26]
 resource_local_to_scene = true
 shader = ExtResource( 19 )
-shader_param/offset_min = 1.0
-shader_param/offset_max = 1.0
+shader_param/offset_min = 0.0
+shader_param/offset_max = 0.0
 shader_param/bg_scale = 0.2
-shader_param/bg_color = Color( 1, 0.352941, 0, 1 )
+shader_param/bg_color = Color( 0.376471, 0.447059, 0.933333, 1 )
 
 [sub_resource type="Curve" id=35]
 _data = [ Vector2( 0, 0.137427 ), 0.0, 1.07498, 0, 0, Vector2( 1, 1 ), 0.626939, 0.0, 0, 0 ]
@@ -746,6 +747,7 @@ text = "100"
 valign = 1
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -770,6 +772,7 @@ align = 2
 valign = 1
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -794,6 +797,7 @@ text = "10"
 valign = 1
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -820,6 +824,7 @@ align = 2
 valign = 1
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -865,11 +870,14 @@ margin_top = 420.0
 margin_right = 459.0
 margin_bottom = 500.0
 rect_rotation = -15.0
+hint_tooltip = "[D] or [Right]"
 focus_mode = 0
 custom_fonts/font = ExtResource( 7 )
+shortcut_in_tooltip = false
 shortcut = SubResource( 8 )
 text = "Draw"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -881,11 +889,14 @@ margin_top = 361.0
 margin_right = -227.0
 margin_bottom = 441.0
 rect_rotation = 15.0
+hint_tooltip = " [W] or [Up]"
 focus_mode = 0
 custom_fonts/font = ExtResource( 7 )
+shortcut_in_tooltip = false
 shortcut = SubResource( 10 )
 text = "End Turn"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -898,6 +909,7 @@ margin_top = -64.0
 margin_bottom = -64.0
 script = ExtResource( 6 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 card_scene = ExtResource( 8 )
@@ -954,6 +966,7 @@ text = "10"
 valign = 1
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -980,6 +993,7 @@ text = "10"
 valign = 1
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1004,6 +1018,7 @@ align = 2
 valign = 1
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1029,6 +1044,7 @@ align = 2
 valign = 1
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1047,6 +1063,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 13 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1068,24 +1085,24 @@ margin_left = -640.0
 margin_top = -720.0
 mouse_filter = 2
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="lightning" parent="player_ui/control2/control" instance=ExtResource( 17 )]
 visible = false
 position = Vector2( 496, 280 )
-rotation = 1.57079
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 250.396, 70 )
+texture_offset = Vector2( 404.589, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
 [node name="lightning2" parent="player_ui/control2/control" instance=ExtResource( 17 )]
 visible = false
 position = Vector2( 1072.45, 440.259 )
-rotation = -2.61649
+rotation = 0.439918
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 34.6366, 70 )
+texture_offset = Vector2( 240.813, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
