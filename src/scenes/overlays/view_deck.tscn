@@ -127,7 +127,6 @@ margin_left = -112.0
 margin_top = -144.0
 margin_right = 112.0
 margin_bottom = -64.0
-hint_tooltip = "[D] or [Right]"
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
 shortcut = SubResource( 11 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/shaders/offset_with_shadow.tres" type="Shader" id=19]
 [ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=20]
 [ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=21]
+[ext_resource path="res://src/deck_view_button.tscn" type="PackedScene" id=22]
 
 [sub_resource type="InputEventAction" id=48]
 action = "battle_draw"
@@ -37,14 +38,6 @@ strength = 0.0
 
 [sub_resource type="ShortCut" id=10]
 shortcut = SubResource( 9 )
-
-[sub_resource type="InputEventAction" id=55]
-action = "view_deck"
-pressed = true
-strength = 0.0
-
-[sub_resource type="ShortCut" id=56]
-shortcut = SubResource( 55 )
 
 [sub_resource type="AtlasTexture" id=49]
 resource_local_to_scene = true
@@ -832,7 +825,7 @@ shader = ExtResource( 19 )
 shader_param/offset_min = 0.0
 shader_param/offset_max = 0.0
 shader_param/bg_scale = 0.2
-shader_param/bg_color = Color( 0.376471, 0.447059, 0.933333, 1 )
+shader_param/bg_color = Color( 1, 0.352941, 0, 1 )
 
 [sub_resource type="Curve" id=35]
 _data = [ Vector2( 0, 0.137427 ), 0.0, 1.07498, 0, 0, Vector2( 1, 1 ), 0.626939, 0.0, 0, 0 ]
@@ -1051,25 +1044,23 @@ __meta__ = {
 [node name="label" parent="player_ui/control/button_endturn" instance=ExtResource( 21 )]
 text = "button_end_turn"
 
-[node name="button_deck" type="Button" parent="player_ui/control"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 48.0
-margin_top = -96.0
-margin_right = 272.0
-margin_bottom = -16.0
-rect_scale = Vector2( 0.75, 0.75 )
-hint_tooltip = " [W] or [Up]"
-custom_fonts/font = ExtResource( 7 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 56 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[node name="button_deck" parent="player_ui/control" instance=ExtResource( 22 )]
+hint_tooltip = "[Tab]"
 
 [node name="label" parent="player_ui/control/button_deck" instance=ExtResource( 21 )]
 text = "button_view_deck"
+
+[node name="button_deck3" parent="player_ui/control" instance=ExtResource( 22 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -384.0
+margin_top = -528.0
+margin_right = -192.0
+margin_bottom = -448.0
+type = 2
+
+[node name="label" parent="player_ui/control/button_deck3" instance=ExtResource( 21 )]
+text = "button_view_enemy_deck"
 
 [node name="hand" type="Control" parent="player_ui/control"]
 anchor_left = 0.5
@@ -1115,7 +1106,7 @@ texture_progress = SubResource( 54 )
 
 [node name="flash" type="Sprite" parent="player_ui/control/bar_hp"]
 visible = false
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.498039 )
 position = Vector2( 64, 63 )
 scale = Vector2( 1.8, 1.8 )
 texture = ExtResource( 20 )
@@ -1268,7 +1259,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 274.226, 70 )
+texture_offset = Vector2( 212.027, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1277,7 +1268,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 34.6278, 70 )
+texture_offset = Vector2( 446.13, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1333,5 +1324,3 @@ __meta__ = {
 }
 
 [node name="overlay" type="CanvasLayer" parent="."]
-
-[connection signal="pressed" from="player_ui/control/button_deck" to="player_ui/control" method="view_deck"]

@@ -4,6 +4,8 @@ gamename;Just write Magijack.;Magijack;Маґіджек
 button_draw_card;;Draw;Добір
 button_end_turn;;End Turn;Завершити хід
 button_view_deck;;View Deck;Проглянути Колоду
+button_view_enemy_deck;;Enemy Deck;Колода Ворога
+;;;
 battle_vs;"""12 vs 75"" (mind the spaces)";" vs ";" проти "
 battle_outcome_hit_player;Player hits enemy;Hit!;Влучення!
 battle_outcome_hit_enemy;Enemy hits player;Miss! Ow!;Ай! Промах!
@@ -16,6 +18,10 @@ menu_cancel;;Cancel;Відмінити
 menu_close;;Close;Закрити
 menu_skip;;Skip;Пропустити
 ;;;
+victory_title;;Victory!;Перемога!
+victory_pick_cards;;;
+;;;
 deckview_title;;Your Magnificent Cards;Ваші Чудові Карти
+deckview_title_drawpile;;Draw from here. Put everything back after battle;Добирай звідси. Після битви все поверни
 deckview_title_enemy;;Your Foe's Malicious Secrets;Таємниці Вашого Супротивника
 deckview_hint;;Tip: this container can be scrolled.;Підказка: цей контейнер можна гортати.

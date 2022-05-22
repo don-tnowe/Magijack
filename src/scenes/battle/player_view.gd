@@ -57,10 +57,6 @@ func set_endturn_available(v):
 	node_button_endturn.disabled = !v
 
 
-func view_deck():
-	OverlayStack.open("view_deck", [BattlePlayer.data.deck.cards_parsed, "deckview_title"])
-
-
 func _process(delta):
 	if node_bar_mp.value == 0:
 		node_bar_mp.get_node("label").rect_position = Vector2(0, 32) + Vector2(
