@@ -16,10 +16,10 @@ onready var node_button_endturn = $"button_endturn"
 
 
 func _ready():
+	BattlePlayer.view_node = self
 	node_hand.hand_data = BattlePlayer.hand_data
 	node_button_draw.connect("pressed", BattlePlayer, "draw_from_deck")
 	node_button_endturn.connect("pressed", BattlePlayer, "end_turn")
-	BattlePlayer.view_node = self
 
 
 # Frick it, not creating a setter for each field for the jam

@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=7]
 [ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scenes/enemy_types/tutorial_phoenix.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/autoload/battle_enemy.gd" type="Script" id=10]
+[ext_resource path="res://src/scenes/battle/enemy_view.gd" type="Script" id=10]
 [ext_resource path="res://assets/graphics/battle/table.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/battle_ui/icons.png" type="Texture" id=12]
 [ext_resource path="res://src/scenes/battle/player_view.gd" type="Script" id=14]
@@ -182,6 +182,8 @@ texture = ExtResource( 12 )
 hframes = 8
 vframes = 8
 frame = 3
+
+[node name="tween" type="Tween" parent="enemy_ui/control"]
 
 [node name="table" type="TextureRect" parent="enemy_ui"]
 anchor_left = 0.5

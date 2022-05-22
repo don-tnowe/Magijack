@@ -1,7 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/scenes/battle/enemy_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/graphics/enemies/tutorial_phoenix.png" type="Texture" id=2]
+[ext_resource path="res://src/classes/enemy_battler_data.gd" type="Script" id=3]
+[ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=4]
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 3 )
+hpmax = 30
+limit = 16
+damage = 5
+greed_damage = 5
+deck = ExtResource( 4 )
+spells = [  ]
+risk_max = 0.25
+risk_chance_mult = 1.0
+player_draw_response_chance = 1.0
+cards_face_up = 2
+player_cards_face_up = 0
+min_level = 0
+max_level = 8
+recommended_level = 1
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -73,6 +92,7 @@ tracks/1/keys = {
 
 [node name="enemy" instance=ExtResource( 1 )]
 scale = Vector2( 1.5, 1.5 )
+battler_data = SubResource( 3 )
 
 [node name="body" parent="." index="0"]
 position = Vector2( 0, -73.55 )

@@ -52,7 +52,7 @@ config/icon="res://icon.png"
 
 BattlePlayer="*res://src/autoload/battle_player.gd"
 BattleEnemy="*res://src/autoload/battle_enemy.gd"
-RunManager="*res://src/autoload/run_manager.gd"
+BattleManager="*res://src/autoload/battle_manager.gd"
 
 [debug]
 

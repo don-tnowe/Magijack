@@ -5,6 +5,8 @@ extends BattlerData
 export var risk_max := 0.25
 # If the percentage is lower than risk_max, multiply by this and get the chance to draw.
 export var risk_chance_mult := 1.0
+# Chance to draw at the start of turn. After that, attempt to draw with this chance again.
+export var start_draw_chance := 0.2
 # Chance to draw once the player draws. Enemies always draw as much as they can at the end of turn.
 export var player_draw_response_chance := 1.0
 # The first X cards drawn are revealed to player. The rest require using vision spells.

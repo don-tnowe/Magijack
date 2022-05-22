@@ -1,11 +1,29 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/scenes/battle/enemy_base.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/enemies/tutorial_phoenix.png" type="Texture" id=2]
 [ext_resource path="res://assets/graphics/enemy_shared.png" type="Texture" id=3]
+[ext_resource path="res://src/classes/enemy_battler_data.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 4 )
+hpmax = 60
+limit = 16
+damage = 10
+greed_damage = 10
+spells = [  ]
+risk_max = 0.25
+risk_chance_mult = 1.0
+player_draw_response_chance = 1.0
+cards_face_up = 2
+player_cards_face_up = 0
+min_level = 0
+max_level = 8
+recommended_level = 1
 
 [node name="enemy" type="Node2D"]
 script = ExtResource( 1 )
+battler_data = SubResource( 1 )
 
 [node name="body" type="Sprite" parent="."]
 texture = ExtResource( 2 )

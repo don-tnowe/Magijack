@@ -88,5 +88,10 @@ func display_all():
 		hand_data.cards[i].display_on_card_node(get_child(i))
 
 
+func reveal_all():
+	for x in used_card_nodes:
+		x.set_face_down(false)
+
+
 func card_mouse_entered(card_idx):
 	selected_card_idx = card_idx

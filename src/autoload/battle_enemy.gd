@@ -1,10 +1,84 @@
-extends Node
+extends Timer
 
-var enemy_pool 
+signal card_drawn(card_just_drawn, hand, limit)
+signal turn_ended(hand, limit_left, power)
+
 var data : EnemyBattlerData
 var hand_data := CardHandData.new()
 
 var hp := 60
 var limit_used := 0
 
-var view_parent : Control
+var view_node : Control
+var drawn_this_turn = 0
+
+
+func _ready():
+	BattlePlayer.connect("card_drawn", self, "player_card_drawn")
+	BattlePlayer.connect("turn_ended", self, "player_turn_ended")
+
+
+func battle_start():
+	view_node.battle_start()
+	data.deck.initialize()
+
+
+func draw_from_deck(face_up = false):
+	var new_card = data.deck.draw_from_deck()
+	view_node.node_hand.add_card(new_card, hand_data.add_card(new_card, data.limit), !face_up && drawn_this_turn >= data.cards_face_up)
+
+	limit_used = hand_data.sum
+	drawn_this_turn += 1
+
+	emit_signal("card_drawn", new_card, hand_data, data.limit - limit_used)
+
+
+func start_turn():
+	hand_data.discard_all()
+	view_node.node_hand.discard_all()
+
+	drawn_this_turn = 0
+	data.deck.turn_start()
+
+	start(1.0)
+	yield(self, "timeout")
+	draw_from_deck()
+
+	start(0.2)
+	yield(self, "timeout")
+	draw_from_deck()
+
+	while randf() < data.start_draw_chance:
+		start(0.2)
+		yield(self, "timeout")
+		if !try_safe_draw():
+			break
+
+
+func try_safe_draw(face_up = false) -> bool:
+	if randf() < 0.5:  # TODO: consider count of dangerous cards in deck
+		return false
+
+	draw_from_deck(face_up)
+	return true
+
+
+func player_card_drawn(card, hand, limit):
+	if randf() < data.player_draw_response_chance:
+		try_safe_draw()
+	
+
+func player_turn_ended(hand, limit_left, power):
+	view_node.node_hand.reveal_all()
+
+	while try_safe_draw(true):
+		start(0.2)
+		yield(self, "timeout")
+	
+	end_turn()
+
+
+func end_turn():
+	emit_signal("turn_ended", hand_data, data.limit - limit_used, hand_data.sum_power)
+
+	
