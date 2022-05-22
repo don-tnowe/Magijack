@@ -46,11 +46,19 @@ func enemy_turn_ended(hand, limit_left, power):
 
 
 func apply_turn_outcome():
-	if player_hand_power > enemy_hand_power:
-		BattlePlayer.hp -= BattleEnemy.data.damage
+	if enemy_limit_left < 0:
+		BattleEnemy.hp -= BattlePlayer.data.greed_damage
+
+	elif player_limit_left < 0:
+		BattlePlayer.hp -= BattleEnemy.data.greed_damage
+
+	elif player_hand_power > enemy_hand_power:
+		BattleEnemy.hp -= BattlePlayer.data.damage
+		if player_limit_left == 0:  # If at limit, crit. Enemies can't crit, for fairness.
+			BattleEnemy.hp -= BattlePlayer.data.damage
 	
 	if player_hand_power < enemy_hand_power:
-		BattleEnemy.hp -= BattlePlayer.data.damage
+		BattlePlayer.hp -= BattleEnemy.data.damage
 
 	BattlePlayer.view_node.update_all()
 	BattleEnemy.view_node.update_all()

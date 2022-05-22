@@ -31,8 +31,14 @@ func draw_from_deck():
 	emit_signal("card_drawn", new_card, hand_data, data.limit - limit_used)
 	view_node.update_hand()
 
+	if limit_used > data.limit:
+		view_node.overloaded()
+		start(1.5)
+		yield(self, "timeout")
+		end_turn(true)
 
-func end_turn():
+
+func end_turn(forced = false):
 	emit_signal("turn_ended", hand_data, data.limit - limit_used, hand_data.sum_power)
 	view_node.update_hand()
 	view_node.set_draw_available(false)

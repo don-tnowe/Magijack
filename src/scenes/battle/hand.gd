@@ -47,6 +47,7 @@ func add_card(card_data, new_idx, is_face_down = false):
 	
 	new_node.visible = true
 	new_node.rect_position = Vector2(0, 256)
+	new_node.rect_rotation = 0
 	new_node.set_face_down(is_face_down)
 
 	if is_players:
@@ -65,16 +66,36 @@ func discard_card(card_idx, animation = 0):
 	var node = used_card_nodes.pop_at(card_idx)
 	if is_players:
 		node.disconnect("mouse_entered", self, "card_mouse_entered")
-
-	$"../tween".interpolate_property(
-		node, "rect_position:y",
-		node.rect_position.y, 512.0, 0.5,
-		Tween.TRANS_BACK, Tween.EASE_IN
-	)
-	$"../tween".interpolate_property(
-		node, "visible",
-		true, false, 1
-	)
+	
+	match animation:
+		0:
+			$"../tween".interpolate_property(
+				node, "rect_position:y",
+				node.rect_position.y, 512.0, 0.5,
+				Tween.TRANS_BACK, Tween.EASE_IN
+			)
+			$"../tween".interpolate_property(
+				node, "visible",
+				true, false, 1
+			)
+		1:
+			$"../tween".interpolate_property(
+				node, "rect_position:y",
+				node.rect_position.y, 1024.0 + randf() * 1024.0, 1,
+				Tween.TRANS_BACK, Tween.EASE_IN
+			)
+			$"../tween".interpolate_property(
+				node, "rect_position:x",
+				node.rect_position.x, node.rect_position.x + (randf() - 0.5) * 64.0, 0.75
+			)
+			$"../tween".interpolate_property(
+				node, "rect_rotation",
+				node.rect_rotation, (randf() - 0.5) * 1440.0, 0.75
+			)
+			$"../tween".interpolate_property(
+				node, "visible",
+				true, false, 1.5
+			)
 	$"../tween".start()  # Didn't forget.	
 	selected_card_idx = -1
 

@@ -31,6 +31,11 @@ func draw_from_deck(face_up = false):
 	drawn_this_turn += 1
 
 	emit_signal("card_drawn", new_card, hand_data, data.limit - limit_used)
+	
+	if limit_used > data.limit:		
+		start(1.0)
+		yield(self, "timeout")
+		end_turn(true)
 
 
 func start_turn():
@@ -75,6 +80,10 @@ func player_card_drawn(card, hand, limit):
 func player_turn_ended(hand, limit_left, power):
 	view_node.node_hand.reveal_all()
 
+	if limit_left < 0:
+		end_turn()
+		return
+
 	while try_safe_draw(true):
 		start(0.2)
 		yield(self, "timeout")
@@ -82,7 +91,7 @@ func player_turn_ended(hand, limit_left, power):
 	end_turn()
 
 
-func end_turn():
+func end_turn(forced = false):
 	emit_signal("turn_ended", hand_data, data.limit - limit_used, hand_data.sum_power)
 
 	

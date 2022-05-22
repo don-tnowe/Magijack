@@ -41,6 +41,11 @@ func update_all():
 	node_label_greeddamage.text = str(BattlePlayer.data.greed_damage)
 
 
+func overloaded():
+	node_hand.discard_all(1)
+	set_endturn_available(false)
+
+
 func set_draw_available(v):
 	node_button_draw.disabled = !v
 
