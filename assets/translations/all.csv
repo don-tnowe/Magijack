@@ -6,7 +6,8 @@ button_end_turn;;End Turn;Завершити хід
 battle_vs;"""12 vs 75"" (mind the spaces)";" vs ";" проти "
 battle_outcome_hit_player;Player hits enemy;Hit!;Влучення!
 battle_outcome_hit_enemy;Enemy hits player;Miss! Ow!;Ай! Промах!
-battle_outcome_overload_player;;AHHRGH, OVERLOAD!!!;Агх, ПЕРЕВАНТАЖЕННЯ!
+battle_outcome_overload_player;Player gets overloaded;AHHRGH, OVERLOAD!!!;Агх, ПЕРЕВАНТАЖЕННЯ!
 battle_outcome_overload_enemy;;Oof! Looked like it hurt.;Ой-ой! Виглядає боляче.
 battle_outcome_crit;;Critical Hit!!!;Критичний удар!!!
+battle_outcome_draw;Both power values equal;It's a tie.;Нічия.
 ;;;
