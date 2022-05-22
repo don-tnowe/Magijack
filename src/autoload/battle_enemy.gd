@@ -32,7 +32,7 @@ func draw_from_deck(face_up = false):
 
 	emit_signal("card_drawn", new_card, hand_data, data.limit - limit_used)
 
-	if limit_used > data.limit:
+	if drawn_this_turn > 2 && limit_used > data.limit:
 		BattlePlayer.end_turn(true)
 		end_turn(true)
 

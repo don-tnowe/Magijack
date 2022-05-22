@@ -31,7 +31,7 @@ func draw_from_deck():
 	emit_signal("card_drawn", new_card, hand_data, data.limit - limit_used)
 	view_node.update_hand()
 
-	if limit_used > data.limit:
+	if drawn_this_turn > 2 && limit_used > data.limit:
 		view_node.overloaded()
 		end_turn(true)
 
