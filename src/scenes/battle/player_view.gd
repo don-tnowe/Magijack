@@ -26,8 +26,10 @@ func _ready():
 func update_hand():
 	node_bar_mp.max_value = BattlePlayer.data.limit
 	node_bar_mp.set_value(BattlePlayer.data.limit - BattlePlayer.limit_used)
-	node_chance_crit.text = str(0.15 * 100) + "%"  # TODO
-	node_chance_overload.text = str(0.55 * 100) + "%"  # Also TODO
+	
+	var crit_overload_chance = BattlePlayer.data.deck.get_crit_overload_chance(BattlePlayer.hand_data, BattlePlayer.data.limit)
+	node_chance_crit.text = str(floor(crit_overload_chance[0] * 100)) + "%"  # TODO
+	node_chance_overload.text = str(ceil(crit_overload_chance[1] * 100)) + "%"  # Also TODO
 
 
 func update_all():

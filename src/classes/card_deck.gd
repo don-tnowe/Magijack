@@ -53,6 +53,21 @@ func turn_start():
 func draw_from_deck():
 	return cards_draw.pop_at(0)
 
+# Crit, then overload.
+func get_crit_overload_chance(hand, limit) -> Array:
+	var crit_count = 0
+	var overload_count = 0
+	for x in cards_draw:
+		var new_limit_left = limit - hand.sum - x.get_value(-1, hand, limit)
+		if new_limit_left == 0:
+			crit_count += 1
+
+		elif new_limit_left < 0:
+			overload_count += 1
+
+	var total = float(cards_draw.size())
+	return [crit_count / total, overload_count / total]
+
 
 func get_random_basic_card():
 	return CardData.new(

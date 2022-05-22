@@ -56,7 +56,11 @@ func start_turn():
 
 
 func try_safe_draw(face_up = false) -> bool:
-	if randf() < 0.5:  # TODO: consider count of dangerous cards in deck
+	var overload_chance = data.deck.get_crit_overload_chance(hand_data, data.limit)[1]
+	if overload_chance > data.risk_max:
+		return false
+		
+	if randf() > overload_chance * data.risk_chance_mult:
 		return false
 
 	draw_from_deck(face_up)
