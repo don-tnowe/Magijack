@@ -63,7 +63,8 @@ func find_unused_card():
 
 func discard_card(card_idx, animation = 0):
 	var node = used_card_nodes.pop_at(card_idx)
-	node.disconnect("mouse_entered", self, "card_mouse_entered")
+	if is_players:
+		node.disconnect("mouse_entered", self, "card_mouse_entered")
 
 	$"../tween".interpolate_property(
 		node, "rect_position:y",
