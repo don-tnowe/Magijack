@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/scenes/overlays/victory_card.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=4]
+
+[sub_resource type="InputEventAction" id=12]
+action = "ui_cancel"
+pressed = true
+strength = 0.0
+
+[sub_resource type="ShortCut" id=13]
+shortcut = SubResource( 12 )
+
+[node name="control" type="ColorRect"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.752941 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 48.0
+margin_right = -427.0
+margin_bottom = 122.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "victory_title"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hint" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 152.0
+margin_right = 1280.0
+margin_bottom = 226.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "victory_pick_cards"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="choices_left" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -288.0
+margin_top = 480.0
+margin_right = 288.0
+margin_bottom = 560.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 2 )
+text = "victory_choices_left"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cards" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -128.0
+margin_right = -80.0
+margin_bottom = -128.0
+
+[node name="card" parent="cards" instance=ExtResource( 4 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 151.0
+margin_bottom = 236.0
+
+[node name="button_close" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -152.0
+margin_right = 112.0
+margin_bottom = -72.0
+custom_fonts/font = ExtResource( 2 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="button_close" instance=ExtResource( 3 )]
+text = "menu_continue"
+
+[connection signal="pressed" from="button_close" to="." method="button_pressed"]

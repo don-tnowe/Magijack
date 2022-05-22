@@ -10,12 +10,13 @@ var stack = []
 
 func _ready():
 	for x in [
-		# "victory_card",
-		# "select_next_area",
+		"victory_card",
+		"select_next_area",
+		"view_deck",
 		# "hp_mp_upgrade",
 		# "library",
 		# "forge",
-		"view_deck"
+		"defeat"
 		]:
 		overlay_scenes[x] = load(overlay_directory + x + ".tscn")
 

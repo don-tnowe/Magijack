@@ -21,6 +21,12 @@ export var min_level := 0
 export var max_level := 8
 export var recommended_level := 1
 
+# Cards this can drop, "stringified" (like "red 1", "purple flawless" or "blue 5+2")
+export(String, MULTILINE) var loot_cards := "red 1\nred 3\norange 1\norange 3"
+export var loot_choice_min := 4
+export var loot_choice_max := 4
+export var loot_player_choice := 2
+
 # Returns the difficulty it will be on this level. Make sure to present low (< 0) and high (> 0) choices.
 func get_difficulty(on_level):
 	if min_level > on_level:

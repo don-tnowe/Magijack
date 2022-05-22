@@ -19,8 +19,13 @@ func _ready():
 
 
 func battle_start():
-	view_node.battle_start()
+	hp = data.hpmax
+	var strgf = data.deck.stringified
+	data.deck = CardDeck.new()
+	data.deck.stringified = strgf
 	data.deck.initialize()
+	data.deck.battle_start()
+	view_node.battle_start()
 
 
 func draw_from_deck(face_up = false):

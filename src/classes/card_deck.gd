@@ -23,7 +23,6 @@ func initialize():
 		cards_parsed[i] = create_stringified_card(lines[i])
 	
 	cards_parsed.sort_custom(cards_battle[0], "compare")
-	battle_start()
 
 
 func create_stringified_card(card_stringified):
@@ -67,6 +66,16 @@ func get_crit_overload_chance(hand, limit) -> Array:
 
 	var total = float(cards_draw.size())
 	return [crit_count / total, overload_count / total]
+
+# Depth 0 = Draw pile, Depth 1 = Resets after battle, Depth 2 = Does not reset until run end
+func add_cards(cards, depth_of_consequence = 2):
+	var array_chosen = [
+		cards_draw,
+		cards_battle,
+		cards_parsed
+	][depth_of_consequence]
+	array_chosen.append_array(cards)
+	array_chosen.sort_custom(cards_battle[0], "compare")
 
 
 func get_random_basic_card():

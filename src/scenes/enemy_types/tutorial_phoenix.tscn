@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 3 )
-hpmax = 30
+hpmax = 50
 limit = 16
 damage = 5
 greed_damage = 5
@@ -23,6 +23,25 @@ player_cards_face_up = 0
 min_level = 0
 max_level = 8
 recommended_level = 1
+loot_cards = "red 1
+red 3+1
+red 5+1
+red 6+1
+blue 1
+blue 3+1
+blue 5+1
+blue 6+1
+purple 1
+purple 3+1
+purple 5+1
+purple 6+1
+orange 1
+orange 3+1
+orange 5+1
+orange 6+1"
+loot_choice_min = 4
+loot_choice_max = 4
+loot_player_choice = 2
 
 [sub_resource type="Animation" id=2]
 length = 0.001

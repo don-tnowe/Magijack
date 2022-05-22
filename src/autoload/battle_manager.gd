@@ -1,5 +1,6 @@
 extends Timer
 
+var battles_completed := 0
 
 var player_hand : CardHandData
 var player_limit_left := 0
@@ -77,5 +78,29 @@ func apply_turn_outcome():
 	BattleEnemy.view_node.update_all()
 	player_turn_ended = false
 	enemy_turn_ended = false
+
+	if BattleEnemy.hp <= 0:
+		victory()
+		return
+
+	if BattlePlayer.hp <= 0:
+		defeat()
+		return
+
 	BattlePlayer.start_turn()
 	BattleEnemy.start_turn()
+
+
+func victory():
+	start(2)
+	yield(self, "timeout")
+	OverlayStack.open("select_next_area")
+	OverlayStack.open("victory_card", [BattleEnemy.data])
+	battles_completed += 1
+
+
+func defeat():
+	start(2)
+	yield(self, "timeout")
+	OverlayStack.open("defeat")
+	battles_completed = 0

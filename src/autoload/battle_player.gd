@@ -14,11 +14,17 @@ var view_node : Control
 var drawn_this_turn = 0
 
 
-func battle_start():
+func _ready():
 	randomize()
-	between_battles_data.deck.initialize()
 	data = between_battles_data.duplicate()
+	data.deck = CardDeck.new()
+	data.deck.stringified = between_battles_data.deck.stringified
+	data.deck.initialize()
+
+
+func battle_start():
 	view_node.update_all()
+	data.deck.battle_start()
 
 
 func draw_from_deck():

@@ -17,11 +17,15 @@ battle_outcome_draw;Both power values equal;It's a tie.;Нічия.
 menu_cancel;;Cancel;Відмінити
 menu_close;;Close;Закрити
 menu_skip;;Skip;Пропустити
+menu_continue;;Continue;Продовжити
 ;;;
 victory_title;;Victory!;Перемога!
-victory_pick_cards;;;
+victory_pick_cards;;Choose cards to add to your deck;Вибери карти, які додасиш до колоди!
+victory_choices_left;Mind the space at the end.;"Choices left: ";"Ще виборів: "
 ;;;
 deckview_title;;Your Magnificent Cards;Ваші Чудові Карти
 deckview_title_drawpile;;Draw from here. Put everything back after battle;Добирай звідси. Після битви все поверни
 deckview_title_enemy;;Your Foe's Malicious Secrets;Таємниці Вашого Супротивника
 deckview_hint;;Tip: this container can be scrolled.;Підказка: цей контейнер можна гортати.
+;;;
+defeat;;Perished.;Загинув.
