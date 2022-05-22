@@ -1086,7 +1086,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 384.559, 70 )
+texture_offset = Vector2( 484.924, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1095,7 +1095,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = 0.439918
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 405.156, 70 )
+texture_offset = Vector2( 170.516, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 

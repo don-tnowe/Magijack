@@ -31,8 +31,9 @@ func draw_from_deck(face_up = false):
 	drawn_this_turn += 1
 
 	emit_signal("card_drawn", new_card, hand_data, data.limit - limit_used)
-	
-	if limit_used > data.limit:		
+
+	if limit_used > data.limit:
+		BattlePlayer.end_turn(true)
 		end_turn(true)
 
 
@@ -57,33 +58,32 @@ func start_turn():
 		if !try_safe_draw():
 			break
 
-
+# If diddn't draw, returns false.
 func try_safe_draw(face_up = false) -> bool:
 	var overload_chance = data.deck.get_crit_overload_chance(hand_data, data.limit)[1]
 	if overload_chance > data.risk_max:
 		return false
-		
-	if randf() > overload_chance * data.risk_chance_mult:
+	
+	if randf() < overload_chance * data.risk_chance_mult:
 		return false
-
+	
 	draw_from_deck(face_up)
-	return true
+	return limit_used < data.limit
 
 
 func player_card_drawn(card, hand, limit):
-	if randf() < data.player_draw_response_chance:
+	if BattlePlayer.drawn_this_turn > 2 && randf() < data.player_draw_response_chance:
 		try_safe_draw()
 	
 
 func player_turn_ended(hand, limit_left, power):
 	view_node.node_hand.reveal_all()
 
-	if limit_left < 0:
-		end_turn()
-		return
-
-	while try_safe_draw(true):
-		start(0.2)
+	while randf() > data.end_draw_stop_chance:
+		if limit_left <= 0: break
+		if limit_used >= data.limit: break
+		if !try_safe_draw(true): break
+		start(0.5)
 		yield(self, "timeout")
 	
 	end_turn()
@@ -91,5 +91,3 @@ func player_turn_ended(hand, limit_left, power):
 
 func end_turn(forced = false):
 	emit_signal("turn_ended", hand_data, data.limit - limit_used, hand_data.sum_power)
-
-	

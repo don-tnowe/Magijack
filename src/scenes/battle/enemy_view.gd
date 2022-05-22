@@ -18,6 +18,7 @@ func battle_start():
 	BattleEnemy.view_node = self
 	BattleEnemy.data = node_instance.battler_data
 	node_hand.hand_data = BattleEnemy.hand_data
+	update_all()
 
 
 func update_all():

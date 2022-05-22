@@ -7,8 +7,10 @@ export var risk_max := 0.25
 export var risk_chance_mult := 1.0
 # Chance to draw at the start of turn. After that, attempt to draw with this chance again.
 export var start_draw_chance := 0.2
-# Chance to draw once the player draws. Enemies always draw as much as they can at the end of turn.
+# Chance to draw once the player draws.
 export var player_draw_response_chance := 1.0
+# Enemies always draw as much as they can at the end of turn until this roll succeeds.
+export var end_draw_stop_chance := 0.0
 # The first X cards drawn are revealed to player. The rest require using vision spells.
 export var cards_face_up := 2
 # YOUR first X cards drawn are revealed to enemy. The rest can still be seen using vision spells.
