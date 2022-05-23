@@ -128,10 +128,11 @@ view_deck={
 
 [locale]
 
+test="uk"
 translation_remaps={
 "res://assets/fonts/normal.tres": PoolStringArray( "res://assets/fonts/normal_cyrrilic.tres:uk" )
 }
-translations=PoolStringArray( "res://assets/translations/all.en.translation", "res://assets/translations/all.uk.translation" )
+translations=PoolStringArray( "res://assets/translations/all.en.translation", "res://assets/translations/all.uk.translation", "res://assets/translations/spells.en.translation", "res://assets/translations/spells.uk.translation" )
 
 [node]
 

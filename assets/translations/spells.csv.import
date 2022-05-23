@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://assets/translations/spells.eo.translation", "res://assets/translations/spells.en.translation" ]
+
+source_file="res://assets/translations/spells.csv"
+dest_files=[ "res://assets/translations/spells.eo.translation", "res://assets/translations/spells.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=1

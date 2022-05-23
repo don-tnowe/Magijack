@@ -28,4 +28,6 @@ deckview_title_drawpile;;Draw from here. Put everything back after battle;Доб
 deckview_title_enemy;;Your Foe's Malicious Secrets;Таємниці Вашого Супротивника
 deckview_hint;;Tip: this container can be scrolled.;Підказка: цей контейнер можна гортати.
 ;;;
+spell_cooldown;;Cooldown;Перезарядка
+;;;
 defeat;;Perished.;Загинув.
