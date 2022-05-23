@@ -27,12 +27,21 @@ func set_suit(v):
 	$"color".self_modulate = suit_colors[v]
 	$"l/metal_value".self_modulate = suit_colors[v]
 	$"l/suit".frame = v + 12
+	if value == 11:
+		$"special".frame = suit
 
 
 func set_value(v):
 	value = v
 	if get_child_count() == 0: return
 	
+	if value == 11:
+		$"special".frame = suit
+		$"special".visible = true
+		
+	else:
+		$"special".visible = false
+		
 	$"l/value".frame = v
 
 

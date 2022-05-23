@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/graphics/card/card_decorations.png" type="Texture" id=1]
 [ext_resource path="res://assets/graphics/card/card_base.png" type="Texture" id=2]
 [ext_resource path="res://assets/graphics/card/values_suits.png" type="Texture" id=3]
 [ext_resource path="res://src/scenes/card.gd" type="Script" id=4]
+[ext_resource path="res://assets/graphics/card/flawless_beasts.png" type="Texture" id=5]
 
 [node name="card" type="Control"]
 anchor_left = 0.5
@@ -19,6 +20,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+suit = 3
 
 [node name="border" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 1 )
@@ -29,11 +31,19 @@ vframes = 2
 frame = 1
 
 [node name="color" type="Sprite" parent="."]
-self_modulate = Color( 0.823529, 0.0784314, 0.0784314, 1 )
+self_modulate = Color( 0.85098, 0.537255, 0.0509804, 1 )
 position = Vector2( 75, 118 )
 texture = ExtResource( 2 )
 hframes = 2
 vframes = 2
+
+[node name="special" type="Sprite" parent="."]
+visible = false
+position = Vector2( 75, 118 )
+texture = ExtResource( 5 )
+hframes = 4
+vframes = 2
+frame = 3
 
 [node name="l" type="Node2D" parent="."]
 position = Vector2( 75, 118 )
@@ -52,7 +62,7 @@ position = Vector2( -48, -60.3333 )
 texture = ExtResource( 3 )
 hframes = 4
 vframes = 4
-frame = 12
+frame = 15
 
 [node name="metal_bg" type="Sprite" parent="l"]
 visible = false
@@ -64,7 +74,7 @@ vframes = 4
 
 [node name="metal_value" type="Sprite" parent="l"]
 visible = false
-self_modulate = Color( 0.823529, 0.0784314, 0.0784314, 1 )
+self_modulate = Color( 0.85098, 0.537255, 0.0509804, 1 )
 position = Vector2( -29.3333, -20.3333 )
 texture = ExtResource( 3 )
 hframes = 4

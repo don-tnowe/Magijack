@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=20]
 [ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=21]
 [ext_resource path="res://src/deck_view_button.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/other/theme.tres" type="Theme" id=23]
 
 [sub_resource type="InputEventAction" id=48]
 action = "battle_draw"
@@ -838,6 +839,7 @@ _data = [ Vector2( 0, 0.137427 ), 0.0, 1.07498, 0, 0, Vector2( 1, 1 ), 0.626939,
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 23 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -995,6 +997,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 23 )
 script = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true,
@@ -1008,7 +1011,6 @@ margin_top = 420.0
 margin_right = 459.0
 margin_bottom = 500.0
 rect_rotation = -15.0
-hint_tooltip = "[D] or [Right]"
 focus_mode = 0
 custom_fonts/font = ExtResource( 7 )
 shortcut_in_tooltip = false
@@ -1030,7 +1032,6 @@ margin_top = 361.0
 margin_right = -227.0
 margin_bottom = 441.0
 rect_rotation = 15.0
-hint_tooltip = " [W] or [Up]"
 focus_mode = 0
 custom_fonts/font = ExtResource( 7 )
 shortcut_in_tooltip = false
@@ -1045,7 +1046,6 @@ __meta__ = {
 text = "button_end_turn"
 
 [node name="button_deck" parent="player_ui/control" instance=ExtResource( 22 )]
-hint_tooltip = "[Tab]"
 
 [node name="label" parent="player_ui/control/button_deck" instance=ExtResource( 21 )]
 text = "button_view_deck"
@@ -1057,6 +1057,7 @@ margin_left = -384.0
 margin_top = -528.0
 margin_right = -192.0
 margin_bottom = -448.0
+shortcut = null
 type = 2
 
 [node name="label" parent="player_ui/control/button_deck3" instance=ExtResource( 21 )]
@@ -1223,6 +1224,7 @@ frame = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 23 )
 script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true,
@@ -1259,7 +1261,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 180.432, 70 )
+texture_offset = Vector2( 185.286, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1268,7 +1270,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 166.52, 70 )
+texture_offset = Vector2( 236.46, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1282,6 +1284,9 @@ width_curve = SubResource( 35 )
 
 [node name="outcome" type="Node2D" parent="player_ui/control2/control"]
 position = Vector2( 640, 512 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="bg" type="Sprite" parent="player_ui/control2/control/outcome"]
 visible = false
@@ -1324,3 +1329,13 @@ __meta__ = {
 }
 
 [node name="overlay" type="CanvasLayer" parent="."]
+
+[node name="control" type="Control" parent="overlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 23 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

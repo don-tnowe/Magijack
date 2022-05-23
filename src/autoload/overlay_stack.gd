@@ -1,6 +1,6 @@
 extends Timer
 
-onready var overlay_parent = $"/root/root/overlay"
+onready var overlay_parent = $"/root/root/overlay/control"
 
 const overlay_directory = "res://src/scenes/overlays/"
 
