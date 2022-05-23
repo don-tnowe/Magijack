@@ -23,8 +23,8 @@ spell10;;Unstable Bolt
 spell10_desc;;Discard 2 to 5 cards. For each odd value, increase damage for the turn by 7. For each even value, deal 4 damage.
 spell11;;Unity Power
 spell11_desc;;For each card of the color you have most of in hand, Increase your power for this turn by +1.
-spell12;;Lightning
-spell12_desc;;Discard a card with value higher than 4. Deal damage 4 times its value.
+spell12;;Heavy Bolt
+spell12_desc;;Discard a card with value of 5 or more. Deal damage 4 times its value.
 spell13;;Intimidate
 spell13_desc;;Discard up to 6 Purple cards. Deal 4 damage for each card discarded.
 spell14;;Recycle
@@ -38,7 +38,7 @@ spell17_desc;;Discard a Blue card. For each card in the Enemy's hand with a valu
 spell18;;Expand Mind
 spell18_desc;;Increase your Limit by 5 and value of each card in hand by 1, both until next turn.
 spell19;;Flawless Obedience
-spell19_desc;;Turn a Flawless Beast into a 2-value card.
+spell19_desc;;Turn a Flawless Beast into a 2-value card for this turn.
 spell20;;Dragon's Fury
 spell20_desc;;Turn all colored cards in hand into Red cards for this turn.
 spell21;;Steel Feather
