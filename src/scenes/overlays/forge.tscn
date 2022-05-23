@@ -1,0 +1,326 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/scenes/overlays/forge.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=6]
+
+[sub_resource type="InputEventAction" id=12]
+action = "ui_cancel"
+pressed = true
+strength = 0.0
+
+[sub_resource type="ShortCut" id=13]
+shortcut = SubResource( 12 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "upgrade1"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("button_choose/flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("button_choose/flash:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "upgrade2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("button_choose/flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("button_choose/flash:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="control" type="ColorRect"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.752941 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="."]
+anchor_right = 1.0
+margin_right = -427.0
+margin_bottom = 74.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "forge_title"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -384.0
+margin_top = -560.0
+margin_right = 1152.0
+margin_bottom = -128.0
+grow_horizontal = 2
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "forge_prompt"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="choices_left" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -232.0
+margin_right = 219.0
+margin_bottom = -158.0
+custom_fonts/font = ExtResource( 2 )
+text = "victory_choices_left"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_close" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -144.0
+margin_right = 112.0
+margin_bottom = -64.0
+custom_fonts/font = ExtResource( 2 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="button_close" instance=ExtResource( 3 )]
+text = "menu_skip"
+
+[node name="card" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = -72.0
+margin_top = -216.0
+margin_right = 79.0
+margin_bottom = 20.0
+
+[node name="button_choose" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -328.0
+margin_right = 112.0
+margin_bottom = -248.0
+custom_fonts/font = ExtResource( 2 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="button_choose" instance=ExtResource( 3 )]
+text = "menu_choose"
+
+[node name="flash" type="Sprite" parent="button_choose"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 112, -144 )
+scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 8, 0, 184, 191 )
+
+[node name="button_upgrade1" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 72.0
+margin_top = -560.0
+margin_right = 488.0
+margin_bottom = -248.0
+custom_fonts/font = ExtResource( 2 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="button_upgrade1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -312.0
+margin_right = 216.0
+margin_bottom = -238.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 2 )
+text = "forge_reduce_value"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="Label" parent="button_upgrade1"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 16.0
+margin_top = -68.0
+margin_right = 384.0
+margin_bottom = 252.0
+grow_horizontal = 2
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "forge_reduce_value_desc"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc2" type="Label" parent="button_upgrade1"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -74.0
+custom_fonts/font = ExtResource( 5 )
+text = "6 -> 5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_upgrade2" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -488.0
+margin_top = -560.0
+margin_right = -72.0
+margin_bottom = -248.0
+custom_fonts/font = ExtResource( 2 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="button_upgrade2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -312.0
+margin_right = 208.0
+margin_bottom = -238.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 2 )
+text = "forge_increase_power"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="Label" parent="button_upgrade2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -192.0
+margin_top = -232.0
+margin_right = 576.0
+margin_bottom = 104.0
+grow_horizontal = 2
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "forge_increase_power_desc"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc2" type="Label" parent="button_upgrade2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -74.0
+custom_fonts/font = ExtResource( 5 )
+text = "+0 -> +1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/upgrade1 = SubResource( 14 )
+anims/upgrade2 = SubResource( 15 )
+
+[connection signal="pressed" from="button_close" to="." method="close"]
+[connection signal="pressed" from="button_choose" to="." method="choose_card"]
+[connection signal="pressed" from="button_upgrade1" to="." method="upgrade1"]
+[connection signal="pressed" from="button_upgrade2" to="." method="upgrade2"]

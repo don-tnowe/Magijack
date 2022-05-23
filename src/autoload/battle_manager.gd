@@ -1,6 +1,8 @@
 extends Timer
 
 var battles_completed := 0
+var area_features := ["hp_mp_upgrade", "library", "forge"]
+var area_progress := 0
 
 var player_hand : CardHandData
 var player_limit_left := 0
@@ -95,6 +97,16 @@ func victory():
 	start(2)
 	yield(self, "timeout")
 	OverlayStack.open("select_next_area")
+
+	if area_progress >= 3:
+		OverlayStack.open("bonfire")
+		area_progress = 0
+		area_features.shuffle()
+
+	else:
+		OverlayStack.open(area_features[area_progress])
+		area_progress += 1
+
 	OverlayStack.open("victory_card", [BattleEnemy.data])
 	battles_completed += 1
 

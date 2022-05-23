@@ -13,9 +13,11 @@ func _ready():
 		"victory_card",
 		"select_next_area",
 		"view_deck",
+		"select_card",
+		# "bonfire",
 		# "hp_mp_upgrade",
 		# "library",
-		# "forge",
+		"forge",
 		"defeat"
 		]:
 		overlay_scenes[x] = load(overlay_directory + x + ".tscn")

@@ -823,8 +823,8 @@ tracks/7/keys = {
 [sub_resource type="ShaderMaterial" id=26]
 resource_local_to_scene = true
 shader = ExtResource( 19 )
-shader_param/offset_min = 0.0
-shader_param/offset_max = 0.0
+shader_param/offset_min = 1.0
+shader_param/offset_max = 1.0
 shader_param/bg_scale = 0.2
 shader_param/bg_color = Color( 1, 0.352941, 0, 1 )
 
@@ -1107,7 +1107,7 @@ texture_progress = SubResource( 54 )
 
 [node name="flash" type="Sprite" parent="player_ui/control/bar_hp"]
 visible = false
-self_modulate = Color( 1, 1, 1, 0.498039 )
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 64, 63 )
 scale = Vector2( 1.8, 1.8 )
 texture = ExtResource( 20 )
@@ -1261,7 +1261,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 392.724, 70 )
+texture_offset = Vector2( 116.708, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1270,7 +1270,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 456.169, 70 )
+texture_offset = Vector2( 451.476, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 

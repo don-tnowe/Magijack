@@ -2,7 +2,6 @@ extends OverlayBase
 
 onready var node_card_parent := $"cards"
 
-var color_picked = Color.white
 var card_width := 161.0
 
 var enemy_data
@@ -36,7 +35,7 @@ func card_input(event, idx):
 			picked.erase(idx)
 			
 		else:
-			node_card_parent.get_child(idx).get_node("border").self_modulate = color_picked
+			node_card_parent.get_child(idx).get_node("border").self_modulate = Color.white
 			picked.append(idx)
 		
 		update_picks()

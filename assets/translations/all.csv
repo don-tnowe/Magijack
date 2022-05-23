@@ -18,6 +18,7 @@ menu_cancel;;Cancel;Відмінити
 menu_close;;Close;Закрити
 menu_skip;;Skip;Пропустити
 menu_continue;;Continue;Продовжити
+menu_choose;;Choose;Вибрати
 ;;;
 victory_title;;Victory!;Перемога!
 victory_pick_cards;;Choose cards to add to your deck;Вибери карти, які додасиш до колоди!
@@ -26,7 +27,32 @@ victory_choices_left;Mind the space at the end.;"Choices left: ";"Ще вибо�
 deckview_title;;Your Magnificent Cards;Ваші Чудові Карти
 deckview_title_drawpile;;Draw from here. Put everything back after battle;Добирай звідси. Після битви все поверни
 deckview_title_enemy;;Your Foe's Malicious Secrets;Таємниці Вашого Супротивника
-deckview_hint;;Tip: this container can be scrolled.;Підказка: цей контейнер можна гортати.
+deckview_hint;;Tip: too many? This container can be scrolled.;Підказка: цей контейнер можна гортати.
+;;;
+choose_card_title;;Choose a card;Обери картку
+;;;
+forge_title;;Forge;Кузня
+forge_reduce_value;It's a verb.;Balance;Збалансувати
+forge_reduce_value_desc;;Reduce a card's power and its impact on Limit.;Змешити силу картки та її вплив на Ліміт.
+forge_increase_power;;Sharpen;Загострити
+forge_increase_power_desc;;Raise a card's power, without affecting value.;Збільшити силу картки, не міняючи її значення.
+forge_prompt;;Choose a card to upgrade. You may upgrade several cards in one Forge.;Обери картку для поліпшення. В одній Кузні можна поліпшити декілька карток.
+;;;
+bonfire_title;;Bonfire;Багаття
+bonfire_desc;;Take a respite, traveller.;Відпочинь, мандрівниче.
+bonfire_heal;;Warm Yourself;Зігрітися
+bonfire_heal_desc;;Recover %s health.;Вилікувати %s здоров'я
+bonfire_remove_card;;Forget;Забути
+bonfire_remove_card_desc;;Remove up to %s cards;Прибрати до %s карток
+bonfire_remove_card_title;;Say Farewell;Скажи Прощавай
+;;;
+spring_title;Not the season.;Spring;Джерело
+spring_hp;;Maximum Health;Максимальне Здоров'я
+spring_mp;;Value Limit;Ліміт Значень
+spring_heal;;Full Heal;Повне Вилікування
+;;;
+library_title;;Library;Бібліотека
+library_subtitle;;Choose a spell;Обери Закляття
 ;;;
 spell_cooldown;;Cooldown;Перезарядка
 ;;;

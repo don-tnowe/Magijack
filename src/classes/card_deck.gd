@@ -15,6 +15,7 @@ var cards_battle := cards_parsed
 # Draw pile resets every turn to cards_battle state. Shuffled, cards drawn from top
 var cards_draw := cards_battle
 
+var deck_depths = [cards_draw, cards_battle, cards_parsed]
 
 func initialize():
 	var lines = stringified.split("\n")
@@ -69,13 +70,15 @@ func get_crit_overload_chance(hand, limit) -> Array:
 
 # Depth 0 = Draw pile, Depth 1 = Resets after battle, Depth 2 = Does not reset until run end
 func add_cards(cards, depth_of_consequence = 2):
-	var array_chosen = [
-		cards_draw,
-		cards_battle,
-		cards_parsed
-	][depth_of_consequence]
+	var array_chosen = deck_depths[depth_of_consequence]
 	array_chosen.append_array(cards)
 	array_chosen.sort_custom(cards_battle[0], "compare")
+
+# Depth 0 = Discard, Depth 1 = Exhaust, Depth 2 = Remove from deck
+func remove_cards(cards, depth_of_consequence = 2):
+	var array_chosen = deck_depths[depth_of_consequence]
+	for x in cards:
+		array_chosen.erase(x)
 
 
 func get_random_basic_card():

@@ -128,7 +128,6 @@ view_deck={
 
 [locale]
 
-test="uk"
 translation_remaps={
 "res://assets/fonts/normal.tres": PoolStringArray( "res://assets/fonts/normal_cyrrilic.tres:uk" )
 }
