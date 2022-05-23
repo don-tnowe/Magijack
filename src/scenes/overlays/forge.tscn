@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/scenes/overlays/forge.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=2]
@@ -6,14 +6,15 @@
 [ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=7]
 
-[sub_resource type="InputEventAction" id=12]
+[sub_resource type="InputEventAction" id=16]
 action = "ui_cancel"
 pressed = true
 strength = 0.0
 
 [sub_resource type="ShortCut" id=13]
-shortcut = SubResource( 12 )
+shortcut = SubResource( 16 )
 
 [sub_resource type="Animation" id=14]
 resource_name = "upgrade1"
@@ -102,11 +103,10 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -320.0
 margin_top = -560.0
-margin_right = 960.0
-margin_bottom = -128.0
+margin_right = 320.0
+margin_bottom = -344.0
 grow_horizontal = 2
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 7 )
 text = "forge_prompt"
 align = 1
 valign = 1
@@ -227,11 +227,10 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = 16.0
 margin_top = -68.0
-margin_right = 368.0
-margin_bottom = 252.0
+margin_right = -16.0
+margin_bottom = 92.0
 grow_horizontal = 2
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 7 )
 text = "forge_reduce_value_desc"
 align = 1
 autowrap = true
@@ -293,11 +292,10 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -192.0
 margin_top = -232.0
-margin_right = 576.0
-margin_bottom = 104.0
+margin_right = 192.0
+margin_bottom = -64.0
 grow_horizontal = 2
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 7 )
 text = "forge_increase_power_desc"
 align = 1
 autowrap = true

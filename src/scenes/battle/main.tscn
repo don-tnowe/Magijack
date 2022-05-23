@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=21]
 [ext_resource path="res://src/deck_view_button.tscn" type="PackedScene" id=22]
 [ext_resource path="res://assets/other/theme.tres" type="Theme" id=23]
+[ext_resource path="res://assets/graphics/menus/ui.png" type="Texture" id=24]
+[ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=25]
 
 [sub_resource type="InputEventAction" id=48]
 action = "battle_draw"
@@ -1337,5 +1339,50 @@ mouse_filter = 2
 theme = ExtResource( 23 )
 __meta__ = {
 "_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="control2" type="Control" parent="overlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tooltip" type="NinePatchRect" parent="overlay/control2"]
+visible = false
+margin_left = 168.0
+margin_top = 984.0
+margin_right = 632.0
+margin_bottom = 1229.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 24 )
+region_rect = Rect2( 9, 132, 117, 113 )
+patch_margin_left = 90
+patch_margin_top = 88
+patch_margin_right = 92
+patch_margin_bottom = 89
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="RichTextLabel" parent="overlay/control2/tooltip"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_fonts/bold_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 25 )
+bbcode_enabled = true
+bbcode_text = "[b]Flawless Obedience[/b]
+Discard a Purple or Orange card to modify damage for this turn. If it's Purple, you get 6 damage. If it's Orange, your enemy loses 8 damage."
+text = "Flawless Obedience
+Discard a Purple or Orange card to modify damage for this turn. If it's Purple, you get 6 damage. If it's Orange, your enemy loses 8 damage."
+__meta__ = {
 "_edit_use_anchors_": false
 }

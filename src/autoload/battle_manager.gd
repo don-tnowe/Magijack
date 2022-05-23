@@ -1,7 +1,8 @@
 extends Timer
 
 var battles_completed := 0
-var area_features := ["hp_mp_upgrade", "library", "forge"]
+# var area_features := ["hp_mp_upgrade", "library", "forge"]
+var area_features := ["hp_mp_upgrade", "hp_mp_upgrade", "hp_mp_upgrade"]
 var area_progress := 0
 
 var player_hand : CardHandData

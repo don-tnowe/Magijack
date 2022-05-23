@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/overlays/bonfire.gd" type="Script" id=2]
 [ext_resource path="res://assets/graphics/menus/features.png" type="Texture" id=3]
 [ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=6]
 
 [sub_resource type="InputEventAction" id=15]
 action = "ui_cancel"
@@ -54,10 +55,9 @@ anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -640.0
 margin_top = 160.0
-margin_right = 1920.0
+margin_right = 640.0
 margin_bottom = 234.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "bonfire_desc"
 align = 1
 __meta__ = {
@@ -102,15 +102,11 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -152.0
-margin_right = 384.0
-margin_bottom = 152.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "bonfire_heal_desc"
 align = 1
 autowrap = true
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -184,15 +180,11 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -152.0
-margin_right = 384.0
-margin_bottom = 152.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "bonfire_remove_card_desc"
 align = 1
 autowrap = true
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
