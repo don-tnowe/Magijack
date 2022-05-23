@@ -14,8 +14,8 @@ func _ready():
 		"select_next_area",
 		"view_deck",
 		"select_card",
-		# "bonfire",
-		# "hp_mp_upgrade",
+		"bonfire",
+		"hp_mp_upgrade",
 		# "library",
 		"forge",
 		"defeat"
@@ -31,6 +31,7 @@ func open(overlay_name, params = null):
 	overlay_parent.add_child(new_overlay)
 	new_overlay.initialize(params)
 	stack.append(new_overlay)
+	get_tree().paused = true
 
 
 func pop():

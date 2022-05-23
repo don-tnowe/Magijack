@@ -13,7 +13,6 @@ func reopen_overlay():
 
 func hide_overlay():
 	visible = false
-	get_tree().paused = false
 
 
 func close():

@@ -1,0 +1,262 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/scenes/overlays/hp_mp_upgrade.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/graphics/menus/features.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=6]
+
+[sub_resource type="InputEventAction" id=12]
+action = "ui_cancel"
+pressed = true
+strength = 0.0
+
+[sub_resource type="ShortCut" id=13]
+shortcut = SubResource( 12 )
+
+[node name="control" type="ColorRect"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.752941 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="control"]
+anchor_right = 1.0
+margin_left = -640.0
+margin_right = 213.0
+margin_bottom = 74.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "spring_title"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hint" type="Label" parent="control"]
+visible = false
+anchor_right = 1.0
+margin_left = -640.0
+margin_top = 104.0
+margin_right = 1920.0
+margin_bottom = 178.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "deckview_hint"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="choice1" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 96.0
+margin_top = -432.0
+margin_right = 480.0
+margin_bottom = -208.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="choice1"]
+position = Vector2( 192, -32 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
+hframes = 4
+vframes = 4
+
+[node name="title_box" type="Control" parent="choice1"]
+anchor_right = 1.0
+margin_bottom = 72.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="choice1/title_box" instance=ExtResource( 5 )]
+text = "spring_hp"
+script = null
+
+[node name="numbers" type="Label" parent="choice1"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -168.0
+margin_bottom = -94.0
+custom_fonts/font = ExtResource( 6 )
+text = "60 -> 80"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_choose" type="Button" parent="choice1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -88.0
+margin_right = 112.0
+margin_bottom = -8.0
+custom_fonts/font = ExtResource( 2 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="choice1/button_choose" instance=ExtResource( 5 )]
+text = "menu_choose"
+
+[node name="choice2" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -192.0
+margin_top = -352.0
+margin_right = 192.0
+margin_bottom = -128.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="choice2"]
+position = Vector2( 192, -32 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
+hframes = 4
+vframes = 4
+frame = 1
+
+[node name="title_box" type="Control" parent="choice2"]
+anchor_right = 1.0
+margin_bottom = 72.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="choice2/title_box" instance=ExtResource( 5 )]
+text = "spring_mp"
+script = null
+
+[node name="numbers" type="Label" parent="choice2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -168.0
+margin_bottom = -94.0
+custom_fonts/font = ExtResource( 6 )
+text = "60 -> 80"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_choose" type="Button" parent="choice2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -88.0
+margin_right = 112.0
+margin_bottom = -8.0
+custom_fonts/font = ExtResource( 2 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="choice2/button_choose" instance=ExtResource( 5 )]
+text = "menu_choose"
+
+[node name="choice3" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -480.0
+margin_top = -432.0
+margin_right = -96.0
+margin_bottom = -208.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="choice3"]
+position = Vector2( 192, -32 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
+hframes = 4
+vframes = 4
+frame = 2
+
+[node name="title_box" type="Control" parent="choice3"]
+anchor_right = 1.0
+margin_bottom = 72.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="choice3/title_box" instance=ExtResource( 5 )]
+text = "spring_heal"
+script = null
+
+[node name="numbers" type="Label" parent="choice3"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -168.0
+margin_bottom = -94.0
+custom_fonts/font = ExtResource( 6 )
+text = "60 -> 80"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_choose" type="Button" parent="choice3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -88.0
+margin_right = 112.0
+margin_bottom = -8.0
+custom_fonts/font = ExtResource( 2 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="choice3/button_choose" instance=ExtResource( 5 )]
+text = "menu_choose"
+
+[connection signal="pressed" from="choice1/button_choose" to="." method="choose1"]
+[connection signal="pressed" from="choice2/button_choose" to="." method="choose2"]
+[connection signal="pressed" from="choice3/button_choose" to="." method="choose3"]

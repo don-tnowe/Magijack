@@ -1,0 +1,230 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/scenes/overlays/bonfire.gd" type="Script" id=2]
+[ext_resource path="res://assets/graphics/menus/features.png" type="Texture" id=3]
+[ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=5]
+
+[sub_resource type="InputEventAction" id=15]
+action = "ui_cancel"
+pressed = true
+strength = 0.0
+
+[sub_resource type="ShortCut" id=13]
+shortcut = SubResource( 15 )
+
+[node name="control" type="ColorRect"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.752941 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -640.0
+margin_top = 56.0
+margin_right = 213.0
+margin_bottom = 130.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 1 )
+text = "bonfire_title"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hint" type="Label" parent="control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -640.0
+margin_top = 160.0
+margin_right = 1920.0
+margin_bottom = 234.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 1 )
+text = "bonfire_desc"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="choice1" type="Control" parent="."]
+margin_left = 192.0
+margin_top = 304.0
+margin_right = 576.0
+margin_bottom = 528.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="choice1"]
+position = Vector2( 192, -32 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
+hframes = 4
+vframes = 4
+frame = 4
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="title_box" type="Control" parent="choice1"]
+anchor_right = 1.0
+margin_bottom = 72.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="choice1/title_box" instance=ExtResource( 4 )]
+text = "bonfire_heal"
+script = null
+
+[node name="desc" type="Label" parent="choice1"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -152.0
+margin_right = 384.0
+margin_bottom = 152.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 1 )
+text = "bonfire_heal_desc"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="button_choose" type="Button" parent="choice1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = 24.0
+margin_right = 112.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="choice1/button_choose" instance=ExtResource( 4 )]
+text = "menu_choose"
+
+[node name="flash" type="Sprite" parent="choice1/button_choose"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 112, -144 )
+scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 8, 0, 184, 191 )
+
+[node name="choice2" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -576.0
+margin_top = 304.0
+margin_right = -192.0
+margin_bottom = 528.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="choice2"]
+position = Vector2( 192, -32 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
+hframes = 4
+vframes = 4
+frame = 5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="title_box" type="Control" parent="choice2"]
+anchor_right = 1.0
+margin_bottom = 72.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="choice2/title_box" instance=ExtResource( 4 )]
+text = "bonfire_remove_card"
+script = null
+
+[node name="desc" type="Label" parent="choice2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -152.0
+margin_right = 384.0
+margin_bottom = 152.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 1 )
+text = "bonfire_remove_card_desc"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="button_choose" type="Button" parent="choice2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = 24.0
+margin_right = 112.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="choice2/button_choose" instance=ExtResource( 4 )]
+text = "menu_choose"
+
+[node name="flash" type="Sprite" parent="choice2/button_choose"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 112, -144 )
+scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 8, 0, 184, 191 )
+
+[connection signal="pressed" from="choice1/button_choose" to="." method="choose1"]
+[connection signal="pressed" from="choice2/button_choose" to="." method="choose2"]

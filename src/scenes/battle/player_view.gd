@@ -33,7 +33,7 @@ func update_hand():
 	node_chance_overload.text = str(ceil(crit_overload_chance[1] * 100)) + "%"
 	
 	node_bar_mp.texture = mpbar_textures[0 if crit_overload_chance[1] == 0.0 else 1 if crit_overload_chance[1] < 0.5 else 2]
-	set_draw_available(BattlePlayer.drawn_this_turn >= 2 && crit_overload_chance[1] < 1.0)
+	set_draw_available(BattlePlayer.drawn_this_turn >= 2 && crit_overload_chance[1] < 1.0 && BattlePlayer.data.deck.cards_draw.size() > 0)
 
 
 func update_all():
