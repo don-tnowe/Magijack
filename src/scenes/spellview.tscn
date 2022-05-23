@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/graphics/card/values_suits.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/battle_ui/icons.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/spells.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/spellview.gd" type="Script" id=5]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 1
+
+[node name="spell" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 80.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 80, 80 )
+mouse_filter = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -36.0
+margin_right = 36.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+custom_fonts/font = ExtResource( 1 )
+shortcut_in_tooltip = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="button"]
+position = Vector2( 36, 36 )
+texture = ExtResource( 4 )
+hframes = 8
+vframes = 8
+frame = 1
+
+[node name="progress" type="TextureProgress" parent="button"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 69.0
+margin_bottom = 71.0
+max_value = 3.0
+step = 0.1
+value = 2.0
+texture_progress = SubResource( 2 )
+fill_mode = 5
+tint_progress = Color( 0, 0, 0, 0.752941 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cooldown" type="Sprite" parent="button"]
+position = Vector2( 36, 36 )
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 4
+frame = 1
+
+[node name="cd_icon" type="Sprite" parent="button"]
+position = Vector2( 12, 64 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+hframes = 8
+vframes = 8
+frame = 8
+
+[node name="cd_max" type="Sprite" parent="button"]
+self_modulate = Color( 0.282353, 0.956863, 0.184314, 1 )
+position = Vector2( 28, 68 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 4
+frame = 3
+
+[connection signal="mouse_entered" from="button" to="." method="mouse_entered"]
+[connection signal="mouse_exited" from="button" to="." method="mouse_exited"]
+[connection signal="pressed" from="button" to="." method="button_pressed"]

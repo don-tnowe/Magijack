@@ -96,8 +96,6 @@ chars = PoolIntArray( 32, 0, 0, 0, 0, 0, 0, 11, 4, 160, 0, 1734439808, 0, 0, 0, 
 height = 14.0
 ascent = 11.0
 
-[sub_resource type="StyleBoxEmpty" id=19]
-
 [sub_resource type="StyleBoxFlat" id=44]
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -110,6 +108,8 @@ border_color = Color( 0.619608, 0.666667, 0.890196, 1 )
 border_blend = true
 
 [sub_resource type="StyleBoxEmpty" id=42]
+
+[sub_resource type="StyleBoxEmpty" id=19]
 
 [resource]
 default_font = ExtResource( 1 )
@@ -127,6 +127,11 @@ Button/styles/normal = SubResource( 22 )
 Button/styles/pressed = SubResource( 23 )
 Fonts/fonts/large = SubResource( 3 )
 Fonts/fonts/normal = SubResource( 3 )
+HScrollBar/styles/grabber = SubResource( 22 )
+HScrollBar/styles/grabber_highlight = SubResource( 21 )
+HScrollBar/styles/grabber_pressed = SubResource( 23 )
+HScrollBar/styles/scroll = SubResource( 44 )
+HScrollBar/styles/scroll_focus = SubResource( 42 )
 ScrollContainer/styles/bg = SubResource( 19 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null

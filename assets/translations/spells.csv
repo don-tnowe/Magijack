@@ -12,19 +12,19 @@ spell4_desc;;Give +1 power to a card for the rest of the battle. Flawless, speci
 spell5;;Introspect
 spell5_desc;;Discard a Blue card. Increase your limit by 2 for this turn.
 spell6;;Might of Pride
-spell6_desc;;Discard a purple card. Increase damage by 2 until end of battle.
+spell6_desc;;Discard four Purple cards in hand. Increase damage by 3 until end of battle.
 spell7;;Growing Warmth
-spell7_desc;;Discard all Orange cards in hand. Increase Limit by 1 for each discarded card until end of battle.
+spell7_desc;;Discard four Orange cards in hand. Increase Limit by 1 until end of battle.
 spell8;;Retaliate
-spell8_desc;;If you were hit by the enemy last turn, increase power by +4. If you also discard an Orange card, the spell doesn't go on cooldown.
+spell8_desc;;If you were hit by the enemy last turn, increase power by +4. If you also discard three Orange cards, reset the cooldown.
 spell9;;Arcane Hammer
 spell9_desc;;Discard 2 cards with equal values. Deal 22 damage.
 spell10;;Unstable Bolt
-spell10_desc;;Discard 2 to 5 cards. For each odd value, increase damage for the turn by 7. For each even value, deal 4 damage.
+spell10_desc;;Discard 2 to 5 cards. For each odd value, increase damage for this turn by 7. For each even value, deal 4 damage.
 spell11;;Unity Power
 spell11_desc;;For each card of the color you have most of in hand, Increase your power for this turn by +1.
 spell12;;Heavy Bolt
-spell12_desc;;Discard a card with value of 5 or more. Deal damage 4 times its value.
+spell12_desc;;Discard a card with value of 5 or more. Deal damage 5 times its value.
 spell13;;Intimidate
 spell13_desc;;Discard up to 6 Purple cards. Deal 4 damage for each card discarded.
 spell14;;Recycle
