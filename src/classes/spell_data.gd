@@ -17,11 +17,11 @@ export var cooldown_start := 0
 func display_on_spell_node(node):
 	node.get_node("button/icon").texture = texture
 	node.get_node("button/icon").frame = texture_frame
-	node.get_node("button/progress").max_value = cooldown
 	node.get_node("button/cd_max").frame = cooldown
 	
 	var has_cooldown = cooldown != 0
-	node.get_node("button/progress").visible = has_cooldown
+	node.get_node("button/progress").max_value = cooldown if has_cooldown else 1
+	node.get_node("button/progress").value = has_cooldown
 	node.get_node("button/cd_max").visible = has_cooldown
 	node.get_node("button/cd_icon").visible = has_cooldown
 

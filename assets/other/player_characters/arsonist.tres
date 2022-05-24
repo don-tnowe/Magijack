@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://src/classes/battler_data.gd" type="Script" id=1]
+[ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
+[ext_resource path="res://assets/other/spells/enflame.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+hpmax = 40
+limit = 14
+damage = 10
+greed_damage = 10
+deck = ExtResource( 2 )
+spells = [ ExtResource( 3 ) ]

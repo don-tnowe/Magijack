@@ -11,11 +11,17 @@ func can_cast_with_hand(hand):
 		if card_selectable(x):
 			return true
 	
-	return false
+	return can_cast_with_selection(hand.cards)
 
 
 func can_cast_with_selection(selection):
-	return selection.size() == 1 && selection[0].is_of_suit(0) && selection[0].value < 11
+	if selection.size() < 1: return false
+	
+	for x in selection:
+		if !card_selectable(x):
+			return false
+	
+	return true
 
 
 func card_selectable(card):
@@ -23,10 +29,14 @@ func card_selectable(card):
 
 
 func cast(owner, selection = []):
+	var sum = 0
+	for x in selection:
+		sum += round(x.value * 0.5)
+	
 	owner.state.status_turns.append(StatusEffect.new(
 		owner.data,
 		\"damage\",
-		round(selection[0].value * 0.5),
+		sum,
 		1
 	))
 	owner.discard_cards(selection)
@@ -39,6 +49,6 @@ spell_id = 1
 texture = ExtResource( 2 )
 texture_frame = 1
 cost_min = 1
-cost_max = 1
+cost_max = 32
 cooldown = 0
 cooldown_start = 0
