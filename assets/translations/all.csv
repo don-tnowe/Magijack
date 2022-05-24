@@ -1,6 +1,13 @@
 ;eo;en;uk
 gamename;Just write Magijack.;Magijack;Маґіджек
 ;;;
+tooltip_hp;;Health: %s/%s;Здоров'я: %s/%s
+tooltip_hp_desc;;Once this reaches 0, you lose.;Якщо воно досягне 0 - це програш.
+tooltip_mp;Serious width limit here, be careful.;Limit: %s/%s (%s left);Ліміт: %s/%s (%s вільно)
+tooltip_mp_desc;;Get the sum of card values as high as you can, but not above Limit.;Сума значень карток повинна бути якомога вище, але не вищою за Ліміт.
+tooltip_crit;;Percentage of cards in Draw pile that will get you to your Limit, resulting in a guaranteed x2 hit.;Процент карток у стопці добору, що доповнять суму до Ліміту, наносячи гарантований подвійний удар.
+tooltip_overload;;Percentage of cards in Draw pile that will get you ABOVE your Limit, resulting in a painful overload.;Процент карток у стопці добору, що доповнять суму ВИЩЕ Ліміту, що призведе до болісного перевантаження.
+;;;
 button_draw_card;;Draw;Добір
 button_end_turn;;End Turn;Завершити хід
 button_view_deck;;View Deck;Проглянути Колоду

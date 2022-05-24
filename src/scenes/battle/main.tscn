@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://assets/graphics/menus/ui.png" type="Texture" id=24]
 [ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=25]
 [ext_resource path="res://src/scenes/spellview.tscn" type="PackedScene" id=26]
+[ext_resource path="res://src/scenes/empty_with_tooltip.gd" type="Script" id=27]
 
 [sub_resource type="InputEventAction" id=48]
 action = "battle_draw"
@@ -1136,6 +1137,7 @@ margin_left = 128.0
 margin_top = -240.0
 margin_right = 256.0
 margin_bottom = -112.0
+mouse_filter = 0
 value = 63.0
 texture_under = SubResource( 49 )
 texture_over = SubResource( 50 )
@@ -1151,6 +1153,7 @@ margin_left = -256.0
 margin_top = -239.0
 margin_right = -128.0
 margin_bottom = -111.0
+mouse_filter = 0
 value = 63.0
 texture_under = SubResource( 52 )
 texture_over = SubResource( 53 )
@@ -1250,6 +1253,11 @@ hframes = 8
 vframes = 8
 frame = 4
 
+[node name="tt_crit" type="Control" parent="player_ui/control/label_chance_crit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 27 )
+
 [node name="label_chance_overload" type="Label" parent="player_ui/control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -1275,6 +1283,11 @@ texture = ExtResource( 12 )
 hframes = 8
 vframes = 8
 frame = 3
+
+[node name="tt_overload" type="Control" parent="player_ui/control/label_chance_overload"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 27 )
 
 [node name="tween" type="Tween" parent="player_ui/control"]
 
@@ -1319,7 +1332,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 422.22, 70 )
+texture_offset = Vector2( 138.173, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1328,7 +1341,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 36.0484, 70 )
+texture_offset = Vector2( 309.963, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 

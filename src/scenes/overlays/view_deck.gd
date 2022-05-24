@@ -18,8 +18,11 @@ func initialize(params):
 
 		var node = cardview_scene.instance()
 		node_card_container.add_child(node)
+		node.anchor_top = 0
+		node.anchor_bottom = 0
 		node.rect_position = last_card_pos
 		x.display_on_card_node(node)
 
+	node_card_container.rect_min_size.y = last_card_pos.y
 	$"title".text = params[1]
 	get_tree().paused = true

@@ -28,6 +28,8 @@ func initialize(params):
 
 		var node = cardview_scene.instance()
 		node_card_container.add_child(node)
+		node.anchor_top = 0
+		node.anchor_bottom = 0
 		node.rect_position = last_card_pos
 		x.display_on_card_node(node)
 		if condition == null || condition.call_func(x):
@@ -36,6 +38,7 @@ func initialize(params):
 		else:
 			node.modulate = Color(0.25, 0.25, 0.25, 1.0)
 
+	node_card_container.rect_min_size.y = last_card_pos.y
 	get_tree().paused = true
 	update_picks()
 

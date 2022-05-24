@@ -32,3 +32,9 @@ func set_value(v):
 	$"label".text = str(v)
 
 
+func mouse_entered():
+	TooltipDisplayer.show_unique_node_tooltip(self)
+
+
+func mouse_exited():
+	TooltipDisplayer.hide_tooltip(self)
