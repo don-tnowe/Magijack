@@ -8,7 +8,7 @@ var owner_array : Array
 var duration := 1
 
 
-func _init(target_, target_property_, mod_value_, duration_, owner_array_):
+func _init(target_ : Object, target_property_ : String, mod_value_ : float, duration_ : int, owner_array_ : Array):
 	target = target_
 	target_property = target_property_
 	mod_value = mod_value_

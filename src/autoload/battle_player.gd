@@ -9,7 +9,7 @@ var state : BattlerState
 var rival
 var hand_data := CardHandData.new()
 
-var hp := 60
+var hp := 60 setget set_hp
 var limit_used := 0
 
 var view_node : Control
@@ -49,16 +49,36 @@ func draw_from_deck():
 	var new_card = data.deck.draw_from_deck()
 	view_node.node_hand.add_card(new_card)
 	
-	limit_used = hand_data.sum
 	drawn_this_turn += 1
-
+	hand_changed()
 	emit_signal("card_drawn", new_card, hand_data, data.limit - limit_used)
-	view_node.update_hand()
 
 	if drawn_this_turn > 2 && limit_used > data.limit:
 		view_node.overloaded()
 		view_node.node_hand.discard_all(1)
 		end_turn(true)
+
+
+func discard_cards(cards):
+	for x in cards:
+		view_node.node_hand.discard_card(x)	
+		
+	hand_changed()
+
+
+func discard_all():
+	view_node.node_hand.discard_all()
+	hand_changed()
+
+
+func hand_changed():
+	limit_used = hand_data.sum	
+	view_node.update_hand()
+
+
+func set_hp(v):
+	hp = v
+	view_node.update_all()
 
 
 func end_turn(forced = false):
@@ -75,6 +95,7 @@ func start_turn():
 	drawn_this_turn = 0
 	state.start_turn()
 	data.deck.turn_start()
+	view_node.update_all()
 
 	start(1.0)
 	yield(self, "timeout")

@@ -56,7 +56,6 @@ margin_right = 69.0
 margin_bottom = 71.0
 max_value = 3.0
 step = 0.1
-value = 2.0
 texture_progress = SubResource( 2 )
 fill_mode = 5
 tint_progress = Color( 0, 0, 0, 0.752941 )
@@ -66,6 +65,7 @@ __meta__ = {
 }
 
 [node name="cooldown" type="Sprite" parent="button"]
+visible = false
 position = Vector2( 36, 36 )
 texture = ExtResource( 2 )
 hframes = 4
@@ -88,7 +88,3 @@ texture = ExtResource( 2 )
 hframes = 4
 vframes = 4
 frame = 3
-
-[connection signal="mouse_entered" from="button" to="." method="mouse_entered"]
-[connection signal="mouse_exited" from="button" to="." method="mouse_exited"]
-[connection signal="pressed" from="button" to="." method="button_pressed"]

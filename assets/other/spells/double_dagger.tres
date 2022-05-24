@@ -1,0 +1,40 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/graphics/spells.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends SpellData
+
+
+func can_cast_with_hand(hand):
+	var usable_card_count = 0
+	for x in hand.cards:
+		if card_selectable(x):
+			usable_card_count += 1
+	
+	return usable_card_count >= cost_min
+
+
+func can_cast_with_selection(selection):
+	return selection.size() == 2
+
+
+func card_selectable(card):
+	return card.value < 11 && card.value > 0
+
+
+func cast(owner, selection = []):
+	owner.rival.hp -= (selection[0].value + selection[1].value)
+	owner.discard_cards(selection)
+
+"
+
+[resource]
+script = SubResource( 1 )
+spell_id = 0
+texture = ExtResource( 2 )
+texture_frame = 0
+cost_min = 2
+cost_max = 2
+cooldown = 3
+cooldown_start = 0

@@ -17,7 +17,7 @@ func show_tooltip(node, text):
 		)
 
 
-func hide_tooltip(node):
+func hide_tooltip(node = null):
 	node_tooltip.visible = false
 
 

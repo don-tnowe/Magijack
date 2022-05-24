@@ -3,6 +3,7 @@ extends Control
 export(Array, Texture) var mpbar_textures
 
 onready var node_hand = $"hand"
+onready var node_spells = $"spells"
 
 onready var node_bar_hp = $"bar_hp"
 onready var node_bar_mp = $"bar_mp"
@@ -19,6 +20,10 @@ onready var node_button_endturn = $"button_endturn"
 func _ready():
 	BattlePlayer.view_node = self
 	node_hand.hand_data = BattlePlayer.hand_data
+	call_deferred("connect_signals")
+
+
+func connect_signals():
 	node_button_draw.connect("pressed", BattlePlayer, "draw_from_deck")
 	node_button_endturn.connect("pressed", BattlePlayer, "end_turn")
 
@@ -33,6 +38,7 @@ func update_hand():
 	node_chance_overload.text = str(ceil(crit_overload_chance[1] * 100)) + "%"
 	
 	node_bar_mp.texture = mpbar_textures[0 if crit_overload_chance[1] == 0.0 else 1 if crit_overload_chance[1] < 0.5 else 2]
+	node_spells.casting_available = BattlePlayer.drawn_this_turn >= 2
 	set_draw_available(BattlePlayer.drawn_this_turn >= 2 && crit_overload_chance[1] < 1.0 && BattlePlayer.data.deck.cards_draw.size() > 0)
 
 
@@ -54,6 +60,8 @@ func set_draw_available(v):
 
 func set_endturn_available(v):
 	node_button_endturn.disabled = !v
+	if !v: 
+		node_spells.casting_available = false
 
 
 func _process(delta):

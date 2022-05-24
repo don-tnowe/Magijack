@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/graphics/spells.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends SpellData
+
+
+func cast(owner, selection = null):
+	owner.discard_all()
+"
+
+[resource]
+script = SubResource( 1 )
+spell_id = 2
+texture = ExtResource( 2 )
+texture_frame = 2
+cost_min = 0
+cost_max = 0
+cooldown = 1
+cooldown_start = 0

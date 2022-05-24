@@ -8,7 +8,7 @@ var state : BattlerState
 var rival
 var hand_data := CardHandData.new()
 
-var hp := 60
+var hp := 60 setget set_hp
 var limit_used := 0
 
 var view_node : Control
@@ -58,6 +58,7 @@ func start_turn():
 
 	drawn_this_turn = 0
 	data.deck.turn_start()
+	view_node.update_all()
 
 	start(1.0)
 	yield(self, "timeout")
@@ -89,7 +90,12 @@ func try_safe_draw(face_up = false) -> bool:
 func player_card_drawn(card, hand, limit):
 	if BattlePlayer.drawn_this_turn > 2 && randf() < data.player_draw_response_chance:
 		try_safe_draw()
-	
+
+
+func set_hp(v):
+	hp = v
+	view_node.update_all()
+				
 
 func player_turn_ended(hand, limit_left, power):
 	view_node.node_hand.reveal_all()

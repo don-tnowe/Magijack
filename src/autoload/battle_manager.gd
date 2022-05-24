@@ -97,9 +97,6 @@ func apply_turn_outcome():
 		view_node.tie(player_hand_power, enemy_hand_power)
 		last_turn_outcome = TurnOutcome.DRAW
 		
-
-	BattlePlayer.view_node.update_all()
-	BattleEnemy.view_node.update_all()
 	player_turn_ended = false
 	enemy_turn_ended = false
 
@@ -111,6 +108,7 @@ func apply_turn_outcome():
 		defeat()
 		return
 
+	emit_signal("turn_started")
 	BattlePlayer.start_turn()
 	BattleEnemy.start_turn()
 

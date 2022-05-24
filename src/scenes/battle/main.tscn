@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/battle/hpmp_bar.tscn" type="PackedScene" id=3]
@@ -44,6 +44,22 @@ strength = 0.0
 
 [sub_resource type="ShortCut" id=10]
 shortcut = SubResource( 9 )
+
+[sub_resource type="InputEventAction" id=55]
+action = "ui_cancel"
+pressed = true
+strength = 0.0
+
+[sub_resource type="ShortCut" id=56]
+shortcut = SubResource( 55 )
+
+[sub_resource type="InputEventAction" id=57]
+action = "ui_accept"
+pressed = true
+strength = 0.0
+
+[sub_resource type="ShortCut" id=58]
+shortcut = SubResource( 57 )
 
 [sub_resource type="AtlasTexture" id=49]
 resource_local_to_scene = true
@@ -1010,6 +1026,7 @@ __meta__ = {
 mpbar_textures = [ ExtResource( 4 ), ExtResource( 16 ), ExtResource( 15 ) ]
 
 [node name="spells" type="ScrollContainer" parent="player_ui/control"]
+process_priority = 3
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1026,51 +1043,11 @@ __meta__ = {
 scene_spellview = ExtResource( 26 )
 
 [node name="box" type="HBoxContainer" parent="player_ui/control/spells"]
-margin_right = 332.0
-margin_bottom = 80.0
 mouse_filter = 2
 alignment = 2
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="spell" parent="player_ui/control/spells/box" instance=ExtResource( 26 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_bottom = 80.0
-script = null
-
-[node name="spell2" parent="player_ui/control/spells/box" instance=ExtResource( 26 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 84.0
-margin_right = 164.0
-margin_bottom = 80.0
-script = null
-
-[node name="spell3" parent="player_ui/control/spells/box" instance=ExtResource( 26 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 168.0
-margin_right = 248.0
-margin_bottom = 80.0
-script = null
-
-[node name="spell4" parent="player_ui/control/spells/box" instance=ExtResource( 26 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 252.0
-margin_right = 332.0
-margin_bottom = 80.0
-script = null
 
 [node name="button_draw" type="Button" parent="player_ui/control"]
 margin_left = 235.0
@@ -1256,7 +1233,6 @@ margin_left = -40.0
 margin_top = -368.0
 margin_right = 40.0
 margin_bottom = -288.0
-script = null
 
 [node name="button_cancel" type="Button" parent="player_ui/control/spell_selection"]
 anchor_left = 0.5
@@ -1264,19 +1240,19 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -296.0
-margin_top = -376.0
+margin_top = -368.0
 margin_right = -72.0
-margin_bottom = -296.0
+margin_bottom = -288.0
 custom_fonts/font = ExtResource( 7 )
 shortcut_in_tooltip = false
-shortcut = SubResource( 10 )
+shortcut = SubResource( 56 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="label" parent="player_ui/control/spell_selection/button_cancel" instance=ExtResource( 21 )]
-text = "button_cancel"
+text = "menu_cancel"
 
 [node name="button_continue" type="Button" parent="player_ui/control/spell_selection"]
 anchor_left = 0.5
@@ -1284,19 +1260,19 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = 64.0
-margin_top = -376.0
+margin_top = -368.0
 margin_right = 288.0
-margin_bottom = -296.0
+margin_bottom = -288.0
 custom_fonts/font = ExtResource( 7 )
 shortcut_in_tooltip = false
-shortcut = SubResource( 10 )
+shortcut = SubResource( 58 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="label" parent="player_ui/control/spell_selection/button_continue" instance=ExtResource( 21 )]
-text = "button_end_turn"
+text = "menu_continue"
 
 [node name="hand" type="Control" parent="player_ui/control"]
 anchor_left = 0.5
@@ -1400,7 +1376,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 105.911, 70 )
+texture_offset = Vector2( 330.99, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1409,7 +1385,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 171.786, 70 )
+texture_offset = Vector2( 196.234, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1533,5 +1509,9 @@ __meta__ = {
 [node name="label" parent="overlay/control2/button_deck" instance=ExtResource( 21 )]
 text = "button_view_deck"
 
+[connection signal="mouse_entered" from="player_ui/control/spell_selection/spell/button" to="player_ui/control/spell_selection" method="icon_mouse_entered"]
+[connection signal="mouse_exited" from="player_ui/control/spell_selection/spell/button" to="player_ui/control/spell_selection" method="icon_mouse_exited"]
 [connection signal="pressed" from="player_ui/control/spell_selection/button_cancel" to="player_ui/control/spell_selection" method="cancel"]
 [connection signal="pressed" from="player_ui/control/spell_selection/button_continue" to="player_ui/control/spell_selection" method="submit"]
+
+[editable path="player_ui/control/spell_selection/spell"]
