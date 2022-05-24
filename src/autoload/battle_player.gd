@@ -20,6 +20,7 @@ func _ready():
 	randomize()
 	run_start()
 	rival = BattleEnemy
+	BattleManager.connect("turn_started", self, "start_turn")
 
 
 func run_start():

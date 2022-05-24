@@ -109,8 +109,6 @@ func apply_turn_outcome():
 		return
 
 	emit_signal("turn_started")
-	BattlePlayer.start_turn()
-	BattleEnemy.start_turn()
 
 
 func victory():

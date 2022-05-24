@@ -8,7 +8,7 @@ script/source = "extends SpellData
 
 func can_cast_with_hand(hand):
 	for x in hand.cards:
-		if x.is_of_suit(0):
+		if card_selectable(x):
 			return true
 	
 	return false
@@ -27,8 +27,7 @@ func cast(owner, selection = []):
 		owner.data,
 		\"damage\",
 		round(selection[0].value * 0.5),
-		1,
-		owner.state.status_turns
+		1
 	))
 	owner.discard_cards(selection)
 

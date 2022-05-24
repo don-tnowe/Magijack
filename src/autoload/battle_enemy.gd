@@ -16,6 +16,7 @@ var drawn_this_turn = 0
 
 
 func _ready():
+	BattleManager.connect("turn_started", self, "start_turn")
 	BattlePlayer.connect("card_drawn", self, "player_card_drawn")
 	BattlePlayer.connect("turn_ended", self, "player_turn_ended")
 	rival = BattlePlayer

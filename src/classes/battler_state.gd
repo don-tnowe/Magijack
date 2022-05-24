@@ -48,12 +48,21 @@ func end_battle():
 	
 	for x in status_draws:
 		x.end()
+	status_draws.clear()
 
 	for x in status_turns:
 		x.end()
-	
 	status_turns.clear()
+	
 	for x in status_battles:
 		x.tick()
+	clear_inactive_effects(status_battles)
+
+
+func clear_inactive_effects(arr):
+	var i = 0
+	while i < arr.size():
+		if !arr[i].active: arr.pop_at[i]
+		else: i -= 1
 		
 	

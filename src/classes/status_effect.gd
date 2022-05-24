@@ -4,26 +4,26 @@ extends Reference
 var target : Object
 var target_property : String
 var mod_value : float
-var owner_array : Array
 var duration := 1
+var active := true
 
 
-func _init(target_ : Object, target_property_ : String, mod_value_ : float, duration_ : int, owner_array_ : Array):
+func _init(target_ : Object, target_property_ : String, mod_value_ : float, duration_ : int):
 	target = target_
 	target_property = target_property_
 	mod_value = mod_value_
 	duration = duration_
-	owner_array = owner_array_
 
 	target_.set(target_property_, target_.get(target_property_) + mod_value_)
 
 
 func tick():
-	if duration == 0: return
+	if !active: return
 	duration -= 1
 	if duration == 0: end()
 
 
 func end():
+	if !active: return
 	target.set(target_property, target.get(target_property) - mod_value)
-	owner_array.erase(self)
+	active = false
