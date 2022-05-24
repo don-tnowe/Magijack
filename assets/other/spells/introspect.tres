@@ -8,34 +8,48 @@ script/source = "extends SpellActions
 
 
 func can_cast_with_hand(hand):
-	var usable_card_count = 0
 	for x in hand.cards:
 		if card_selectable(x):
-			usable_card_count += 1
+			return true
 	
-	return usable_card_count >= spell_data.cost_min
+	return can_cast_with_selection(hand.cards)
 
 
 func can_cast_with_selection(selection):
-	return selection.size() == 2
+	if selection.size() < 1: return false
+	
+	for x in selection:
+		if !card_selectable(x):
+			return false
+	
+	return true
 
 
 func card_selectable(card):
-	return card.value < 11 && card.value > 0
+	return card.is_of_suit(1) && card.value < 11
 
 
 func cast(owner, selection = []):
-	owner.rival.hp -= (selection[0].value + selection[1].value)
+	var sum = 0
+	for x in selection:
+		sum += round(x.value * 0.5)
+	
+	owner.state.status_turns.append(StatusEffect.new(
+		owner.data,
+		\"limit\",
+		sum,
+		1
+	))
 	owner.discard_cards(selection)
 "
 
 [resource]
 script = ExtResource( 1 )
-spell_id = 0
+spell_id = 5
 texture = ExtResource( 2 )
-texture_frame = 0
-cost_min = 2
-cost_max = 2
-cooldown = 3
+texture_frame = 5
+cost_min = 1
+cost_max = 32
+cooldown = 1
 cooldown_start = 0
 actions = SubResource( 1 )

@@ -5,12 +5,12 @@ spell1;;Enflame
 spell1_desc;;Discard a Red card. Increase your damage by half its value for this turn.
 spell2;;Vanish Trick
 spell2_desc;;Discard your hand. Discarded cards can't be drawn until next turn.
-spell3;;Scry
+spell3;;Mind Control
 spell3_desc;;"Enemy draws a card. Show their entire hand. "
 spell4;;Sharpen
-spell4_desc;;Give +1 power to a card for the rest of the battle. Flawless, special and +10 cards cannot be upgraded.
+spell4_desc;;Give +1 power to a card for the rest of the battle, discard it. Flawless, special and +10 cards cannot be upgraded.
 spell5;;Introspect
-spell5_desc;;Discard a Blue card. Increase your limit by 2 for this turn.
+spell5_desc;;Discard Blue cards. Increase your limit by 1 for each for this turn.
 spell6;;Might of Pride
 spell6_desc;;Discard four Purple cards in hand. Increase damage by 3 until end of battle.
 spell7;;Growing Warmth
@@ -27,8 +27,8 @@ spell12;;Heavy Bolt
 spell12_desc;;Discard a card with value of 5 or more. Deal damage 5 times its value.
 spell13;;Intimidate
 spell13_desc;;Discard up to 6 Purple cards. Deal 4 damage for each card discarded.
-spell14;;Recycle
-spell14_desc;;Return a card to your draw pile. Increase power for this turn by +1.
+spell14;;
+spell14_desc;;
 spell15;"Light as in ""not heavy""";Lighten
 spell15_desc;;Reduce a card's value by 1 for the rest of battle.
 spell16;;Quick Bolt
@@ -42,4 +42,4 @@ spell19_desc;;Turn a Flawless Beast into a 2-value card for this turn.
 spell20;;Dragon's Fury
 spell20_desc;;Turn all colored cards in hand into Red cards for this turn.
 spell21;;Steel Feather
-spell21_desc;;Discard a Purple or Orange card to modify damage for this turn. If it's Purple, you get 6 damage. If it's Orange, your enemy loses 8 damage.
+spell21_desc;;Discard Purple or Orange cards to modify damage for this turn: if all Purple, you get 3 damage per card, if all Orange, your enemy loses 4 damage per.

@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/scenes/overlays/overlay_base.gd"
 }, {
+"base": "Reference",
+"class": "SpellActions",
+"language": "GDScript",
+"path": "res://src/classes/spell_actions.gd"
+}, {
 "base": "Resource",
 "class": "SpellData",
 "language": "GDScript",
@@ -62,6 +67,7 @@ _global_script_class_icons={
 "CardHandData": "",
 "EnemyBattlerData": "",
 "OverlayBase": "",
+"SpellActions": "",
 "SpellData": "",
 "StatusEffect": ""
 }

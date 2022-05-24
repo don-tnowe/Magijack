@@ -16,7 +16,7 @@ var owner
 func _init(owner_):
 	owner = owner_
 	owner_.connect("card_drawn", self, "draw_card")
-	BattleManager.connect("turn_started", self, "start_turn")
+#	BattleManager.connect("turn_started", self, "start_turn")
 	BattleManager.connect("battle_started", self, "start_battle")
 	BattleManager.connect("battle_ended", self, "end_battle")
 
@@ -56,13 +56,14 @@ func end_battle():
 	
 	for x in status_battles:
 		x.tick()
+		
 	clear_inactive_effects(status_battles)
 
 
 func clear_inactive_effects(arr):
 	var i = 0
 	while i < arr.size():
-		if !arr[i].active: arr.pop_at[i]
+		if !arr[i].active: arr.pop_at(i)
 		else: i -= 1
 		
 	

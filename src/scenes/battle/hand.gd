@@ -113,9 +113,9 @@ func discard_card_animation(card_idx, animation = 0):
 	selected_card_idx = -1
 
 
-func display_hand():
-	for i in get_child_count():
-		hand_data.cards[i].display_on_card_node(get_child(i))
+func display_all():
+	for i in used_card_nodes.size():
+		hand_data.cards[i].display_on_card_node(used_card_nodes[i])
 
 
 func reveal_all():

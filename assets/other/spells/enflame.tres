@@ -1,9 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
+[ext_resource path="res://src/classes/spell_data.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/spells.png" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=1]
-script/source = "extends SpellData
+script/source = "extends SpellActions
 
 
 func can_cast_with_hand(hand):
@@ -40,11 +41,10 @@ func cast(owner, selection = []):
 		1
 	))
 	owner.discard_cards(selection)
-
 "
 
 [resource]
-script = SubResource( 1 )
+script = ExtResource( 1 )
 spell_id = 1
 texture = ExtResource( 2 )
 texture_frame = 1
@@ -52,3 +52,4 @@ cost_min = 1
 cost_max = 32
 cooldown = 0
 cooldown_start = 0
+actions = SubResource( 1 )
