@@ -7,7 +7,7 @@ func _on_button_deck_pressed():
 	var params = null
 	match type:
 		0:
-			params = [BattlePlayer.data.deck.cards_battle, "deckview_title"]
+			params = [BattlePlayer.data.deck.cards_battle, "deckview_title", BattlePlayer.data.deck.cards_draw]
 		1:
 			params = [BattlePlayer.data.deck.cards_draw, "deckview_title_drawpile"]
 		2:
