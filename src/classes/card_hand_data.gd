@@ -1,9 +1,9 @@
 class_name CardHandData
 extends Reference
 
-export var sum := 0
-export var sum_power := 0
-export var cards := []
+var sum := 0
+var sum_power := 0
+var cards := []
 
 
 func add_card(card_data, limit) -> int:
@@ -12,9 +12,17 @@ func add_card(card_data, limit) -> int:
 	return cards.size() - 1
 
 
+func discard_card(card, limit) -> int:
+	var idx = cards.find(card)
+	cards.remove(idx)
+	calculate_sum(limit)
+	return idx
+
+
 func discard_all():
-	cards = []
-	calculate_sum(9999)
+	cards.clear()
+	sum = 0
+	sum_power = 0
 
 
 func calculate_sum(limit: int):

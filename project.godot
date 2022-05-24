@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/classes/battler_data.gd"
 }, {
+"base": "Reference",
+"class": "BattlerState",
+"language": "GDScript",
+"path": "res://src/classes/battler_state.gd"
+}, {
 "base": "Resource",
 "class": "CardData",
 "language": "GDScript",
@@ -38,14 +43,27 @@ _global_script_classes=[ {
 "class": "OverlayBase",
 "language": "GDScript",
 "path": "res://src/scenes/overlays/overlay_base.gd"
+}, {
+"base": "Resource",
+"class": "SpellData",
+"language": "GDScript",
+"path": "res://src/classes/spell_data.gd"
+}, {
+"base": "Reference",
+"class": "StatusEffect",
+"language": "GDScript",
+"path": "res://src/classes/status_effect.gd"
 } ]
 _global_script_class_icons={
 "BattlerData": "",
+"BattlerState": "",
 "CardData": "",
 "CardDeck": "",
 "CardHandData": "",
 "EnemyBattlerData": "",
-"OverlayBase": ""
+"OverlayBase": "",
+"SpellData": "",
+"StatusEffect": ""
 }
 
 [application]

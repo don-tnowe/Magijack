@@ -1,5 +1,14 @@
 extends Timer
 
+enum TurnOutcome { 
+	ENEMY_OVERLOAD,
+	PLAYER_OVERLOAD,
+	PLAYER_CRIT,
+	PLAYER_WIN,
+	ENEMY_WIN,
+	DRAW
+	}
+
 var battles_completed := 0
 # var area_features := ["hp_mp_upgrade", "library", "forge"]
 var area_features := ["hp_mp_upgrade", "hp_mp_upgrade", "hp_mp_upgrade"]
@@ -15,6 +24,7 @@ var enemy_limit_left := 0
 var enemy_hand_power := 0
 var enemy_turn_ended := false
 
+var last_turn_outcome := -1
 var view_node : Control
 
 
@@ -56,25 +66,31 @@ func apply_turn_outcome():
 	if enemy_limit_left < 0:
 		BattleEnemy.hp -= BattlePlayer.data.greed_damage
 		view_node.enemy_overload(-enemy_limit_left, BattleEnemy.data.limit)
+		last_turn_outcome = TurnOutcome.ENEMY_OVERLOAD
 
 	elif player_limit_left < 0:
 		BattlePlayer.hp -= BattleEnemy.data.greed_damage
 		view_node.player_overload(-player_limit_left, BattlePlayer.data.limit)
+		last_turn_outcome = TurnOutcome.PLAYER_OVERLOAD
 
 	elif player_limit_left == 0:  # If at limit, guaranteed hit with x2 damage. Enemies can't crit, for fairness.
 		BattleEnemy.hp -= BattlePlayer.data.damage * 2
 		view_node.player_crit()
+		last_turn_outcome = TurnOutcome.PLAYER_CRIT
 
 	elif player_hand_power > enemy_hand_power:
 		BattleEnemy.hp -= BattlePlayer.data.damage
 		view_node.player_win(player_hand_power, enemy_hand_power)
+		last_turn_outcome = TurnOutcome.PLAYER_WIN
 	
 	elif player_hand_power < enemy_hand_power:
 		BattlePlayer.hp -= BattleEnemy.data.damage
 		view_node.enemy_win(player_hand_power, enemy_hand_power)
+		last_turn_outcome = TurnOutcome.ENEMY_WIN
 
 	else:
 		view_node.tie(player_hand_power, enemy_hand_power)
+		last_turn_outcome = TurnOutcome.DRAW
 		
 
 	BattlePlayer.view_node.update_all()
@@ -97,6 +113,7 @@ func apply_turn_outcome():
 func victory():
 	start(2)
 	yield(self, "timeout")
+	BattlePlayer.battle_end()
 	OverlayStack.open("select_next_area")
 
 	if area_progress >= 3:

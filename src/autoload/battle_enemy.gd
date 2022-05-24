@@ -4,6 +4,8 @@ signal card_drawn(card_just_drawn, hand, limit)
 signal turn_ended(hand, limit_left, power)
 
 var data : EnemyBattlerData
+var state : BattlerState
+var rival
 var hand_data := CardHandData.new()
 
 var hp := 60
@@ -16,22 +18,30 @@ var drawn_this_turn = 0
 func _ready():
 	BattlePlayer.connect("card_drawn", self, "player_card_drawn")
 	BattlePlayer.connect("turn_ended", self, "player_turn_ended")
+	rival = BattlePlayer
 
 
 func battle_start():
 	hp = data.hpmax
+	state = BattlerState.new(self)
+
 	var strgf = data.deck.stringified
 	data.deck = CardDeck.new()
 	data.deck.stringified = strgf
 	data.deck.initialize()
 	data.deck.battle_start()
 	view_node.battle_start()
+	state.start_battle()
+
+
+func battle_end():
+	state.end_battle()
 
 
 func draw_from_deck(face_up = false):
 	var new_card = data.deck.draw_from_deck()
-	view_node.node_hand.add_card(new_card, hand_data.add_card(new_card, data.limit), !face_up && drawn_this_turn >= data.cards_face_up)
-
+	view_node.node_hand.add_card(new_card, !face_up && drawn_this_turn >= data.cards_face_up)
+	
 	limit_used = hand_data.sum
 	drawn_this_turn += 1
 
@@ -43,7 +53,6 @@ func draw_from_deck(face_up = false):
 
 
 func start_turn():
-	hand_data.discard_all()
 	view_node.node_hand.discard_all()
 
 	drawn_this_turn = 0

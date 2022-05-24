@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=25]
 [ext_resource path="res://src/scenes/spellview.tscn" type="PackedScene" id=26]
 [ext_resource path="res://src/scenes/empty_with_tooltip.gd" type="Script" id=27]
+[ext_resource path="res://src/scenes/battle/select_card_spell.gd" type="Script" id=28]
 
 [sub_resource type="InputEventAction" id=48]
 action = "battle_draw"
@@ -1019,6 +1020,7 @@ margin_right = -480.0
 margin_bottom = -272.0
 mouse_filter = 2
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1027,6 +1029,9 @@ margin_right = 332.0
 margin_bottom = 80.0
 mouse_filter = 2
 alignment = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="spell" parent="player_ui/control/spells/box" instance=ExtResource( 26 )]
 anchor_left = 0.0
@@ -1114,66 +1119,6 @@ type = 2
 
 [node name="label" parent="player_ui/control/button_deck3" instance=ExtResource( 21 )]
 text = "button_view_enemy_deck"
-
-[node name="hand" type="Control" parent="player_ui/control"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_top = -64.0
-margin_bottom = -64.0
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-card_scene = ExtResource( 8 )
-deck = ExtResource( 2 )
-
-[node name="bar_mp" parent="player_ui/control" instance=ExtResource( 3 )]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 128.0
-margin_top = -240.0
-margin_right = 256.0
-margin_bottom = -112.0
-mouse_filter = 0
-value = 63.0
-texture_under = SubResource( 49 )
-texture_over = SubResource( 50 )
-texture_progress = SubResource( 51 )
-texture = ExtResource( 4 )
-
-[node name="bar_hp" parent="player_ui/control" instance=ExtResource( 3 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -256.0
-margin_top = -239.0
-margin_right = -128.0
-margin_bottom = -111.0
-mouse_filter = 0
-value = 63.0
-texture_under = SubResource( 52 )
-texture_over = SubResource( 53 )
-texture_progress = SubResource( 54 )
-
-[node name="flash" type="Sprite" parent="player_ui/control/bar_hp"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 64, 63 )
-scale = Vector2( 1.8, 1.8 )
-texture = ExtResource( 20 )
-region_enabled = true
-region_rect = Rect2( 8, 0, 184, 191 )
-
-[node name="center" type="CenterContainer" parent="player_ui/control"]
-visible = false
-margin_left = 640.0
-margin_top = 388.0
-margin_right = 640.0
-margin_bottom = 388.0
 
 [node name="label_damage" type="Label" parent="player_ui/control"]
 anchor_left = 1.0
@@ -1289,6 +1234,124 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 27 )
 
+[node name="spell_selection" type="ColorRect" parent="player_ui/control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.752941 )
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spell" parent="player_ui/control/spell_selection" instance=ExtResource( 26 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -368.0
+margin_right = 40.0
+margin_bottom = -288.0
+
+[node name="button_cancel" type="Button" parent="player_ui/control/spell_selection"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -296.0
+margin_top = -376.0
+margin_right = -72.0
+margin_bottom = -296.0
+custom_fonts/font = ExtResource( 7 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 10 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="player_ui/control/spell_selection/button_cancel" instance=ExtResource( 21 )]
+text = "button_cancel"
+
+[node name="button_continue" type="Button" parent="player_ui/control/spell_selection"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = -376.0
+margin_right = 288.0
+margin_bottom = -296.0
+custom_fonts/font = ExtResource( 7 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 10 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="label" parent="player_ui/control/spell_selection/button_continue" instance=ExtResource( 21 )]
+text = "button_end_turn"
+
+[node name="hand" type="Control" parent="player_ui/control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_top = -64.0
+margin_bottom = -64.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+card_scene = ExtResource( 8 )
+deck = ExtResource( 2 )
+
+[node name="bar_mp" parent="player_ui/control" instance=ExtResource( 3 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 128.0
+margin_top = -240.0
+margin_right = 256.0
+margin_bottom = -112.0
+mouse_filter = 0
+value = 63.0
+texture_under = SubResource( 49 )
+texture_over = SubResource( 50 )
+texture_progress = SubResource( 51 )
+texture = ExtResource( 4 )
+
+[node name="bar_hp" parent="player_ui/control" instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -256.0
+margin_top = -239.0
+margin_right = -128.0
+margin_bottom = -111.0
+mouse_filter = 0
+value = 63.0
+texture_under = SubResource( 52 )
+texture_over = SubResource( 53 )
+texture_progress = SubResource( 54 )
+
+[node name="flash" type="Sprite" parent="player_ui/control/bar_hp"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 64, 63 )
+scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 8, 0, 184, 191 )
+
+[node name="center" type="CenterContainer" parent="player_ui/control"]
+visible = false
+margin_left = 640.0
+margin_top = 388.0
+margin_right = 640.0
+margin_bottom = 388.0
+
 [node name="tween" type="Tween" parent="player_ui/control"]
 
 [node name="control2" type="Control" parent="player_ui"]
@@ -1332,7 +1395,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 138.173, 70 )
+texture_offset = Vector2( 25.323, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1341,7 +1404,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 309.963, 70 )
+texture_offset = Vector2( 483.621, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1418,6 +1481,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 theme = ExtResource( 23 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1437,6 +1501,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1462,3 +1527,6 @@ __meta__ = {
 
 [node name="label" parent="overlay/control2/button_deck" instance=ExtResource( 21 )]
 text = "button_view_deck"
+
+[connection signal="pressed" from="player_ui/control/spell_selection/button_cancel" to="player_ui/control/spell_selection" method="cancel"]
+[connection signal="pressed" from="player_ui/control/spell_selection/button_continue" to="player_ui/control/spell_selection" method="submit"]

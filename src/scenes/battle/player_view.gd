@@ -45,7 +45,6 @@ func update_all():
 
 
 func overloaded():
-	node_hand.discard_all(1)
 	set_endturn_available(false)
 
 

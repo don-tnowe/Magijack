@@ -26,6 +26,7 @@ func _ready():
 func open(overlay_name, params = null):
 	# Hardcoded prevention of endless deck views stacked,
 	if stack.size() > 0 && overlay_name == "view_deck" && stack[stack.size() - 1] is preload("res://src/scenes/overlays/view_deck.gd"):
+		stack[stack.size() - 1].close()
 		return
 
 	if stack.size() > 0: 
