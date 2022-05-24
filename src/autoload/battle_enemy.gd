@@ -30,12 +30,13 @@ func battle_start():
 	data.deck.stringified = strgf
 	data.deck.initialize()
 	data.deck.battle_start()
+	
 	view_node.battle_start()
 	state.start_battle()
 
 
 func battle_end():
-	state.end_battle()
+	pass 
 
 
 func draw_from_deck(face_up = false):

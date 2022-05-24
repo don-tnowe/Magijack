@@ -9,6 +9,10 @@ enum TurnOutcome {
 	DRAW
 	}
 
+signal turn_started()
+signal battle_started()
+signal battle_ended()
+
 var battles_completed := 0
 # var area_features := ["hp_mp_upgrade", "library", "forge"]
 var area_features := ["hp_mp_upgrade", "hp_mp_upgrade", "hp_mp_upgrade"]
@@ -31,15 +35,16 @@ var view_node : Control
 func _ready():
 	BattlePlayer.connect("turn_ended", self, "player_turn_ended")
 	BattleEnemy.connect("turn_ended", self, "enemy_turn_ended")
+	connect("battle_started", BattlePlayer, "battle_start")
+	connect("battle_started", BattleEnemy, "battle_start")
+	connect("battle_ended", BattlePlayer, "battle_end")
+	connect("battle_ended", BattleEnemy, "battle_end")
+
 	call_deferred("battle_start")
 
 
 func battle_start():
-	BattlePlayer.battle_start()
-	BattlePlayer.start_turn()
-	
-	BattleEnemy.battle_start()
-	BattleEnemy.start_turn()
+	emit_signal("battle_started")
 
 
 func player_turn_ended(hand, limit_left, power):
@@ -111,9 +116,9 @@ func apply_turn_outcome():
 
 
 func victory():
+	emit_signal("battle_ended")
 	start(2)
 	yield(self, "timeout")
-	BattlePlayer.battle_end()
 	OverlayStack.open("select_next_area")
 
 	if area_progress >= 3:

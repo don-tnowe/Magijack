@@ -12,6 +12,9 @@ var owner
 
 func _init(owner_):
 	owner = owner_
+	BattleManager.connect("turn_started", self, "start_turn")
+	BattleManager.connect("battle_started", self, "start_battle")
+	BattleManager.connect("battle_ended", self, "end_battle")
 
 
 func start_turn():
@@ -23,6 +26,7 @@ func start_turn():
 
 
 func start_battle():
+	spell_cooldowns.resize(owner.data.spells)
 	for i in spell_cooldowns:
 		spell_cooldowns[i] = owner.data.spells[i].start_cooldown
 

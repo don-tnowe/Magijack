@@ -32,15 +32,17 @@ func run_start():
 	data.deck.stringified = between_runs_data.deck.stringified
 	data.deck.initialize()
 
+	data.spells = data.spells.duplicate()
+
 
 func battle_start():
 	view_node.update_all()
 	data.deck.battle_start()
-	state.start_battle()
+	start_turn()
 
 
 func battle_end():
-	state.end_battle()
+	pass
 
 
 func draw_from_deck():
@@ -71,6 +73,7 @@ func start_turn():
 		view_node.node_hand.discard_all()
 	
 	drawn_this_turn = 0
+	state.start_turn()
 	data.deck.turn_start()
 
 	start(1.0)

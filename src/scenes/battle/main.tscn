@@ -1,7 +1,6 @@
 [gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=2]
 [ext_resource path="res://src/scenes/battle/hpmp_bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/graphics/battle_ui/ui_bar_textures/mp_safe.tres" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/battle_ui/ui_bar_textures/hp.tres" type="Texture" id=5]
@@ -25,9 +24,10 @@
 [ext_resource path="res://assets/other/theme.tres" type="Theme" id=23]
 [ext_resource path="res://assets/graphics/menus/ui.png" type="Texture" id=24]
 [ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=25]
-[ext_resource path="res://src/scenes/spellview.tscn" type="PackedScene" id=26]
+[ext_resource path="res://src/scenes/battle/spellview.tscn" type="PackedScene" id=26]
 [ext_resource path="res://src/scenes/empty_with_tooltip.gd" type="Script" id=27]
 [ext_resource path="res://src/scenes/battle/select_card_spell.gd" type="Script" id=28]
+[ext_resource path="res://src/scenes/battle/spell_list.gd" type="Script" id=29]
 
 [sub_resource type="InputEventAction" id=48]
 action = "battle_draw"
@@ -862,7 +862,6 @@ __meta__ = {
 }
 is_players = false
 card_scene = ExtResource( 8 )
-deck = ExtResource( 2 )
 
 [node name="enemy" type="Control" parent="enemy_ui/control"]
 anchor_left = 0.5
@@ -1019,10 +1018,12 @@ margin_top = -368.0
 margin_right = -480.0
 margin_bottom = -272.0
 mouse_filter = 2
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+scene_spellview = ExtResource( 26 )
 
 [node name="box" type="HBoxContainer" parent="player_ui/control/spells"]
 margin_right = 332.0
@@ -1039,6 +1040,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_bottom = 80.0
+script = null
 
 [node name="spell2" parent="player_ui/control/spells/box" instance=ExtResource( 26 )]
 anchor_left = 0.0
@@ -1048,6 +1050,7 @@ anchor_bottom = 0.0
 margin_left = 84.0
 margin_right = 164.0
 margin_bottom = 80.0
+script = null
 
 [node name="spell3" parent="player_ui/control/spells/box" instance=ExtResource( 26 )]
 anchor_left = 0.0
@@ -1057,6 +1060,7 @@ anchor_bottom = 0.0
 margin_left = 168.0
 margin_right = 248.0
 margin_bottom = 80.0
+script = null
 
 [node name="spell4" parent="player_ui/control/spells/box" instance=ExtResource( 26 )]
 anchor_left = 0.0
@@ -1066,6 +1070,7 @@ anchor_bottom = 0.0
 margin_left = 252.0
 margin_right = 332.0
 margin_bottom = 80.0
+script = null
 
 [node name="button_draw" type="Button" parent="player_ui/control"]
 margin_left = 235.0
@@ -1251,6 +1256,7 @@ margin_left = -40.0
 margin_top = -368.0
 margin_right = 40.0
 margin_bottom = -288.0
+script = null
 
 [node name="button_cancel" type="Button" parent="player_ui/control/spell_selection"]
 anchor_left = 0.5
@@ -1305,7 +1311,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 card_scene = ExtResource( 8 )
-deck = ExtResource( 2 )
 
 [node name="bar_mp" parent="player_ui/control" instance=ExtResource( 3 )]
 anchor_top = 1.0
@@ -1395,7 +1400,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 25.323, 70 )
+texture_offset = Vector2( 105.911, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1404,7 +1409,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 483.621, 70 )
+texture_offset = Vector2( 171.786, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
