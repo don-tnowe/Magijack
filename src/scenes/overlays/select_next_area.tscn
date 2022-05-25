@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/overlays/select_next_area.gd" type="Script" id=2]
+[ext_resource path="res://assets/other/enemy_pools/standard.tres" type="Resource" id=3]
 
 [node name="control" type="ColorRect"]
 pause_mode = 2
@@ -11,8 +12,10 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.752941 )
 script = ExtResource( 2 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+enemy_pool = ExtResource( 3 )
 
 [node name="title" type="Label" parent="."]
 anchor_right = 1.0
@@ -23,6 +26,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "deckview_title"
 align = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

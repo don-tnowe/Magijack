@@ -1,6 +1,6 @@
 extends OverlayBase
 
-var choices_left = 3
+var choices_left = 5
 var selected_card_data = []
 
 

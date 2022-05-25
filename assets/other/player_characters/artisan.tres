@@ -10,5 +10,6 @@ hpmax = 40
 limit = 14
 damage = 8
 greed_damage = 10
+power_bonus = 0
 deck = ExtResource( 2 )
 spells = [ ExtResource( 3 ) ]

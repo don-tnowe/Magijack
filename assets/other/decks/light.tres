@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/classes/card_deck.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+stringified = "red 2
+red 3
+red 2
+red 3
+red 4
+blue 2
+blue 3
+blue 2
+blue 3
+blue 4
+purple 2
+purple 3
+purple 2
+purple 3
+purple 4
+orange 2
+orange 3
+orange 2
+orange 3
+orange 4"

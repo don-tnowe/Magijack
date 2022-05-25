@@ -3,7 +3,7 @@ extends Timer
 signal card_drawn(card_just_drawn, hand, limit)
 signal turn_ended(hand, limit_left, power)
 
-var data : EnemyBattlerData
+var data
 var state : BattlerState
 var rival
 var hand_data := CardHandData.new()
@@ -22,6 +22,11 @@ func _ready():
 	rival = BattlePlayer
 
 
+func set_enemy(enemy):
+	data = enemy
+	view_node.set_enemy(enemy)
+
+
 func battle_start():
 	hp = data.hpmax
 	state = BattlerState.new(self)
@@ -32,8 +37,8 @@ func battle_start():
 	data.deck.initialize()
 	data.deck.battle_start()
 	
-	view_node.battle_start()
 	state.start_battle()
+	view_node.update_all()
 
 
 func battle_end():

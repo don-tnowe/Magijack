@@ -14,8 +14,8 @@ signal battle_started()
 signal battle_ended()
 
 var battles_completed := 0
-# var area_features := ["hp_mp_upgrade", "library", "forge"]
-var area_features := ["library", "library", "library"]
+var battles_completed_highscore := 0
+var area_features := ["hp_mp_upgrade", "library", "forge"]
 var area_progress := 0
 
 var player_hand : CardHandData
@@ -31,6 +31,8 @@ var enemy_turn_ended := false
 var last_turn_outcome := -1
 var view_node : Control
 
+var enemy_encounter_count = {}
+
 
 func _ready():
 	BattlePlayer.connect("turn_ended", self, "player_turn_ended")
@@ -40,7 +42,14 @@ func _ready():
 	connect("battle_ended", BattlePlayer, "battle_end")
 	connect("battle_ended", BattleEnemy, "battle_end")
 
-	call_deferred("battle_start")
+	call_deferred("run_start")
+
+
+func run_start():
+	enemy_encounter_count = {}
+	battles_completed = 0
+	OverlayStack.open("select_next_area")
+	OverlayStack.stack[0].close()
 
 
 func battle_start():
@@ -134,4 +143,4 @@ func defeat():
 	start(2)
 	yield(self, "timeout")
 	OverlayStack.open("defeat")
-	battles_completed = 0
+	battles_completed_highscore = battles_completed

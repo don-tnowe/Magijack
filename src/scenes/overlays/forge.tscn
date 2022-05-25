@@ -153,11 +153,10 @@ __meta__ = {
 text = "menu_skip"
 
 [node name="card" parent="." instance=ExtResource( 4 )]
-visible = false
 margin_left = -72.0
-margin_top = -216.0
+margin_top = 128.0
 margin_right = 79.0
-margin_bottom = 20.0
+margin_bottom = 364.0
 
 [node name="button_choose" type="Button" parent="."]
 anchor_left = 0.5
