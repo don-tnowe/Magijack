@@ -1,12 +1,14 @@
 extends Control
 
 export(Array, Texture) var mpbar_textures
+export(PackedScene) var bubble
 
 onready var node_hand = $"hand"
 onready var node_spells = $"spells"
 
 onready var node_bar_hp = $"bar_hp"
 onready var node_bar_mp = $"bar_mp"
+onready var node_label_power = $"label_power"
 onready var node_chance_crit = $"label_chance_crit"
 onready var node_chance_overload = $"label_chance_overload"
 
@@ -32,6 +34,10 @@ func connect_signals():
 func update_hand():
 	node_bar_mp.max_value = BattlePlayer.data.limit
 	node_bar_mp.set_value(BattlePlayer.data.limit - BattlePlayer.limit_used)
+	
+	node_label_power.text = str(BattlePlayer.hand_data.sum_power)
+	if BattlePlayer.data.power_bonus > 0:
+		node_label_power.text += " + " + str(BattlePlayer.data.power_bonus)
 	
 	var crit_overload_chance = BattlePlayer.data.deck.get_crit_overload_chance(BattlePlayer.hand_data, BattlePlayer.data.limit)
 	node_chance_crit.text = str(floor(crit_overload_chance[0] * 100)) + "%"
@@ -62,6 +68,28 @@ func set_endturn_available(v):
 	node_button_endturn.disabled = !v
 	if !v: 
 		node_spells.casting_available = false
+
+
+func added_card(start_pos, amount, power_amount):
+	# Limit
+	var node = bubble.instance()
+	add_child(node)
+	node.global_position = start_pos
+	node.rotation_degrees -= 15
+	node.initialize(0, str(amount), 0.5, 0.7, 100, node_bar_mp.rect_global_position + node_bar_mp.rect_size * 0.5, 0.75)
+	# Power
+	node = bubble.instance()
+	add_child(node)
+	node.global_position = start_pos + Vector2(48, 0)
+	node.rotation_degrees += 5
+	node.initialize(2, str(power_amount), 0.3, 0.7, 100, node_label_power.rect_global_position + Vector2(-32, 32), 0.75)
+
+
+func taken_damage(amount):
+	var node = bubble.instance()
+	add_child(node)
+	node.global_position = node_bar_hp.rect_global_position + node_bar_hp.rect_size * 0.5
+	node.initialize(1, ("+" if amount < 0 else "") + str(-amount))
 
 
 func _process(delta):

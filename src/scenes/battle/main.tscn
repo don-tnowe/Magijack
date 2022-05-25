@@ -1,6 +1,7 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/scenes/battle/damage_bubble.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/battle/hpmp_bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/graphics/battle_ui/ui_bar_textures/mp_safe.tres" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/battle_ui/ui_bar_textures/hp.tres" type="Texture" id=5]
@@ -891,6 +892,7 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+bubble = ExtResource( 2 )
 
 [node name="enemy" parent="enemy_ui/control/enemy" instance=ExtResource( 9 )]
 
@@ -1024,6 +1026,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 mpbar_textures = [ ExtResource( 4 ), ExtResource( 16 ), ExtResource( 15 ) ]
+bubble = ExtResource( 2 )
 
 [node name="spells" type="ScrollContainer" parent="player_ui/control"]
 process_priority = 3
@@ -1101,6 +1104,33 @@ type = 2
 
 [node name="label" parent="player_ui/control/button_deck3" instance=ExtResource( 21 )]
 text = "button_view_enemy_deck"
+
+[node name="label_power" type="Label" parent="player_ui/control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -392.0
+margin_top = -288.0
+margin_right = -150.0
+margin_bottom = -214.0
+rect_rotation = 15.0
+custom_fonts/font = ExtResource( 1 )
+text = "10"
+valign = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="icon3" type="Sprite" parent="player_ui/control/label_power"]
+show_behind_parent = true
+position = Vector2( -15.0895, 40.2779 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 12 )
+hframes = 8
+vframes = 8
+frame = 5
 
 [node name="label_damage" type="Label" parent="player_ui/control"]
 anchor_left = 1.0
@@ -1376,7 +1406,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 254.887, 70 )
+texture_offset = Vector2( 95.4511, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1385,7 +1415,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 257.712, 70 )
+texture_offset = Vector2( 246.97, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 

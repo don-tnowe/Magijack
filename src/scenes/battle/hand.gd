@@ -8,6 +8,7 @@ var card_h_offset := 0
 var card_selected_v_offset := -96
 var card_selected_idx_to_offset := -32
 
+var owner_battler
 var hand_data : CardHandData
 var used_card_nodes = []
 var selected_card_idx := -1
@@ -18,7 +19,7 @@ func _ready():
 		var new_node = card_scene.instance()
 		new_node.visible = false
 		add_child(new_node)
-		
+	
 	hand_data = (BattlePlayer if is_players else BattleEnemy).hand_data
 
 
@@ -28,16 +29,19 @@ func _process(delta):
 		var selection_distance_offset = 48 * sign(i - selected_card_idx)  # Move cards away from selected card to see it better
 		used_card_nodes[i].rect_position = lerp(
 			used_card_nodes[i].rect_position,
-			Vector2(
-				i * card_spacing 
-				- used_card_nodes.size() * 0.5 * card_spacing 
-				+ card_h_offset 
-				+ selection_offset 
-				+ selection_distance_offset,
-				card_selected_v_offset if selected_card_idx == i else 0
-				) - used_card_nodes[i].rect_size * 0.5,
+			get_card_target_position(i, selection_offset + selection_distance_offset),
 			0.2
 		)
+
+
+func get_card_target_position(card_idx, common_offset):
+	return Vector2(
+		card_idx * card_spacing 
+		- used_card_nodes.size() * 0.5 * card_spacing 
+		+ card_h_offset 
+		+ common_offset,
+		card_selected_v_offset if selected_card_idx == card_idx else 0
+		) - used_card_nodes[card_idx].rect_size * 0.5
 
 
 func add_card(card_data, is_face_down = false):
@@ -51,12 +55,16 @@ func add_card(card_data, is_face_down = false):
 	new_node.rect_position = Vector2(0, 256)
 	new_node.rect_rotation = 0
 	new_node.set_face_down(is_face_down)
+	selected_card_idx = -1
+	hand_data.cards[new_idx].display_on_card_node(new_node)
 
 	if is_players:
 		new_node.connect("mouse_entered", self, "card_mouse_entered", [new_node])
-
-	hand_data.cards[new_idx].display_on_card_node(new_node)
-	selected_card_idx = -1
+		get_parent().added_card(
+			get_card_target_position(new_idx, 0) + rect_global_position + Vector2(96, 48), 
+			card_data.get_value(new_idx, hand_data, BattlePlayer.data.limit),
+			card_data.get_power(new_idx, hand_data, BattlePlayer.data.limit)
+			)
 
 
 func find_unused_card():

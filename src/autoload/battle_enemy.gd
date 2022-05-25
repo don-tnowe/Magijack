@@ -104,6 +104,7 @@ func player_card_drawn(card, hand, limit):
 
 
 func set_hp(v):
+	view_node.taken_damage(hp - v)
 	hp = v
 	view_node.update_all()
 	if hp <= 0 && !BattleManager.player_turn_ended:

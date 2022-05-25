@@ -1,5 +1,6 @@
 extends Control
 
+export(PackedScene) var bubble
 
 onready var node_hand = $"../hand"
 onready var node_instance = $"enemy"
@@ -20,6 +21,13 @@ func update_all():
 	node_label_mp.text = str(BattleEnemy.data.limit)
 	node_label_damage.text = str(BattleEnemy.data.damage)
 	node_label_greeddamage.text = str(BattleEnemy.data.greed_damage)
+
+
+func taken_damage(amount):
+	var node = bubble.instance()
+	add_child(node)
+	node.global_position = node_label_hp.rect_global_position
+	node.initialize(1, ("+" if amount < 0 else "") + str(-amount), 0, 1, 64)
 
 
 func set_enemy(enemy_data):

@@ -79,6 +79,7 @@ func hand_changed():
 
 
 func set_hp(v):
+	view_node.taken_damage(hp - v)
 	hp = v
 	view_node.update_all()
 
