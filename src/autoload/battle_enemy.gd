@@ -112,4 +112,4 @@ func player_turn_ended(hand, limit_left, power):
 
 
 func end_turn(forced = false):
-	emit_signal("turn_ended", hand_data, data.limit - limit_used, hand_data.sum_power)
+	emit_signal("turn_ended", hand_data, data.limit - limit_used, hand_data.sum_power + data.power_bonus)

@@ -69,27 +69,27 @@ func enemy_turn_ended(hand, limit_left, power):
 
 func apply_turn_outcome():
 	if enemy_limit_left < 0:
-		BattleEnemy.hp -= BattlePlayer.data.greed_damage
+		BattleEnemy.hp -= max(BattlePlayer.data.greed_damage, 0)
 		view_node.enemy_overload(-enemy_limit_left, BattleEnemy.data.limit)
 		last_turn_outcome = TurnOutcome.ENEMY_OVERLOAD
 
 	elif player_limit_left < 0:
-		BattlePlayer.hp -= BattleEnemy.data.greed_damage
+		BattlePlayer.hp -= max(BattleEnemy.data.greed_damage, 0)
 		view_node.player_overload(-player_limit_left, BattlePlayer.data.limit)
 		last_turn_outcome = TurnOutcome.PLAYER_OVERLOAD
 
 	elif player_limit_left == 0:  # If at limit, guaranteed hit with x2 damage. Enemies can't crit, for fairness.
-		BattleEnemy.hp -= BattlePlayer.data.damage * 2
+		BattleEnemy.hp -= max(BattlePlayer.data.damage * 2, 0)
 		view_node.player_crit()
 		last_turn_outcome = TurnOutcome.PLAYER_CRIT
 
 	elif player_hand_power > enemy_hand_power:
-		BattleEnemy.hp -= BattlePlayer.data.damage
+		BattleEnemy.hp -= max(BattlePlayer.data.damage, 0)
 		view_node.player_win(player_hand_power, enemy_hand_power)
 		last_turn_outcome = TurnOutcome.PLAYER_WIN
 	
 	elif player_hand_power < enemy_hand_power:
-		BattlePlayer.hp -= BattleEnemy.data.damage
+		BattlePlayer.hp -= max(BattleEnemy.data.damage, 0)
 		view_node.enemy_win(player_hand_power, enemy_hand_power)
 		last_turn_outcome = TurnOutcome.ENEMY_WIN
 

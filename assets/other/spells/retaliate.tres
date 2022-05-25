@@ -1,0 +1,46 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://assets/graphics/spells.png" type="Texture" id=1]
+[ext_resource path="res://src/classes/spell_data.gd" type="Script" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends SpellActions
+
+
+func can_cast_with_hand(hand):
+	return BattleManager.last_turn_outcome == BattleManager.TurnOutcome.ENEMY_WIN
+
+
+func can_cast_with_selection(selection):
+	return selection.size() == spell_data.cost_max || selection.size() == 0
+
+
+func card_selectable(card):
+	return card.is_of_suit(3)
+
+
+func cast(owner, selection = []):
+	owner.state.status_turns.append(StatusEffect.new(
+		owner.data,
+		\"power_bonus\",
+		4,
+		1
+	))
+	if selection.size() == spell_data.cost_max:
+		spell_data.set_deferred(\"cooldown\", spell_data.cooldown)
+		spell_data.cooldown = 0
+
+	owner.discard_cards(selection)
+
+"
+
+[resource]
+script = ExtResource( 2 )
+spell_id = 8
+texture = ExtResource( 1 )
+texture_frame = 8
+cost_min = 0
+cost_max = 2
+cooldown = 3
+cooldown_start = 0
+actions = SubResource( 1 )

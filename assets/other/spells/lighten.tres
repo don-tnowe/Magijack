@@ -1,0 +1,47 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://assets/graphics/spells.png" type="Texture" id=1]
+[ext_resource path="res://src/classes/spell_data.gd" type="Script" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends SpellActions
+
+
+func can_cast_with_hand(hand):
+	for x in hand.cards:
+		if card_selectable(x):
+			return true
+	
+	return false
+
+
+func can_cast_with_selection(selection):
+	return selection.size() == 1
+
+
+func card_selectable(card):
+	return card.value < 11 && card.metal_value < 10 && card.special_index == 0
+
+
+func cast(owner, selection = []):
+	owner.state.status_battles.append(StatusEffect.new(
+		selection[0],
+		\"metal_value\",
+		1,
+		1
+	))
+	owner.view_node.node_hand.display_all()
+	owner.discard_cards(selection)
+
+"
+
+[resource]
+script = ExtResource( 2 )
+spell_id = 15
+texture = ExtResource( 1 )
+texture_frame = 15
+cost_min = 1
+cost_max = 1
+cooldown = 3
+cooldown_start = 0
+actions = SubResource( 1 )

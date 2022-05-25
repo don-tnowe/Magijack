@@ -83,7 +83,7 @@ func set_hp(v):
 
 
 func end_turn(forced = false):
-	emit_signal("turn_ended", hand_data, data.limit - limit_used, hand_data.sum_power)
+	emit_signal("turn_ended", hand_data, data.limit - limit_used, hand_data.sum_power + data.power_bonus)
 	view_node.update_hand()
 	view_node.set_draw_available(false)
 	view_node.set_endturn_available(false)
