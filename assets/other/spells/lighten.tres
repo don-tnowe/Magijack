@@ -31,7 +31,7 @@ func cast(owner, selection = []):
 		1
 	))
 	owner.view_node.node_hand.display_all()
-	owner.discard_cards(selection)
+	owner.hand_changed()
 
 "
 
@@ -42,6 +42,6 @@ texture = ExtResource( 1 )
 texture_frame = 15
 cost_min = 1
 cost_max = 1
-cooldown = 3
+cooldown = 2
 cooldown_start = 0
 actions = SubResource( 1 )
