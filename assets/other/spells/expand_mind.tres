@@ -20,18 +20,26 @@ func can_cast_with_selection(selection):
 
 
 func card_selectable(card):
-	return card.value < 11 && card.metal_value < 10 && card.special_index == 0
+	return card.value < 11
 
 
 func cast(owner, selection = []):
-	owner.state.status_battles.append(StatusEffect.new(
-		selection[0],
-		\"metal_value\",
-		1,
+	owner.state.status_turns.append(StatusEffect.new(
+		owner.data,
+		\"limit\",
+		5,
 		1
 	))
-	owner.view_node.node_hand.display_all()
-	owner.discard_cards(selection)
+	for x in owner.hand_data.cards:
+		if card_selectable(x):
+			owner.state.status_turns.append(StatusEffect.new(
+				x,
+				\"value\",
+				1,
+				1
+			))
+
+	owner.hand_changed()
 
 "
 

@@ -16,7 +16,7 @@ func _ready():
 		"select_card",
 		"bonfire",
 		"hp_mp_upgrade",
-		# "library",
+		"library",
 		"forge",
 		"defeat"
 		]:

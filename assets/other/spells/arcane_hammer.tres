@@ -8,6 +8,7 @@ script/source = "extends SpellActions
 
 
 func can_cast_with_hand(hand):
+  # noooo not counting that properly
 	var usable_card_count = 0
 	for x in hand.cards:
 		if card_selectable(x):
@@ -17,15 +18,11 @@ func can_cast_with_hand(hand):
 
 
 func can_cast_with_selection(selection):
-	return selection.size() == 2
-
-
-func card_selectable(card):
-	return card.value < 11 && card.value > 0
+	return selection.size() == 3 && selection[0].value == selection[1].value && selection[2].value == selection[1].value
 
 
 func cast(owner, selection = []):
-	owner.rival.hp -= (selection[0].value + selection[1].value)
+	owner.rival.hp -= 20
 	owner.discard_cards(selection)
 "
 
@@ -34,8 +31,8 @@ script = ExtResource( 1 )
 spell_id = 9
 texture = ExtResource( 2 )
 texture_frame = 9
-cost_min = 2
-cost_max = 2
+cost_min = 3
+cost_max = 3
 cooldown = 2
 cooldown_start = 0
 actions = SubResource( 1 )

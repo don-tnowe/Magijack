@@ -45,6 +45,10 @@ func battle_start():
 	turn_start()
 
 
+func battle_end():
+	cards_draw = cards_battle.duplicate()
+
+
 func turn_start():
 	cards_draw = cards_battle.duplicate()
 	cards_draw.shuffle()

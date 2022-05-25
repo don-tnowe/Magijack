@@ -53,7 +53,7 @@ func close():
 
 
 func update_picks():
-	$"button_continue".disabled = !(picked_cards.size() >= spell_casting.cost_min && spell_casting.can_cast_with_selection(picked_cards))
+	$"button_continue".disabled = !(picked_cards.size() >= spell_casting.cost_min && picked_cards.size() <= spell_casting.cost_max && spell_casting.can_cast_with_selection(picked_cards))
 
 
 func card_input(event, card, idx):
@@ -62,7 +62,7 @@ func card_input(event, card, idx):
 			node_handview.used_card_nodes[idx].get_node("border").self_modulate = Color.black
 			picked_cards.erase(card)
 			
-		elif picked_cards.size() < spell_casting.cost_max:
+		else:
 			node_handview.used_card_nodes[idx].get_node("border").self_modulate = Color.white
 			picked_cards.append(card)
 		

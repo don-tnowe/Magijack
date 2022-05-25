@@ -59,7 +59,7 @@ spring_mp;;Value Limit;Ліміт Значень
 spring_heal;;Full Heal;Повне Вилікування
 ;;;
 library_title;;Library;Бібліотека
-library_subtitle;;Choose a spell;Обери Закляття
+library_subtitle;;Choose a spell to learn. Click spells in combat to use them.;Обери Закляття. На закляття можна натискати в бою, щоб використовувати.
 ;;;
 spell_cooldown;;Cooldown;Перезарядка
 ;;;

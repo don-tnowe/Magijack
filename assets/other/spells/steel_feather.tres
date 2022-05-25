@@ -8,33 +8,48 @@ script/source = "extends SpellActions
 
 
 func can_cast_with_hand(hand):
-	var usable_card_count = 0
 	for x in hand.cards:
 		if card_selectable(x):
-			usable_card_count += 1
+			return true
 	
-	return usable_card_count >= spell_data.cost_min
+	return false
 
 
 func can_cast_with_selection(selection):
-	return selection.size() == 2
+	# yes it can be  simpler but i wanna also do cards acting like they're of multiple suits
+	return is_selection_of_suit(selection, 2) || is_selection_of_suit(selection, 3)
+
+
+func is_selection_of_suit(selection, suit):
+	var count = 0
+	for x in selection:
+		if x.is_of_suit(suit):
+			count += 1
+	
+	return count == selection.size()
 
 
 func card_selectable(card):
-	return card.value < 11 && card.value > 0 && card.special_index == 0
+	return (card.is_of_suit(2) || card.is_of_suit(3))
 
 
-func cast(owner, selection = []):
-	var damage_buff = 0
-	var damage_instant = 0
-	for x in selection:
-		if x.value % 2 == 0:
-			damage_instant += 4
+func cast(owner, selection = []):	
+	if is_selection_of_suit(selection, 2):
+		owner.state.status_turns.append(StatusEffect.new(
+			owner.data,
+			\"damage\",
+			selection.size() * 3,
+			1
+		))
 		
-		else:
-			damage_buff += 7
-	
-	owner.rival.hp -= damage_instant
+	if is_selection_of_suit(selection, 3):
+		owner.rival.state.status_turns.append(StatusEffect.new(
+			owner.rival.data,
+			\"damage\",
+			-selection.size() * 4,
+			1
+		))
+
 	owner.discard_cards(selection)
 "
 

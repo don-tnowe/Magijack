@@ -8,24 +8,23 @@ script/source = "extends SpellActions
 
 
 func can_cast_with_hand(hand):
-	var usable_card_count = 0
 	for x in hand.cards:
 		if card_selectable(x):
-			usable_card_count += 1
+			return true
 	
-	return usable_card_count >= spell_data.cost_min
+	return false
 
 
 func can_cast_with_selection(selection):
-	return selection.size() == 2
+	return selection.size() == 1
 
 
 func card_selectable(card):
-	return card.value < 11 && card.value > 0
+	return card.value < 11 && card.value >= 5
 
 
 func cast(owner, selection = []):
-	owner.rival.hp -= (selection[0].value + selection[1].value)
+	owner.rival.hp -= selection[0].value * 5
 	owner.discard_cards(selection)
 "
 

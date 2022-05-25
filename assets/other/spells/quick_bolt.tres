@@ -7,8 +7,17 @@
 script/source = "extends SpellActions
 
 
+func can_cast_with_hand(hand):
+	return hand.cards.size() == 2
+
+
 func cast(owner, selection = null):
-	owner.discard_all()
+	if owner.hand_data.cards.size() == 2:
+		var values = [0, 0]
+		for i in 2:
+			values[i] = owner.hand_data.cards[i].value if owner.hand_data.cards[i].value < 11 else 10
+ 
+		owner.rival.hp -= (values[0] + values[1]) * 2
 "
 
 [resource]

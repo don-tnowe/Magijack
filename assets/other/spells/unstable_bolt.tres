@@ -17,11 +17,11 @@ func can_cast_with_hand(hand):
 
 
 func can_cast_with_selection(selection):
-	return selection.size() == 2
+	return selection.size() >= spell_data.selection.cost_min && selection.size <= spell_data.selection.cost_max
 
 
 func card_selectable(card):
-	return card.value < 11 && card.value > 0 && card.special_index == 0
+	return card.value < 11 && card.value > 0
 
 
 func cast(owner, selection = []):
@@ -34,6 +34,13 @@ func cast(owner, selection = []):
 		else:
 			damage_buff += 7
 	
+	owner.state.status_turns.append(StatusEffect.new(
+		owner.data,
+		\"damage\",
+		damage_buff,
+		1
+	))
+
 	owner.rival.hp -= damage_instant
 	owner.discard_cards(selection)
 "

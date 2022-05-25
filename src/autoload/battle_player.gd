@@ -37,13 +37,12 @@ func run_start():
 
 
 func battle_start():
-	view_node.update_all()
 	data.deck.battle_start()
 	start_turn()
 
 
 func battle_end():
-	pass
+	data.deck.battle_end()
 
 
 func draw_from_deck():
@@ -73,7 +72,9 @@ func discard_all():
 
 
 func hand_changed():
-	limit_used = hand_data.sum	
+	hand_data.modified_hand(data.limit)
+	limit_used = hand_data.sum
+	view_node.node_hand.display_all()
 	view_node.update_hand()
 
 
@@ -94,7 +95,7 @@ func start_turn():
 		view_node.node_hand.discard_all()
 	
 	drawn_this_turn = 0
-	state.start_turn()
+#	state.start_turn()
 	data.deck.turn_start()
 	view_node.update_all()
 
@@ -106,5 +107,6 @@ func start_turn():
 	yield(self, "timeout")
 	draw_from_deck()
 
+	view_node.update_all()
 	view_node.set_draw_available(true)
 	view_node.set_endturn_available(true)

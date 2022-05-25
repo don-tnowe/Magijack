@@ -8,14 +8,14 @@ var cards := []
 
 func add_card(card_data, limit) -> int:
 	cards.append(card_data)
-	calculate_sum(limit)
+	modified_hand(limit)
 	return cards.size() - 1
 
 
 func discard_card(card, limit) -> int:
 	var idx = cards.find(card)
 	cards.remove(idx)
-	calculate_sum(limit)
+	modified_hand(limit)
 	return idx
 
 
@@ -23,6 +23,10 @@ func discard_all():
 	cards.clear()
 	sum = 0
 	sum_power = 0
+
+
+func modified_hand(limit):
+	calculate_sum(limit)
 
 
 func calculate_sum(limit: int):

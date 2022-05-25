@@ -37,21 +37,26 @@ func battle_start():
 
 
 func battle_end():
-	pass 
+	data.deck.battle_end()
 
 
 func draw_from_deck(face_up = false):
 	var new_card = data.deck.draw_from_deck()
 	view_node.node_hand.add_card(new_card, !face_up && drawn_this_turn >= data.cards_face_up)
 	
-	limit_used = hand_data.sum
 	drawn_this_turn += 1
-
+	hand_changed()
 	emit_signal("card_drawn", new_card, hand_data, data.limit - limit_used)
 
 	if drawn_this_turn > 2 && limit_used > data.limit:
 		BattlePlayer.end_turn(true)
 		end_turn(true)
+
+
+func hand_changed():
+	hand_data.modified_hand(data.limit)
+	limit_used = hand_data.sum
+	view_node.update_all()
 
 
 func start_turn():
@@ -96,7 +101,7 @@ func player_card_drawn(card, hand, limit):
 func set_hp(v):
 	hp = v
 	view_node.update_all()
-				
+
 
 func player_turn_ended(hand, limit_left, power):
 	view_node.node_hand.reveal_all()

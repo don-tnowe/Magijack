@@ -1,0 +1,163 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://src/scenes/overlays/library.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/scenes/battle/spellview.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/other/spells/growing_warmth.tres" type="Resource" id=5]
+[ext_resource path="res://assets/other/spells/might_of_pride.tres" type="Resource" id=6]
+[ext_resource path="res://assets/other/spells/retaliate.tres" type="Resource" id=7]
+[ext_resource path="res://assets/other/spells/sharpen.tres" type="Resource" id=8]
+[ext_resource path="res://assets/other/spells/dragons_fury.tres" type="Resource" id=9]
+[ext_resource path="res://assets/other/spells/expand_mind.tres" type="Resource" id=10]
+[ext_resource path="res://assets/other/spells/introspect.tres" type="Resource" id=11]
+[ext_resource path="res://assets/other/spells/steel_feather.tres" type="Resource" id=12]
+[ext_resource path="res://assets/other/spells/quick_bolt.tres" type="Resource" id=13]
+[ext_resource path="res://assets/other/spells/unity_power.tres" type="Resource" id=14]
+[ext_resource path="res://assets/other/spells/arcane_hammer.tres" type="Resource" id=15]
+[ext_resource path="res://assets/other/spells/double_dagger.tres" type="Resource" id=16]
+[ext_resource path="res://assets/other/spells/enflame.tres" type="Resource" id=17]
+[ext_resource path="res://assets/other/spells/flawless_obedience.tres" type="Resource" id=18]
+[ext_resource path="res://assets/other/spells/hammer_bolt.tres" type="Resource" id=19]
+[ext_resource path="res://assets/other/spells/intimidate.tres" type="Resource" id=20]
+[ext_resource path="res://assets/other/spells/lighten.tres" type="Resource" id=21]
+[ext_resource path="res://assets/other/spells/mind_control.tres" type="Resource" id=22]
+[ext_resource path="res://assets/other/spells/unstable_bolt.tres" type="Resource" id=23]
+[ext_resource path="res://assets/other/spells/vanish_trick.tres" type="Resource" id=24]
+[ext_resource path="res://assets/other/spells/weakness_exploit.tres" type="Resource" id=25]
+[ext_resource path="res://src/deck_view_button.tscn" type="PackedScene" id=26]
+[ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=27]
+
+[node name="control" type="ColorRect"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.752941 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+spell_pool = [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 10 ), ExtResource( 18 ), ExtResource( 5 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 6 ), ExtResource( 22 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ]
+
+[node name="control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_bottom = 8.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="control"]
+anchor_right = 1.0
+margin_left = -620.0
+margin_right = 194.0
+margin_bottom = 74.0
+grow_horizontal = 2
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "library_title"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="hint" type="Label" parent="control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -384.0
+margin_top = 120.0
+margin_right = 384.0
+margin_bottom = 248.0
+custom_fonts/font = ExtResource( 3 )
+text = "library_subtitle"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="spells" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_top = -56.0
+margin_bottom = -56.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="aligner1" type="Control" parent="spells"]
+margin_left = -168.0
+margin_top = 48.0
+margin_right = -160.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spell" parent="spells/aligner1" instance=ExtResource( 4 )]
+margin_left = -64.0
+margin_top = -56.0
+margin_right = 16.0
+margin_bottom = 26.0
+rect_scale = Vector2( 1.5, 1.5 )
+
+[node name="aligner2" type="Control" parent="spells"]
+margin_top = 48.0
+margin_right = 8.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spell" parent="spells/aligner2" instance=ExtResource( 4 )]
+margin_left = -64.0
+margin_top = -56.0
+margin_right = 16.0
+margin_bottom = 26.0
+rect_scale = Vector2( 1.5, 1.5 )
+
+[node name="aligner3" type="Control" parent="spells"]
+margin_left = 176.0
+margin_top = 48.0
+margin_right = 184.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spell" parent="spells/aligner3" instance=ExtResource( 4 )]
+margin_left = -64.0
+margin_top = -56.0
+margin_right = 16.0
+margin_bottom = 26.0
+rect_scale = Vector2( 1.5, 1.5 )
+
+[node name="button_continue" parent="." instance=ExtResource( 26 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -128.0
+margin_top = -256.0
+margin_right = 213.0
+margin_bottom = -149.0
+shortcut = null
+script = null
+
+[node name="label" parent="button_continue" instance=ExtResource( 27 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+text = "menu_continue"
+
+[connection signal="pressed" from="button_continue" to="." method="close"]

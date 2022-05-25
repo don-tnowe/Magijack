@@ -15,9 +15,8 @@ func _ready():
 
 func initialize():
 	battler = BattlePlayer
-	BattleManager.connect("battle_started", self, "update_view")
+	BattlePlayer.state.connect("battle_started", self, "update_view")
 	BattlePlayer.state.connect("turn_started", self, "update_cooldowns")
-	# BattleManager.connect("turn_started", self, "update_cooldowns")
 	BattlePlayer.connect("card_drawn", self, "player_drawn_card")
 	update_view()
 

@@ -16,23 +16,22 @@ func can_cast_with_hand(hand):
 
 
 func can_cast_with_selection(selection):
-	return selection.size() == 1
+	return selection.size() > 0
 
 
 func card_selectable(card):
-	return card.value < 11 && card.metal_value < 10 && card.special_index == 0
+	return card.value == 11 || card.value == 2
 
 
 func cast(owner, selection = []):
-	owner.state.status_battles.append(StatusEffect.new(
-		selection[0],
-		\"metal_value\",
-		1,
-		1
-	))
-	owner.view_node.node_hand.display_all()
-	owner.discard_cards(selection)
-
+	for x in selection:
+		owner.state.status_battles.append(StatusEffect.new(
+			selection[0],
+			\"value\",
+			-9 if x.value == 11 else 9,
+			1
+		))
+	owner.hand_changed()
 "
 
 [resource]

@@ -16,9 +16,9 @@ spell6_desc;;Discard 3 Purple cards in hand. Increase damage by 5 until end of b
 spell7;;Growing Warmth
 spell7_desc;;Discard 3 Orange cards in hand. Increase Limit by 1 until end of battle.
 spell8;;Retaliate
-spell8_desc;;If you were hit by the enemy last turn, increase power by +4. If you also discard 2 Orange cards, reset the cooldown.
+spell8_desc;;If you were hit by the enemy last turn, increase power by +4. If you also discard 3 Orange cards, reset the cooldown.
 spell9;;Arcane Hammer
-spell9_desc;;Discard 2 cards with equal values. Deal 22 damage.
+spell9_desc;;Discard 3 cards with equal values. Deal 20 damage.
 spell10;;Unstable Bolt
 spell10_desc;;Discard 2 to 5 cards. For each odd value, increase damage for this turn by 7. For each even value, deal 4 damage.
 spell11;;Unity Power
@@ -32,13 +32,13 @@ spell14_desc;;
 spell15;"Light as in ""not heavy""";Lighten
 spell15_desc;;Reduce a card's value by 1 for the rest of battle.
 spell16;;Quick Bolt
-spell16_desc;;If you only drew the 2 starting cards, deal damage 2 times the sum of their values.
+spell16_desc;;If you only have 2 cards in hand, deal damage 2 times the sum of their values. A Flawless counts as a 10.
 spell17;;Weakness Exploit
 spell17_desc;;Discard a Blue card. For each card in the Enemy's hand with a value lower than the discarded card, deal 6 damage.
 spell18;;Expand Mind
 spell18_desc;;Increase your Limit by 5 and value of each card in hand by 1, both until next turn.
 spell19;;Flawless Obedience
-spell19_desc;;Turn a Flawless Beast into a 2-value card for this turn.
+spell19_desc;;Turn any Flawless Beast into a 2-value card or a 2-value into a Flawless Beast card for this turn.
 spell20;;Dragon's Fury
 spell20_desc;;Turn all colored cards in hand into Red cards for this turn.
 spell21;;Steel Feather

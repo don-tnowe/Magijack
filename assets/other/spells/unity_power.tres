@@ -8,8 +8,20 @@ script/source = "extends SpellActions
 
 
 func cast(owner, selection = null):
-	for
-	owner.discard_all()
+	var suit_counts = [0, 0, 0, 0]
+
+	for x in owner.hand_data.cards:
+		for i in 4:
+			if x.is_of_suit(i):
+				suit_counts[i] += 1
+
+	owner.state.status_turns.append(StatusEffect.new(
+		owner.data,
+		\"power_bonus\",
+		suit_counts.max(),
+		1
+	))
+	
 "
 
 [resource]
@@ -19,6 +31,6 @@ texture = ExtResource( 1 )
 texture_frame = 11
 cost_min = 0
 cost_max = 0
-cooldown = 3
+cooldown = 4
 cooldown_start = 0
 actions = SubResource( 1 )
