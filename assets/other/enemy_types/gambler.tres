@@ -1,0 +1,51 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://src/classes/enemy_battler_data.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/enemy_types/gambler.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/other/decks/dragon.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+hpmax = 40
+limit = 18
+damage = 9
+greed_damage = 6
+power_bonus = 0
+deck = ExtResource( 3 )
+spells = [  ]
+enemy_name = "gambler"
+risk_max = 0.8
+risk_chance_mult = 1.5
+start_draw_chance = 0.2
+player_draw_response_chance = 0.5
+end_draw_stop_chance = 0.1
+cards_face_up = 2
+player_cards_face_up = 0
+scene = ExtResource( 2 )
+min_level = 3
+max_level = 9
+recommended_level = 4
+max_run_encounters = 3
+loot_cards = "red 4+1
+red 5+2
+red 5+2
+red 6+2
+red 6+3
+red 7+3
+red flawless
+red flawless
+blue 4+1
+blue 5+2
+blue 5+2
+blue 6+2
+blue 6+3
+blue 7+3
+blue flawless
+blue flawless
+orange 5+2
+orange 6+2
+purple 5+2
+purple 6+2"
+loot_choice_min = 3
+loot_choice_max = 5
+loot_player_choice = 2

@@ -17,9 +17,9 @@ func close():
 
 	# TODO: add more enemy types so this is irrelevant
 	enemy.hpmax *= 1 + (level * 0.1)
-	enemy.limit *= 1 + (level * 0.1)
 	enemy.damage *= 1 + (level * 0.15)
 	enemy.greed_damage *= 1 + (level * 0.05)
+	enemy.limit += level * 0.25
 
 	BattleEnemy.set_enemy(enemy)
 	BattleManager.battle_start()

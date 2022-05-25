@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/scenes/battle/enemy_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/graphics/enemies/gambler.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( -2, -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0.95, 1 ), Vector2( 1.02, 0.95 ), Vector2( 0.95, 1.02 ), Vector2( 1.02, 0.95 ) ]
+}
+
+[node name="enemy" instance=ExtResource( 1 )]
+scale = Vector2( 1.5, 1.5 )
+
+[node name="body" parent="." index="0"]
+scale = Vector2( 1.01987, 0.950131 )
+texture = ExtResource( 2 )
+offset = Vector2( 5.26984, -38.3333 )
+region_rect = Rect2( 5, 88, 198, 106 )
+
+[node name="hand" type="RemoteTransform2D" parent="body" index="0"]
+position = Vector2( 30.8772, -28.7582 )
+remote_path = NodePath("../../hand")
+update_scale = false
+
+[node name="head" type="RemoteTransform2D" parent="body" index="1"]
+position = Vector2( 19.0476, -100.741 )
+remote_path = NodePath("../../head")
+update_scale = false
+
+[node name="collar" type="Sprite" parent="body" index="2"]
+show_behind_parent = true
+position = Vector2( 13.9683, -61.4815 )
+scale = Vector2( 0.952381, 1.11111 )
+z_index = 1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 4, 6, 52.95, 26 )
+
+[node name="head" type="Sprite" parent="." index="1"]
+position = Vector2( 19.4261, -95.7169 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 61, 6, 81, 78 )
+
+[node name="hand" parent="." index="2"]
+position = Vector2( 31.4907, -27.324 )
+scale = Vector2( 1.00979, 0.960214 )
+texture = ExtResource( 2 )
+offset = Vector2( 5.64647, 10.7554 )
+region_rect = Rect2( 9, 35, 43, 51 )
+
+[node name="anim" parent="." index="3"]
+autoplay = "idle"
+anims/idle = SubResource( 1 )

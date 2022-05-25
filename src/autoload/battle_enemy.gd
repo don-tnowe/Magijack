@@ -79,6 +79,9 @@ func start_turn():
 	yield(self, "timeout")
 	draw_from_deck()
 
+	# Prevent confusing 2-turn-in-a-row insta-hits.
+	if BattleManager.last_turn_outcome == BattleManager.TurnOutcome.ENEMY_OVERLOAD: return
+
 	while randf() < data.start_draw_chance:
 		start(0.2)
 		yield(self, "timeout")

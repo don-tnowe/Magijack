@@ -92,7 +92,6 @@ region_enabled = true
 region_rect = Rect2( 54, 3, 57, 102 )
 
 [node name="hand" parent="." index="2"]
-position = Vector2( 14.3684, -81.0059 )
 scale = Vector2( 1.00979, 0.960214 )
 region_rect = Rect2( 60, 114, 19, 15 )
 

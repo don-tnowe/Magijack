@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/scenes/battle/enemy_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/graphics/enemies/bandit.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( -2, -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0.95, 1.02 ), Vector2( 1.02, 0.95 ), Vector2( 0.95, 1.02 ), Vector2( 1.02, 0.95 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -61.7544, -15.6863 ), Vector2( -61.7544, -10.4575 ) ]
+}
+
+[node name="enemy" instance=ExtResource( 1 )]
+scale = Vector2( 1.5, 1.5 )
+
+[node name="head" type="Sprite" parent="." index="0"]
+position = Vector2( -6.66667, -88 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 71, 68 )
+
+[node name="hood" type="Sprite" parent="head" index="0"]
+show_behind_parent = true
+position = Vector2( 14.3333, -13.45 )
+z_index = 1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 76, 3, 93, 64 )
+
+[node name="body" parent="." index="1"]
+position = Vector2( 0, -26.6667 )
+scale = Vector2( 0.95, 1.02 )
+texture = ExtResource( 2 )
+offset = Vector2( 4, -5 )
+region_rect = Rect2( 4, 70, 143, 93 )
+
+[node name="hand" type="RemoteTransform2D" parent="body" index="0"]
+position = Vector2( -61.7544, -15.6863 )
+remote_path = NodePath("../../hand")
+update_scale = false
+
+[node name="head" type="RemoteTransform2D" parent="body" index="1"]
+position = Vector2( -7.01754, -60.1307 )
+remote_path = NodePath("../../head")
+update_scale = false
+
+[node name="hand" parent="." index="2"]
+position = Vector2( -58.6667, -42.6667 )
+scale = Vector2( 1.00979, 0.960214 )
+texture = ExtResource( 2 )
+offset = Vector2( 2.64081, -4.86003 )
+region_rect = Rect2( 151, 70, 33, 33 )
+
+[node name="card3" parent="hand" index="0"]
+position = Vector2( 5.70176, -7.16566 )
+
+[node name="card1" parent="hand" index="1"]
+position = Vector2( 1.87003, -7.23661 )
+
+[node name="card2" parent="hand" index="2"]
+position = Vector2( -1.94876, -7.21393 )
+
+[node name="anim" parent="." index="3"]
+autoplay = "idle"
+anims/idle = SubResource( 1 )

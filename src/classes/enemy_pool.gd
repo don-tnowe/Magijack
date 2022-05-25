@@ -13,7 +13,7 @@ func get_random_enemy(level, encounter_count_dict):
 	var remaining_traversal = randi() % weight_sum
 	for x in possible_enemies:
 		if can_place_enemy(x, level, encounter_count_dict):
-			if remaining_traversal <= 1:
+			if remaining_traversal < 1:
 				return x
 				
 			remaining_traversal -= 1

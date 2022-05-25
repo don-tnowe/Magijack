@@ -1,35 +1,43 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://src/classes/enemy_battler_data.gd" type="Script" id=1]
-[ext_resource path="res://src/scenes/enemy_types/tutorial_phoenix.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=3]
+[ext_resource path="res://src/scenes/enemy_types/wizard_boar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/other/decks/light.tres" type="Resource" id=3]
 
 [resource]
 script = ExtResource( 1 )
-hpmax = 30
-limit = 12
+hpmax = 20
+limit = 14
 damage = 5
 greed_damage = 5
 power_bonus = 0
 deck = ExtResource( 3 )
 spells = [  ]
-enemy_name = "tutorial_phoenix"
-risk_max = 0.25
+enemy_name = "wizard_boar"
+risk_max = 0.2
 risk_chance_mult = 1.0
 start_draw_chance = 0.2
-player_draw_response_chance = 0.0
+player_draw_response_chance = 0.2
 end_draw_stop_chance = 1.0
 cards_face_up = 2
 player_cards_face_up = 0
 scene = ExtResource( 2 )
-min_level = 0
-max_level = 0
+min_level = 1
+max_level = 2
 recommended_level = 1
 max_run_encounters = 3
-loot_cards = "red flawless
-blue flawless
-purple flawless
-orange flawless"
-loot_choice_min = 4
+loot_cards = "red 1
+blue 1
+purple 1
+orange 1
+red 2
+blue 2
+purple 2
+orange 2
+red 4+1
+blue 4+1
+purple 4+1
+orange 4+1"
+loot_choice_min = 2
 loot_choice_max = 4
 loot_player_choice = 2

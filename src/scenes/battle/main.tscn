@@ -8,7 +8,7 @@
 [ext_resource path="res://src/scenes/battle/hand.gd" type="Script" id=6]
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=7]
 [ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/scenes/enemy_types/tutorial_phoenix.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/scenes/enemy_types/bandit.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/scenes/battle/enemy_view.gd" type="Script" id=10]
 [ext_resource path="res://assets/graphics/battle/table.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/battle_ui/icons.png" type="Texture" id=12]
@@ -1119,9 +1119,6 @@ custom_fonts/font = ExtResource( 1 )
 text = "10"
 align = 2
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="color_rect" type="ColorRect" parent="player_ui/control/label_power"]
 visible = false
@@ -1418,7 +1415,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 184.537, 70 )
+texture_offset = Vector2( 393.546, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1427,7 +1424,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 451.796, 70 )
+texture_offset = Vector2( 511.639, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 

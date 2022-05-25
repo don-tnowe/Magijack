@@ -1,35 +1,43 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://src/classes/enemy_battler_data.gd" type="Script" id=1]
-[ext_resource path="res://src/scenes/enemy_types/tutorial_phoenix.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/scenes/enemy_types/bandit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/other/decks/default.tres" type="Resource" id=3]
 
 [resource]
 script = ExtResource( 1 )
-hpmax = 60
-limit = 12
-damage = 10
-greed_damage = 10
+hpmax = 30
+limit = 16
+damage = 8
+greed_damage = 8
 power_bonus = 0
 deck = ExtResource( 3 )
 spells = [  ]
-enemy_name = "tutorial_phoenix2"
-risk_max = 0.25
-risk_chance_mult = 1.0
+enemy_name = "bandit"
+risk_max = 0.8
+risk_chance_mult = 1.5
 start_draw_chance = 0.2
 player_draw_response_chance = 0.0
-end_draw_stop_chance = 1.0
+end_draw_stop_chance = 0.5
 cards_face_up = 2
 player_cards_face_up = 0
 scene = ExtResource( 2 )
-min_level = 1
-max_level = 8
-recommended_level = 1
+min_level = 2
+max_level = 4
+recommended_level = 2
 max_run_encounters = 3
-loot_cards = "red flawless+4
-blue flawless+4
-purple flawless+4
-orange flawless+4"
-loot_choice_min = 4
-loot_choice_max = 4
+loot_cards = "red 3+1
+red 4+1
+red 4+1
+red 5+1
+red 5+2
+blue 3+1
+blue 4+1
+blue 4+1
+blue 5+1
+blue 5+2
+orange 4+1
+orange 5+1"
+loot_choice_min = 3
+loot_choice_max = 5
 loot_player_choice = 2
