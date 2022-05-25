@@ -38,7 +38,7 @@ func battle_start():
 	data.deck.battle_start()
 	
 	state.start_battle()
-	view_node.update_all()
+	start_turn()
 
 
 func battle_end():
@@ -106,6 +106,8 @@ func player_card_drawn(card, hand, limit):
 func set_hp(v):
 	hp = v
 	view_node.update_all()
+	if hp <= 0 && !BattleManager.player_turn_ended:
+		BattlePlayer.end_turn()
 
 
 func player_turn_ended(hand, limit_left, power):
