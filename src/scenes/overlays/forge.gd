@@ -69,6 +69,7 @@ func upgrade1():
 	selected_card_data[0].value -= 1
 	choices_left -= 1
 	$"anim".play("upgrade1")
+	$"anim".seek(0)
 	update_gui()
 
 
@@ -78,4 +79,5 @@ func upgrade2():
 	selected_card_data[0].metal_value += 1
 	choices_left -= 1
 	$"anim".play("upgrade2")
+	$"anim".seek(0)
 	update_gui()
