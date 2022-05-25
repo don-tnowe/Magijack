@@ -10,7 +10,7 @@ spell3_desc;;"Enemy draws a card. Show their entire hand. "
 spell4;;Sharpen
 spell4_desc;;Give +1 power to a card for the rest of the battle, discard it. Flawless, special and +10 cards cannot be upgraded.
 spell5;;Introspect
-spell5_desc;;Discard Blue cards. Increase your limit by 1 for each for this turn.
+spell5_desc;;Discard Blue cards. Increase your limit by 2 for each for this turn.
 spell6;;Might of Pride
 spell6_desc;;Discard 3 Purple cards in hand. Increase damage by 5 until end of battle.
 spell7;;Growing Warmth
@@ -24,7 +24,7 @@ spell10_desc;;Discard 2 to 5 cards. For each odd value, increase damage for this
 spell11;;Unity Power
 spell11_desc;;For each card of the color you have most of in hand, Increase your power for this turn by +1.
 spell12;;Hammer Bolt
-spell12_desc;;Discard a card with value of 5 or more. Deal damage 5 times its value.
+spell12_desc;;Discard 2 cards with value of 5 or more. Deal damage 2 times their sum of values.
 spell13;;Intimidate
 spell13_desc;;Discard up to 5 Purple cards. Deal 4 damage for each card discarded.
 spell14;;

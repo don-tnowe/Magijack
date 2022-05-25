@@ -50,6 +50,7 @@ func cast(owner, selection = []):
 			1
 		))
 
+	owner.rival.view_node.update_all()
 	owner.discard_cards(selection)
 "
 

@@ -52,11 +52,18 @@ func add_card(card_data, is_face_down = false):
 		x.raise()  # Keep 'em ordered.
 	
 	new_node.visible = true
-	new_node.rect_position = Vector2(0, 256)
+	new_node.rect_position = Vector2(-640, -128)
 	new_node.rect_rotation = 0
 	new_node.set_face_down(is_face_down)
 	selected_card_idx = -1
 	hand_data.cards[new_idx].display_on_card_node(new_node)
+	
+	$"../tween".interpolate_property(
+		new_node, "rect_scale:x",
+		0.2, 1, 0.5,
+		Tween.TRANS_CUBIC, Tween.EASE_OUT
+	)
+	$"../tween".start()
 
 	if is_players:
 		new_node.connect("mouse_entered", self, "card_mouse_entered", [new_node])

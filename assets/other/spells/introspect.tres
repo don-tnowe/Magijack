@@ -33,7 +33,7 @@ func cast(owner, selection = []):
 	owner.state.status_turns.append(StatusEffect.new(
 		owner.data,
 		\"limit\",
-		selection.size(),
+		selection.size() * 2,
 		1
 	))
 	owner.discard_cards(selection)

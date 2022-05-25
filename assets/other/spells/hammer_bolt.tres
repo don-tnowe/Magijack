@@ -24,7 +24,7 @@ func card_selectable(card):
 
 
 func cast(owner, selection = []):
-	owner.rival.hp -= selection[0].value * 5
+	owner.rival.hp -= (selection[0].value + selection[1].value) * 2
 	owner.discard_cards(selection)
 "
 
@@ -33,8 +33,8 @@ script = ExtResource( 2 )
 spell_id = 12
 texture = ExtResource( 1 )
 texture_frame = 12
-cost_min = 1
-cost_max = 1
-cooldown = 3
+cost_min = 2
+cost_max = 2
+cooldown = 4
 cooldown_start = 0
 actions = SubResource( 1 )

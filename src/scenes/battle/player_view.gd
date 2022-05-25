@@ -37,7 +37,7 @@ func update_hand():
 	
 	node_label_power.text = str(BattlePlayer.hand_data.sum_power)
 	if BattlePlayer.data.power_bonus > 0:
-		node_label_power.text += " + " + str(BattlePlayer.data.power_bonus)
+		node_label_power.text += "+" + str(BattlePlayer.data.power_bonus)
 	
 	var crit_overload_chance = BattlePlayer.data.deck.get_crit_overload_chance(BattlePlayer.hand_data, BattlePlayer.data.limit)
 	node_chance_crit.text = str(floor(crit_overload_chance[0] * 100)) + "%"
@@ -71,18 +71,25 @@ func set_endturn_available(v):
 
 
 func added_card(start_pos, amount, power_amount):
-	# Limit
 	var node = bubble.instance()
+	var node2 = bubble.instance()
+	
+	add_child(node2)
 	add_child(node)
-	node.global_position = start_pos
-	node.rotation_degrees -= 15
-	node.initialize(0, str(amount), 0.5, 0.7, 100, node_bar_mp.rect_global_position + node_bar_mp.rect_size * 0.5, 0.75)
-	# Power
-	node = bubble.instance()
-	add_child(node)
-	node.global_position = start_pos + Vector2(48, 0)
-	node.rotation_degrees += 5
-	node.initialize(2, str(power_amount), 0.3, 0.7, 100, node_label_power.rect_global_position + Vector2(-32, 32), 0.75)
+	
+	if amount == power_amount:
+		node.global_position = start_pos + Vector2(24, 0)
+		node2.global_position = start_pos + Vector2(24, 0)
+		
+	else:
+		node.global_position = start_pos
+		node2.global_position = start_pos + Vector2(48, 0)
+		node.rotation_degrees -= 15
+		node2.rotation_degrees += 5
+		
+	node.initialize(0, str(amount), 0.5, 0.7, 120, node_bar_mp.rect_global_position + node_bar_mp.rect_size * 0.5, 0.75)
+	node2.initialize(2, str(power_amount), 0.3, 0.7, 120, node_label_power.get_child(1).global_position, 0.75)
+
 
 
 func taken_damage(amount):

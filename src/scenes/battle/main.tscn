@@ -1110,22 +1110,34 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -392.0
-margin_top = -288.0
-margin_right = -150.0
-margin_bottom = -214.0
+margin_left = -544.0
+margin_top = -328.0
+margin_right = -302.0
+margin_bottom = -254.0
 rect_rotation = 15.0
 custom_fonts/font = ExtResource( 1 )
 text = "10"
+align = 2
 valign = 1
 __meta__ = {
-"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="color_rect" type="ColorRect" parent="player_ui/control/label_power"]
+visible = false
+show_behind_parent = true
+margin_left = 115.0
+margin_top = 31.0
+margin_right = 251.0
+margin_bottom = 51.0
+color = Color( 0, 0, 0, 0.752941 )
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="icon3" type="Sprite" parent="player_ui/control/label_power"]
 show_behind_parent = true
-position = Vector2( -15.0895, 40.2779 )
+position = Vector2( 261.189, 39.7539 )
 scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 12 )
 hframes = 8
@@ -1406,7 +1418,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 95.4511, 70 )
+texture_offset = Vector2( 184.537, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1415,7 +1427,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 246.97, 70 )
+texture_offset = Vector2( 451.796, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
