@@ -26,7 +26,7 @@ func card_selectable(card):
 func cast(owner, selection = []):
 	for x in selection:
 		owner.state.status_turns.append(StatusEffect.new(
-			selection[0],
+			x,
 			\"value\",
 			-9 if x.value == 11 else 9,
 			1
