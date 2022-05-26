@@ -58,7 +58,7 @@ func can_upgrade1(card):
 
 func can_upgrade2(card):
 	if card.special_index > 0: return false
-	if card.value >= 10: return false
+	if card.metal_value >= 10: return false
 	
 	return true
 

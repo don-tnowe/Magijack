@@ -92,8 +92,7 @@ func end_turn(forced = false):
 
 
 func start_turn():
-	if BattleManager.last_turn_outcome != BattleManager.TurnOutcome.PLAYER_OVERLOAD:
-		view_node.node_hand.discard_all()
+	view_node.node_hand.discard_all()
 	
 	drawn_this_turn = 0
 #	state.start_turn()
