@@ -36,7 +36,7 @@ spell16_desc;;If you only have 2 cards in hand, deal damage 2 times the sum of t
 spell17;;Weakness Exploit
 spell17_desc;;Discard a Blue card. For each card in the Enemy's hand with a value lower than the discarded card, deal 8 damage.
 spell18;;Expand Mind
-spell18_desc;;Increase your Limit by 5 and value of each card in hand by 1, both until next turn.
+spell18_desc;;Increase your Limit by 3 and value of each card in hand by 1, both until next turn.
 spell19;;Flawless Obedience
 spell19_desc;;Turn any Flawless Beast into a 2-value card or a 2-value into a Flawless Beast card for this turn.
 spell20;;Dragon's Fury

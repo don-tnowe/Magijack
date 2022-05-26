@@ -1,0 +1,46 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://src/classes/enemy_battler_data.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/enemy_types/owleer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/other/decks/royal.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+hpmax = 45
+limit = 18
+damage = 8
+greed_damage = 9
+power_bonus = 0
+deck = ExtResource( 3 )
+spells = [  ]
+enemy_name = "owleer"
+risk_max = 0.3
+risk_chance_mult = 1.5
+start_draw_chance = 0.2
+player_draw_response_chance = 0.5
+end_draw_stop_chance = 0.3
+cards_face_up = 2
+player_cards_face_up = 0
+scene = ExtResource( 2 )
+min_level = 5
+max_level = 7
+recommended_level = 2
+max_run_encounters = 3
+loot_cards = "red 8+6
+blue 8+6
+purple 4+2
+purple 4+2
+purple 5+2
+purple 5+2
+purple 6+3
+purple 6+3
+purple 8+6
+orange 4+2
+orange 4+2
+orange 5+2
+orange 5+2
+orange 6+3
+orange 6+3"
+loot_choice_min = 4
+loot_choice_max = 4
+loot_player_choice = 2

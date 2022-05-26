@@ -24,7 +24,7 @@ tracks/0/keys = {
 scale = Vector2( 1.5, 1.5 )
 
 [node name="body" parent="." index="0"]
-scale = Vector2( 1.01987, 0.950131 )
+scale = Vector2( 0.9556, 0.996 )
 texture = ExtResource( 2 )
 offset = Vector2( 5.26984, -38.3333 )
 region_rect = Rect2( 5, 88, 198, 106 )
@@ -49,13 +49,13 @@ region_enabled = true
 region_rect = Rect2( 4, 6, 52.95, 26 )
 
 [node name="head" type="Sprite" parent="." index="1"]
-position = Vector2( 19.4261, -95.7169 )
+position = Vector2( 18.2019, -100.338 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 61, 6, 81, 78 )
 
 [node name="hand" parent="." index="2"]
-position = Vector2( 31.4907, -27.324 )
+position = Vector2( 29.5063, -28.6432 )
 scale = Vector2( 1.00979, 0.960214 )
 texture = ExtResource( 2 )
 offset = Vector2( 5.64647, 10.7554 )

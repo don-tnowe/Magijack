@@ -1,46 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/scenes/battle/enemy_base.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/graphics/enemies/tutorial_phoenix.png" type="Texture" id=2]
-
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("hand:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 8, -16 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("body:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1.05, 0.9 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("body/hand:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 13.6842, -8.28431 ) ]
-}
+[ext_resource path="res://assets/graphics/enemies/owleer.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -58,44 +19,55 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0.95, 1.02 ), Vector2( 1.02, 0.95 ), Vector2( 0.95, 1.02 ), Vector2( 1.02, 0.95 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("body/hand:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 13.6842, -12.2059 ), Vector2( 13.6842, -8.28431 ) ]
-}
 
 [node name="enemy" instance=ExtResource( 1 )]
 scale = Vector2( 1.5, 1.5 )
 
 [node name="body" parent="." index="0"]
-position = Vector2( 0, -73.55 )
-scale = Vector2( 1.05, 0.9 )
+position = Vector2( -4.65, -16.7167 )
+scale = Vector2( 0.9556, 1.0144 )
+texture = ExtResource( 2 )
 offset = Vector2( 4, -5 )
-region_rect = Rect2( 3, 1, 46, 151 )
+region_rect = Rect2( 59, 10, 182, 182 )
 
-[node name="hand" type="RemoteTransform2D" parent="body" index="0"]
-position = Vector2( 13.6842, -8.28431 )
+[node name="head" type="RemoteTransform2D" parent="body" index="0"]
+position = Vector2( 4.89474, -109.101 )
+remote_path = NodePath("../../head")
+update_scale = false
+
+[node name="glove" type="RemoteTransform2D" parent="body" index="1"]
+position = Vector2( -73.7018, -51.5849 )
+remote_path = NodePath("../../hooty_chicken")
+update_scale = false
+
+[node name="hooty_chicken" type="Sprite" parent="." index="1"]
+position = Vector2( -75.0794, -69.0445 )
+texture = ExtResource( 2 )
+offset = Vector2( 5.89473, -37.6472 )
+region_enabled = true
+region_rect = Rect2( 1, 6, 45, 115 )
+
+[node name="hand_actually_beak" type="RemoteTransform2D" parent="hooty_chicken" index="0"]
+position = Vector2( 0.666672, -74.6666 )
+rotation = -3.14159
+scale = Vector2( 1.05, 0.9 )
 remote_path = NodePath("../../hand")
 update_scale = false
 
-[node name="stick" type="Sprite" parent="." index="1"]
-position = Vector2( -1, -26.55 )
+[node name="head" type="Sprite" parent="." index="2"]
+position = Vector2( 0.0274131, -127.389 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 54, 3, 57, 102 )
+region_rect = Rect2( 1, 124, 55, 67 )
 
-[node name="hand" parent="." index="2"]
+[node name="hand" parent="." index="3"]
+position = Vector2( -74.4127, -143.711 )
+rotation = -3.14159
 scale = Vector2( 1.00979, 0.960214 )
-region_rect = Rect2( 60, 114, 19, 15 )
+texture = ExtResource( 2 )
+offset = Vector2( 1.67421, 3.23325 )
+region_rect = Rect2( 51, 3, 6, 11 )
 
-[node name="anim" parent="." index="3"]
+[node name="anim" parent="." index="4"]
 autoplay = "idle"
-anims/RESET = SubResource( 2 )
 anims/idle = SubResource( 1 )
