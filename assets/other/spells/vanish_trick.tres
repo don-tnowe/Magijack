@@ -9,6 +9,8 @@ script/source = "extends SpellActions
 
 func cast(owner, selection = null):
 	owner.discard_all()
+	owner.draw_from_deck()
+	owner.draw_from_deck()
 "
 
 [resource]

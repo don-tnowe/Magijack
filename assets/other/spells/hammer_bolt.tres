@@ -16,7 +16,7 @@ func can_cast_with_hand(hand):
 
 
 func can_cast_with_selection(selection):
-	return selection.size() == 1
+	return selection.size() == 2  # idk why i even do these because it's already checked in the spell card selection script
 
 
 func card_selectable(card):
