@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://assets/translations/character_descriptions.eo.translation", "res://assets/translations/character_descriptions.en.translation" ]
+
+source_file="res://assets/translations/character_descriptions.csv"
+dest_files=[ "res://assets/translations/character_descriptions.eo.translation", "res://assets/translations/character_descriptions.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=1

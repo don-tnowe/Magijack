@@ -2,6 +2,7 @@ extends Timer
 
 signal card_drawn(card_just_drawn, hand, limit)
 signal turn_ended(hand, limit_left, power)
+signal new_spell_acquired()
 
 var between_runs_data := preload("res://assets/other/player_characters/fool.tres")
 var data : BattlerData
@@ -18,14 +19,13 @@ var drawn_this_turn = 0
 
 func _ready():
 	randomize()
-	run_start()
+	state = BattlerState.new(self)
 	rival = BattleEnemy
 	BattleManager.connect("turn_started", self, "start_turn")
 
 
 func run_start():
-	state = BattlerState.new(self)
-
+	state.clear()
 	data = between_runs_data.duplicate()
 	hp = data.hpmax
 
@@ -110,3 +110,8 @@ func start_turn():
 	view_node.update_all()
 	view_node.set_draw_available(true)
 	view_node.set_endturn_available(true)
+
+
+func add_spell(spell):
+	data.spells.append(spell)
+	emit_signal("new_spell_acquired")

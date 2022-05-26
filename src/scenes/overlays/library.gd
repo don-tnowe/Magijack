@@ -33,5 +33,5 @@ func spell_pressed(idx):
 
 
 func close():
-	BattlePlayer.data.spells.append(spell_pool[selected_spell_idx])
+	BattlePlayer.add_spell(spell_pool[selected_spell_idx])
 	.close()

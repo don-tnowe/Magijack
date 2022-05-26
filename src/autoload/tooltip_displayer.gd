@@ -50,5 +50,8 @@ func show_spell_tooltip(node, spell_id):
 	show_tooltip(node, "[b]"
 		+ tr("spell" + str(spell_id))
 		+ "[/b]\n"
-		+ tr("spell" + str(spell_id) + "_desc")
+		+ (
+			tr("spell" + str(spell_id) + "_desc") 
+			if spell_id != 14 else 
+			tr("spell" + str(spell_id) + "_desc") % Metaprogression.companion_card_stringified)
 		)

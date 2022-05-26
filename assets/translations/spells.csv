@@ -27,8 +27,8 @@ spell12;;Hammer Bolt
 spell12_desc;;Discard 2 cards with value of 5 or more. Deal damage 2 times their sum of values.
 spell13;;Intimidate
 spell13_desc;;Discard up to 5 Purple cards. Deal 4 damage for each card discarded.
-spell14;;
-spell14_desc;;
+spell14;;Companion Call
+spell14_desc;;Summon your Companion card into your hand. Your card: %s
 spell15;"Light as in ""not heavy""";Lighten
 spell15_desc;;Reduce a card's value by 1 for the rest of battle.
 spell16;;Quick Bolt

@@ -5,7 +5,7 @@ tooltip_hp;;Health: %s/%s;Здоров'я: %s/%s
 tooltip_hp_desc;;Once this reaches 0, you lose.;Якщо воно досягне 0 - це програш.
 tooltip_mp;Serious width limit here, be careful.;Limit: %s/%s (%s left);Ліміт: %s/%s (%s вільно)
 tooltip_mp_desc;;If little Limit is left, be careful: drawing high card values will OVERLOAD you.;Якщо Ліміту лишається мало, обережніше: якщо попадеться важка картка - ПЕРЕВАНТАЖЕННЯ.
-tooltip_power;;Sum of card Powers, which is Values + Sharpening. Whoever has more power, will deal damage this turn.; Сума Сил карток, Сила = Значення + Загострення. В кого більше Сили - б'є в поточний хід.
+tooltip_power;;Sum of card Powers, which is Values + Sharpening. Whoever has more power, will deal damage this turn.;" Сума Сил карток, Сила = Значення + Загострення. В кого більше Сили - б'є в поточний хід."
 tooltip_crit;;Percentage of cards in Draw pile that will get you to your Limit, resulting in a guaranteed x2 hit.;Відсоток карток у стопці добору, що доповнять суму до Ліміту, наносячи гарантований подвійний удар.
 tooltip_overload;;Percentage of cards in Draw pile that will get you ABOVE your Limit, resulting in a painful OVERLOAD.;Відсоток карток у стопці добору, що доповнять суму ВИЩЕ Ліміту, що призведе до болісного ПЕРЕВАНТАЖЕННЯ.
 ;;;
@@ -31,6 +31,7 @@ menu_choose;;Choose;Вибрати
 victory_title;;Victory!;Перемога!
 victory_pick_cards;;Choose cards to add to your deck;Вибери карти, які додасиш до колоди!
 victory_choices_left;Mind the space at the end.;"Choices left: ";"Ще виборів: "
+victory_choose_next_enemy;;Select your next rival;Обери наступного супротивника
 ;;;
 deckview_title;;Your Magnificent Cards;Ваші Чудові Карти
 deckview_title_drawpile;;Draw from here. Put everything back after battle;Добирай звідси. Після битви все поверни
@@ -65,3 +66,9 @@ library_subtitle;;Choose a spell to learn. Click spells in combat to use them.;�
 spell_cooldown;;Cooldown;Перезарядка
 ;;;
 defeat;;Perished.;Загинув.
+;;;
+gamestart_select_character;;Choose your story;Обери історію
+gamestart_companion_title;;Choose a companion card.;Обери карту-супутника.
+gamestart_companion_desc;;The duelist that bested you gave you a gift. Choose a card you will be able to summon in combat at will.;Дуеліст, що переміг тебе, лишив подарунок. Обери картку, і зможеш призвати її в бою силою думки.
+;;;
+;;;

@@ -15,10 +15,12 @@ func _ready():
 
 func initialize():
 	battler = BattlePlayer
-	BattlePlayer.state.connect("battle_started", self, "update_view")
+#	Screw this signal garbage nonsense. I'm just gonna make explicit method calls so i can actually control the call order
 	BattlePlayer.state.connect("turn_started", self, "update_cooldowns")
+	BattlePlayer.connect("new_spell_acquired", self, "update_view")
+#	BattlePlayer.state.connect("turn_started", self, "update_view")
 	BattlePlayer.connect("card_drawn", self, "player_drawn_card")
-	# update_view()
+	call_deferred("update_view")
 
 
 func player_drawn_card(card, hand, limit):
@@ -31,7 +33,7 @@ func update_view():
 		var idx = container.get_child_count()
 		var node = scene_spellview.instance()
 		container.add_child(node)
-		node.get_node("button").connect("mouse_entered", TooltipDisplayer, "show_spell_tooltip", [node, battler.data.spells[idx].spell_id])
+		
 		node.get_node("button").connect("mouse_exited", TooltipDisplayer, "hide_tooltip")
 		node.get_node("button").connect("pressed", self, "spell_cast_start", [idx])
 
@@ -40,6 +42,9 @@ func update_view():
 		if i >= spellcount:
 			node.visible = false
 			continue
+			
+		node.get_node("button").disconnect("mouse_entered", TooltipDisplayer, "show_spell_tooltip")
+		node.get_node("button").connect("mouse_entered", TooltipDisplayer, "show_spell_tooltip", [node, battler.data.spells[i].spell_id])
 		
 		node.visible = true
 		battler.data.spells[i].display_on_spell_node(node)
@@ -48,7 +53,7 @@ func update_view():
 	
 
 func update_cooldowns():
-	for i in battler.data.spells.size():
+	for i in battler.state.spell_cooldowns.size():
 		var node = container.get_child(i)
 		if battler.state.spell_cooldowns[i] <= 0:
 			node.get_node("button").disabled = !battler.data.spells[i].can_cast_with_hand(BattlePlayer.hand_data)

@@ -86,10 +86,11 @@ config/icon="res://icon.png"
 
 [autoload]
 
-BattlePlayer="*res://src/autoload/battle_player.gd"
-BattleEnemy="*res://src/autoload/battle_enemy.gd"
-BattleManager="*res://src/autoload/battle_manager.gd"
+Metaprogression="*res://src/autoload/metaprogression.gd"
 OverlayStack="*res://src/autoload/overlay_stack.gd"
+BattleEnemy="*res://src/autoload/battle_enemy.gd"
+BattlePlayer="*res://src/autoload/battle_player.gd"
+BattleManager="*res://src/autoload/battle_manager.gd"
 TooltipDisplayer="*res://src/autoload/tooltip_displayer.gd"
 
 [debug]
@@ -163,7 +164,7 @@ translation_remaps={
 "res://assets/fonts/body.tres": PoolStringArray( "res://assets/fonts/body_cyrillic.tres:uk" ),
 "res://assets/fonts/normal.tres": PoolStringArray( "res://assets/fonts/normal_cyrrilic.tres:uk" )
 }
-translations=PoolStringArray( "res://assets/translations/all.en.translation", "res://assets/translations/all.uk.translation", "res://assets/translations/spells.en.translation", "res://assets/translations/spells.uk.translation" )
+translations=PoolStringArray( "res://assets/translations/all.en.translation", "res://assets/translations/all.uk.translation", "res://assets/translations/spells.en.translation", "res://assets/translations/spells.uk.translation", "res://assets/translations/character_descriptions.en.translation", "res://assets/translations/dialogue.en.translation" )
 
 [node]
 

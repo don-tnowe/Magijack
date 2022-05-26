@@ -1,0 +1,17 @@
+;eo;en
+char_fool;;The Fool
+char_fool_desc;;"Entertains, and tricks.
+
+Through card magic, he can make all cards disappear to draw a new hand."
+char_arsonist;;The Arsonist
+char_arsonist_desc;;"Everything must burn.
+
+Red cards can help cause extra damage to the enemy... given he wins for the turn. 
+To help, he starts with more Red cards in his deck."
+char_arsonist_req;;To unlock, reach your first Bonfire.
+char_artisan;;The Artisan
+char_artisan_desc;;"Bend steel to form masterpieces. Bend the power of cards to become the strongest wizard.
+
+Can give cards +1 power for the rest of the battle.
+Additionally, starts with 5 random cards with a +1."
+char_artisan_req;;To unlock, beat a skilled hunter sent by the Gryphon forces.

@@ -18,7 +18,9 @@ func _ready():
 		"hp_mp_upgrade",
 		"library",
 		"forge",
-		"defeat"
+		"defeat",
+		"select_character",
+		"select_companion_card"
 		]:
 		overlay_scenes[x] = load(overlay_directory + x + ".tscn")
 

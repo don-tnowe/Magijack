@@ -17,9 +17,12 @@ var owner
 func _init(owner_):
 	owner = owner_
 	owner_.connect("card_drawn", self, "draw_card")
+		
 	BattleManager.connect("turn_started", self, "start_turn")
 	BattleManager.connect("battle_started", self, "start_battle")
 	BattleManager.connect("battle_ended", self, "end_battle")
+	if owner_ == BattlePlayer:
+		BattlePlayer.connect("new_spell_acquired", self, "resize_arr")
 
 
 func draw_card(card, hand, limit):
@@ -35,6 +38,12 @@ func start_turn():
 		spell_cooldowns[i] -= 1
 	
 	emit_signal("turn_started")
+
+
+func resize_arr():
+	spell_cooldowns.resize(owner.data.spells.size())
+	for i in spell_cooldowns.size():
+		spell_cooldowns[i] = 0
 
 
 func start_battle():
@@ -68,5 +77,12 @@ func clear_inactive_effects(arr):
 	while i < arr.size():
 		if !arr[i].active: arr.pop_at(i)
 		else: i -= 1
-		
+
+
+func clear():
+	for x in status_battles:
+		x.end()
+	
+	end_battle()
+	spell_cooldowns = []
 	

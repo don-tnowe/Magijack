@@ -6,7 +6,8 @@ enum TurnOutcome {
 	PLAYER_CRIT,
 	PLAYER_WIN,
 	ENEMY_WIN,
-	DRAW
+	DRAW,
+	DEATH_BY_SPELL
 	}
 
 signal turn_started()
@@ -14,7 +15,6 @@ signal battle_started()
 signal battle_ended()
 
 var battles_completed := 0
-var battles_completed_highscore := 0
 var area_features := ["hp_mp_upgrade", "library", "forge"]
 var area_progress := 0
 
@@ -48,8 +48,9 @@ func _ready():
 func run_start():
 	enemy_encounter_count = {}
 	battles_completed = 0
+	BattlePlayer.run_start()
 	OverlayStack.open("select_next_area")
-	OverlayStack.stack[0].close()
+	OverlayStack.stack[OverlayStack.stack.size() - 1].close()
 
 
 func battle_start():
@@ -77,7 +78,10 @@ func enemy_turn_ended(hand, limit_left, power):
 
 
 func apply_turn_outcome():
-	if enemy_limit_left < 0:
+	if last_turn_outcome == TurnOutcome.DEATH_BY_SPELL:
+		pass
+
+	elif enemy_limit_left < 0:
 		BattleEnemy.hp -= max(BattlePlayer.data.greed_damage, 0)
 		view_node.enemy_overload(-enemy_limit_left, BattleEnemy.data.limit)
 		last_turn_outcome = TurnOutcome.ENEMY_OVERLOAD
@@ -124,6 +128,9 @@ func victory():
 	emit_signal("battle_ended")
 	start(2)
 	yield(self, "timeout")
+
+	if BattleEnemy.data.enemy_name == "owleer": Metaprogression.artisan_unlocked = true
+
 	OverlayStack.open("select_next_area")
 
 	if area_progress >= 3:
@@ -140,7 +147,11 @@ func victory():
 
 
 func defeat():
+	emit_signal("battle_ended")
 	start(2)
 	yield(self, "timeout")
+#	OverlayStack.open("select_next_area")
+	OverlayStack.open("select_companion_card", [BattleEnemy.data])
+	OverlayStack.open("select_character")
 	OverlayStack.open("defeat")
-	battles_completed_highscore = battles_completed
+	Metaprogression.run_ended()

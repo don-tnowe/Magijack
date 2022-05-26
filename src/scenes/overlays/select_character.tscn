@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/scenes/overlays/select_character.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/other/player_characters/fool.tres" type="Resource" id=5]
+[ext_resource path="res://assets/other/player_characters/artisan.tres" type="Resource" id=6]
+[ext_resource path="res://assets/other/player_characters/arsonist.tres" type="Resource" id=7]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.412698, 0.507937, 0.597884, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.319336, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 16
+
+[node name="control" type="ColorRect"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.752941 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+characters = [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ) ]
+
+[node name="texture_rect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="title" type="Label" parent="."]
+anchor_right = 1.0
+margin_right = -427.0
+margin_bottom = 74.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "gamestart_select_character"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 152.0
+margin_top = -528.0
+margin_right = 524.0
+margin_bottom = -454.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="button" type="Button" parent="buttons"]
+margin_right = 372.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 372, 0 )
+
+[node name="label" parent="buttons/button" instance=ExtResource( 3 )]
+
+[node name="button2" type="Button" parent="buttons"]
+margin_top = 104.0
+margin_right = 372.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 372, 0 )
+
+[node name="label" parent="buttons/button2" instance=ExtResource( 3 )]
+
+[node name="button3" type="Button" parent="buttons"]
+margin_top = 208.0
+margin_right = 372.0
+margin_bottom = 282.0
+rect_min_size = Vector2( 372, 0 )
+
+[node name="label" parent="buttons/button3" instance=ExtResource( 3 )]
+
+[node name="name" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -648.0
+margin_top = 136.0
+margin_right = -136.0
+margin_bottom = 206.0
+custom_fonts/font = ExtResource( 2 )
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -648.0
+margin_top = 232.0
+margin_right = -136.0
+margin_bottom = 544.0
+custom_fonts/font = ExtResource( 4 )
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="condition" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -256.0
+margin_top = -152.0
+margin_right = 256.0
+margin_bottom = -56.0
+custom_fonts/font = ExtResource( 4 )
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="button_close" type="Button" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -176.0
+margin_top = -144.0
+margin_right = 184.0
+margin_bottom = -70.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="label" parent="button_close" instance=ExtResource( 3 )]
+text = "menu_continue"
+
+[connection signal="pressed" from="button_close" to="." method="close"]

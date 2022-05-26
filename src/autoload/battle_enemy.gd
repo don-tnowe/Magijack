@@ -20,6 +20,7 @@ func _ready():
 	BattlePlayer.connect("card_drawn", self, "player_card_drawn")
 	BattlePlayer.connect("turn_ended", self, "player_turn_ended")
 	rival = BattlePlayer
+	state = BattlerState.new(self)
 
 
 func set_enemy(enemy):
@@ -28,8 +29,8 @@ func set_enemy(enemy):
 
 
 func battle_start():
+	state.clear()
 	hp = data.hpmax
-	state = BattlerState.new(self)
 
 	var strgf = data.deck.stringified
 	data.deck = CardDeck.new()
@@ -111,6 +112,7 @@ func set_hp(v):
 	hp = v
 	view_node.update_all()
 	if hp <= 0 && !BattleManager.player_turn_ended:
+		BattleManager.last_turn_outcome = BattleManager.TurnOutcome.DEATH_BY_SPELL
 		BattlePlayer.end_turn()
 
 
