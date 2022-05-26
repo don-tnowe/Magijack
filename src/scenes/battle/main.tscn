@@ -69,32 +69,32 @@ strength = 0.0
 [sub_resource type="ShortCut" id=58]
 shortcut = SubResource( 57 )
 
-[sub_resource type="AtlasTexture" id=59]
+[sub_resource type="AtlasTexture" id=67]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=60]
+[sub_resource type="AtlasTexture" id=68]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=61]
+[sub_resource type="AtlasTexture" id=69]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=62]
+[sub_resource type="AtlasTexture" id=70]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=63]
+[sub_resource type="AtlasTexture" id=71]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=64]
+[sub_resource type="AtlasTexture" id=72]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 0, 128, 128 )
@@ -1365,9 +1365,9 @@ margin_right = 256.0
 margin_bottom = -112.0
 mouse_filter = 0
 value = 63.0
-texture_under = SubResource( 59 )
-texture_over = SubResource( 60 )
-texture_progress = SubResource( 61 )
+texture_under = SubResource( 67 )
+texture_over = SubResource( 68 )
+texture_progress = SubResource( 69 )
 texture = ExtResource( 4 )
 
 [node name="bar_hp" parent="player_ui/control" instance=ExtResource( 3 )]
@@ -1381,9 +1381,9 @@ margin_right = -128.0
 margin_bottom = -111.0
 mouse_filter = 0
 value = 63.0
-texture_under = SubResource( 62 )
-texture_over = SubResource( 63 )
-texture_progress = SubResource( 64 )
+texture_under = SubResource( 70 )
+texture_over = SubResource( 71 )
+texture_progress = SubResource( 72 )
 
 [node name="flash" type="Sprite" parent="player_ui/control/bar_hp"]
 visible = false
@@ -1444,7 +1444,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 50.7692, 70 )
+texture_offset = Vector2( 282.696, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1453,7 +1453,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 99.8712, 70 )
+texture_offset = Vector2( 43.6208, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
