@@ -36,6 +36,9 @@ func show_unique_node_tooltip(node):
 		+ tr("tooltip_mp_desc")
 		)
 		
+	elif node.name == "tt_power":
+		show_tooltip(node, tr("tooltip_power"))
+		
 	elif node.name == "tt_crit":
 		show_tooltip(node, tr("tooltip_crit"))
 		
