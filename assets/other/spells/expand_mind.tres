@@ -27,7 +27,7 @@ func cast(owner, selection = []):
 	owner.state.status_turns.append(StatusEffect.new(
 		owner.data,
 		\"limit\",
-		5,
+		3,
 		1
 	))
 	for x in owner.hand_data.cards:

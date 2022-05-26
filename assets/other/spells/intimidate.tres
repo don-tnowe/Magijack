@@ -20,7 +20,7 @@ func can_cast_with_selection(selection):
 
 
 func card_selectable(card):
-	return card.value < 11 && card.value > 0 && card.is_of_suit(2) && card.special_index == 0
+	return card.is_of_suit(2)
 
 
 func cast(owner, selection = []):
