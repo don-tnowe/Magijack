@@ -28,7 +28,7 @@ func cast(owner, selection = []):
 	owner.state.status_battles.append(StatusEffect.new(
 		owner.data,
 		\"limit\",
-		1,
+		2,
 		1
 	))
 	owner.discard_cards(selection)

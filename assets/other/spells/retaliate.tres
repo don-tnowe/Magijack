@@ -23,7 +23,7 @@ func cast(owner, selection = []):
 	owner.state.status_turns.append(StatusEffect.new(
 		owner.data,
 		\"power_bonus\",
-		4,
+		2,
 		1
 	))
 	if selection.size() == spell_data.cost_max:
@@ -40,7 +40,7 @@ spell_id = 8
 texture = ExtResource( 1 )
 texture_frame = 8
 cost_min = 0
-cost_max = 3
+cost_max = 2
 cooldown = 4
 cooldown_start = 0
 actions = SubResource( 1 )

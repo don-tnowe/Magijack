@@ -89,8 +89,8 @@ func apply_turn_outcome():
 		view_node.player_overload(-player_limit_left, BattlePlayer.data.limit)
 		last_turn_outcome = TurnOutcome.PLAYER_OVERLOAD
 
-	elif player_limit_left == 0:  # If at limit, guaranteed hit with x2 damage. Enemies can't crit, for fairness.
-		BattleEnemy.hp -= max(BattlePlayer.data.damage * 2, 0)
+	elif player_limit_left == 0:  # If at limit, guaranteed hit with x1.5 damage. Enemies can't crit, for fairness.
+		BattleEnemy.hp -= max(round(BattlePlayer.data.damage * 1.5), 0)
 		view_node.player_crit()
 		last_turn_outcome = TurnOutcome.PLAYER_CRIT
 

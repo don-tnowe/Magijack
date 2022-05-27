@@ -22,7 +22,7 @@ func can_cast_with_selection(selection):
 
 
 func cast(owner, selection = []):
-	owner.rival.hp -= 20
+	owner.rival.hp -= selection[0].value * 5
 	owner.discard_cards(selection)
 "
 

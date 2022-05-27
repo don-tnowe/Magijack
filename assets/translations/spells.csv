@@ -2,7 +2,7 @@
 spell0;;Double Dagger
 spell0_desc;;Discard 2 cards. Deal damage equal to sum of their values.
 spell1;;Enflame
-spell1_desc;;Discard a Red card. Increase your damage by half its value for this turn.
+spell1_desc;;Discard a Red card. Increase your damage by its value minus 1 for this turn.
 spell2;;Vanish Trick
 spell2_desc;;Discard your hand to draw new, potentially better cards. Discarded cards can't be drawn until next turn.
 spell3;;Mind Control
@@ -14,11 +14,11 @@ spell5_desc;;Discard Blue cards. Increase your limit by 2 for each for this turn
 spell6;;Might of Pride
 spell6_desc;;Discard 3 Purple cards in hand. Increase damage by 5 until end of battle.
 spell7;;Growing Warmth
-spell7_desc;;Discard 3 Orange cards in hand. Increase Limit by 1 until end of battle.
+spell7_desc;;Discard 3 Orange cards in hand. Increase Limit by 2 until end of battle.
 spell8;;Retaliate
-spell8_desc;;If you were hit by the enemy last turn, increase power by +4. If you also discard 3 Orange cards, reset the cooldown.
+spell8_desc;;If you were hit by the enemy last turn, increase power by +2. If you also discard 2 Orange cards, reset the cooldown.
 spell9;;Arcane Hammer
-spell9_desc;;Discard 3 cards with equal values. Deal 20 damage.
+spell9_desc;;Discard 3 cards with equal values. Deal (one's value x 5) damage.
 spell10;;Unstable Bolt
 spell10_desc;;Discard 2 to 5 cards. For each odd value, increase damage for this turn by 7. For each even value, deal 4 damage.
 spell11;;Unity Power

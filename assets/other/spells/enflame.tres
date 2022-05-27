@@ -26,13 +26,13 @@ func can_cast_with_selection(selection):
 
 
 func card_selectable(card):
-	return card.is_of_suit(0) && card.value < 11
+	return card.is_of_suit(0) && card.value < 11 && card.value > 1
 
 
 func cast(owner, selection = []):
 	var sum = 0
 	for x in selection:
-		sum += round(x.value * 0.5)
+		sum += x.value - 1
 	
 	owner.state.status_turns.append(StatusEffect.new(
 		owner.data,
