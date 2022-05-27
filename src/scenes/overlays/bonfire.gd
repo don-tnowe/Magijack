@@ -7,7 +7,7 @@ var removals := 0
 
 
 func _ready():
-	healing = min(ceil(BattlePlayer.data.hpmax * 0.33), BattlePlayer.data.hpmax - BattlePlayer.hp)
+	healing = min(ceil(BattlePlayer.data.hpmax * 0.5), BattlePlayer.data.hpmax - BattlePlayer.hp)
 	removals = min(3, BattlePlayer.data.deck.cards_parsed.size() - 3)
 
 	$"choice1/desc".text = tr("bonfire_heal_desc") % healing

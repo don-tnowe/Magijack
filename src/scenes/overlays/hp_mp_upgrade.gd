@@ -5,7 +5,7 @@ var upgrades_mp = 2
 
 
 func _ready():
-	upgrades_hp = BattlePlayer.data.hpmax + 20
+	upgrades_hp = BattlePlayer.data.hpmax + 30
 	upgrades_mp = BattlePlayer.data.limit + 2
 	$"choice1/numbers".text = str(BattlePlayer.data.hpmax) + " -> " + str(upgrades_hp)
 	$"choice2/numbers".text = str(BattlePlayer.data.limit) + " -> " + str(upgrades_mp)

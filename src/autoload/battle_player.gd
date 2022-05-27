@@ -33,6 +33,10 @@ func run_start():
 	data.deck.stringified = between_runs_data.deck.stringified
 	data.deck.initialize()
 
+	if data.spells[0].spell_id == 4:  # If it's Artisan (should get a proper passive upgrade system to fix this)
+		for i in 5:
+			data.deck.cards_parsed[randi() % data.deck.cards_parsed.size()].metal_value += 1
+
 	data.spells = data.spells.duplicate()
 
 
