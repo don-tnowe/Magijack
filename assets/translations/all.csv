@@ -5,14 +5,17 @@ tooltip_hp;;Health: %s/%s;Здоров'я: %s/%s
 tooltip_hp_desc;;Once this reaches 0, you lose.;Якщо воно досягне 0 - це програш.
 tooltip_mp;Serious width limit here, be careful.;Limit: %s/%s (%s left);Ліміт: %s/%s (%s вільно)
 tooltip_mp_desc;;If little Limit is left, be careful: drawing high card values will OVERLOAD you.;Якщо Ліміту лишається мало, обережніше: якщо попадеться важка картка - ПЕРЕВАНТАЖЕННЯ.
-tooltip_power;;Sum of card Powers, which is Values + Sharpening. Whoever has more power, will deal damage this turn.;" Сума Сил карток, Сила = Значення + Загострення. В кого більше Сили - б'є в поточний хід."
-tooltip_crit;;Percentage of cards in Draw pile that will get you to your Limit, resulting in a guaranteed x1.5 hit.;Відсоток карток у стопці добору, що доповнять суму до Ліміту, наносячи гарантований подвійний удар.
+tooltip_power;;Sum of card Powers, which is Values + Sharpening. Whoever has more power, will deal damage this turn.;Сума Сил карток, Сила = Значення + Загострення. В кого більше Сили - б'є в поточний хід.
+tooltip_crit;;Percentage of cards in Draw pile that will get you to your Limit, resulting in a guaranteed x1.5 hit.;Відсоток карток у стопці добору, що доповнять суму до Ліміту, наносячи гарантований 1.5х удар.
 tooltip_overload;;Percentage of cards in Draw pile that will get you ABOVE your Limit, resulting in a painful OVERLOAD.;Відсоток карток у стопці добору, що доповнять суму ВИЩЕ Ліміту, що призведе до болісного ПЕРЕВАНТАЖЕННЯ.
 ;;;
 button_draw_card;;Draw;Добір
 button_end_turn;;End Turn;Завершити хід
 button_view_deck;;View Deck;Проглянути Колоду
 button_view_enemy_deck;;Enemy Deck;Колода Ворога
+;;;
+crit_draw_warning;;Hey! The sum of cards in your hand equals to Limit. If you don't end your turn, you'll lose your Crit!;Агов! Твої карти складають суму, рівну Ліміту. Якщо не завершиш хід зараз, втратиш Крит!
+;;;
 ;;;
 battle_vs;"""12 vs 75"" (mind the spaces)";" vs ";" проти "
 battle_outcome_hit_player;Player hits enemy;Hit!;Влучення!

@@ -37,20 +37,27 @@ func starting_dialogue():
 	node_player_view.set_endturn_available(true)
 	yield(node_btn_endturn, "pressed")
 	
+	# Player must draw cards until overload.
 	hide_text()
+	# 6 + 3 + 2 + 2 + 1 + 1 + 5 > 16, which at no stage adds up to a Crit.
+	BattlePlayer.data.deck.sneak_cards([
+		CardData.new(1, 5), CardData.new(0, 11), CardData.new(2, 11), 
+		CardData.new(0, 2), CardData.new(1, 2), CardData.new(2, 3), CardData.new(3, 6)
+		])
 	yield(BattlePlayer, "card_drawn")
 	yield(BattlePlayer, "card_drawn")
 	
-	# Player must draw cards until overload.
 	show_text("tutorial_4")
 	node_player_view.call_deferred("set_endturn_available", false)
-	yield(BattlePlayer, "turn_ended")
 	
+	yield(BattlePlayer, "turn_started")
 	hide_text()
-	yield(BattlePlayer, "card_drawn")
-	yield(BattlePlayer, "card_drawn")
 	
 	# Player learns about overloading and crits.
+	# 4 + 6 + 6 = 16, so Crit.
+	BattlePlayer.data.deck.sneak_cards([CardData.new(1, 6), CardData.new(2, 6), CardData.new(0, 4)])
+	yield(BattlePlayer, "card_drawn")
+	yield(BattlePlayer, "card_drawn")
 	node_player_view.call_deferred("set_draw_available", false)
 	node_player_view.call_deferred("set_endturn_available", false)
 	node_btn_continue.visible = true
@@ -81,10 +88,9 @@ func starting_dialogue():
 	yield(node_btn_continue, "pressed")
 	
 	show_text("tutorial_10")
+	yield(node_btn_continue, "pressed")
 	node_player_view.set_draw_available(true)
 	node_player_view.set_endturn_available(true)
-	yield(node_btn_continue, "pressed")
-	
 	node_btn_continue.visible = false
 	hide_text()
 

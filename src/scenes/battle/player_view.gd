@@ -17,6 +17,7 @@ onready var node_label_greeddamage = $"label_greeddamage"
 
 onready var node_button_draw = $"button_draw"
 onready var node_button_endturn = $"button_endturn"
+onready var node_crit_draw_warning = $"crit_draw_warning"
 
 
 func _ready():
@@ -26,8 +27,24 @@ func _ready():
 
 
 func connect_signals():
-	node_button_draw.connect("pressed", BattlePlayer, "draw_from_deck")
-	node_button_endturn.connect("pressed", BattlePlayer, "end_turn")
+	node_button_draw.connect("pressed", self, "draw_from_deck")
+	node_button_endturn.connect("pressed", self, "end_turn")
+	node_crit_draw_warning.get_node("button").connect("pressed", self, "draw_from_deck")
+
+
+func end_turn():
+	node_crit_draw_warning.visible = false
+	BattlePlayer.end_turn()
+
+
+func draw_from_deck():
+	if BattlePlayer.limit_used >= BattlePlayer.data.limit && !node_crit_draw_warning.visible:
+		set_draw_available(false)
+		node_crit_draw_warning.visible = true
+		return
+	
+	node_crit_draw_warning.visible = false
+	BattlePlayer.draw_from_deck()
 
 
 # Frick it, not creating a setter for each field for the jam
