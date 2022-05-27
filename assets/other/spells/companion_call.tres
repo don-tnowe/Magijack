@@ -8,7 +8,7 @@ script/source = "extends SpellActions
 
 
 func cast(owner, selection = null):
-	owner.data.deck.cards_draw.push_front(Metaprogression.companion_card)
+	owner.data.deck.sneak_cards([Metaprogression.companion_card])
 	owner.draw_from_deck()
 "
 

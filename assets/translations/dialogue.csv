@@ -1,2 +1,12 @@
 ;eo;en
+tutorial_1;;If you need your redemption... you'll have to learn how to battle with [wave]magic[/wave].
+tutorial_2;;At start of turn, we draw two cards. You can sense the opponent's first 2 cards.
+tutorial_3;;The [color=#ffa500]Sum[/color] of card values in one's hand determines who attacks. Dare show me your hand?
+tutorial_4;;Ha! Mine's better. Now try to beat me - draw more cards, don't hesitate.
+tutorial_5;;Overloaded! The [color=#70d6ff]orb below[/color] shows how much [color=#70d6ff]Limit[/color] you have left. Also watch the chances above it when you draw.
+tutorial_6;;If the [color=#ffa500]Sum[/color] of card values goes above [color=#70d6ff]Limit[/color] and the orb gets empty, you expose yourself to attack.
+tutorial_7;;Legends tell, though, that some can [shake]Crit[/shake] if the sum EQUALS to [color=#70d6ff]Limit[/color].
+tutorial_8;;This kind of hits always lands, and deals [shake]double[/shake] damage. But the risk may outweight the benefit.
+tutorial_9;;[wave]Flawless Beast[/wave] cards have a value of 10! ...But once you go above [color=#70d6ff]Limit[/color], they safely become a 1.
+tutorial_10;;Handy! So consider this when counting your [color=#ffa500]Sum[/color]. And they're pretty. Look, it's me on that card.
 ;;

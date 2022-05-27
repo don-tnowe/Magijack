@@ -55,7 +55,7 @@ func turn_start():
 
 
 func draw_from_deck():
-	return cards_draw.pop_at(0)
+	return cards_draw.pop_back()
 
 # Crit, then overload.
 func get_crit_overload_chance(hand, limit) -> Array:
@@ -83,6 +83,11 @@ func remove_cards(cards, depth_of_consequence = 2):
 	var array_chosen = deck_depths[depth_of_consequence]
 	for x in cards:
 		array_chosen.erase(x)
+
+
+func sneak_cards(cards):
+	for x in cards:
+		cards_draw.push_back(x)
 
 
 func get_random_basic_card():

@@ -1,6 +1,7 @@
 extends Timer
 
 signal card_drawn(card_just_drawn, hand, limit)
+signal turn_started()
 signal turn_ended(hand, limit_left, power)
 signal new_spell_acquired()
 
@@ -99,8 +100,8 @@ func start_turn():
 	view_node.node_hand.discard_all()
 	
 	drawn_this_turn = 0
-#	state.start_turn()
 	data.deck.turn_start()
+	emit_signal("turn_started")
 	view_node.update_all()
 
 	start(1.0)
