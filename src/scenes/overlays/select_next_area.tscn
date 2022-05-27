@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/overlays/select_next_area.gd" type="Script" id=2]
 [ext_resource path="res://assets/other/enemy_pools/standard.tres" type="Resource" id=3]
+[ext_resource path="res://assets/graphics/feature_cards.png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/enemies/enemy_portraits.png" type="Texture" id=5]
+[ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=6]
 
 [node name="control" type="ColorRect"]
 pause_mode = 2
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.752941 )
@@ -19,27 +21,107 @@ enemy_pool = ExtResource( 3 )
 
 [node name="title" type="Label" parent="."]
 anchor_right = 1.0
+margin_top = 25.0
 margin_right = -427.0
-margin_bottom = 74.0
+margin_bottom = 99.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 1 )
-text = "deckview_title"
+text = "victory_choose_next_enemy"
 align = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
-[node name="hint" type="Label" parent="."]
-anchor_right = 1.0
-margin_top = 104.0
-margin_right = 1280.0
-margin_bottom = 178.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 1 )
-text = "deckview_hint"
-align = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="cards" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_top = -8.0
+margin_bottom = -8.0
+
+[node name="card1" type="Control" parent="cards"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -151.75
+margin_top = -22.875
+margin_right = -151.75
+margin_bottom = -22.875
+
+[node name="card" type="Control" parent="cards/card1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.25
+margin_top = -153.125
+margin_right = 57.75
+margin_bottom = 91.875
+rect_scale = Vector2( 1.25, 1.25 )
+
+[node name="feature" type="Sprite" parent="cards/card1/card"]
+position = Vector2( 80.1667, 165.5 )
+texture = ExtResource( 4 )
+hframes = 2
+vframes = 2
+
+[node name="enemy" type="Sprite" parent="cards/card1/card"]
+position = Vector2( 80.1667, 76 )
+texture = ExtResource( 5 )
+hframes = 4
+vframes = 2
+frame = 2
+
+[node name="card2" type="Control" parent="cards"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 144.25
+margin_top = -22.875
+margin_right = 144.25
+margin_bottom = -22.875
+
+[node name="card" type="Control" parent="cards/card2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.25
+margin_top = -153.125
+margin_right = 57.75
+margin_bottom = 91.875
+rect_scale = Vector2( 1.25, 1.25 )
+
+[node name="feature" type="Sprite" parent="cards/card2/card"]
+position = Vector2( 80.1667, 165.5 )
+texture = ExtResource( 4 )
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="enemy" type="Sprite" parent="cards/card2/card"]
+position = Vector2( 80.1667, 76 )
+texture = ExtResource( 5 )
+hframes = 4
+vframes = 2
+frame = 1
+
+[node name="button" type="Button" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -152.0
+margin_top = -160.0
+margin_right = 160.0
+margin_bottom = -86.0
+
+[node name="label" parent="button" instance=ExtResource( 6 )]
+margin_left = -168.0
+margin_top = -45.0
+margin_right = 161.0
+margin_bottom = 37.0
+text = "menu_continue"
+
+[connection signal="pressed" from="button" to="." method="close"]

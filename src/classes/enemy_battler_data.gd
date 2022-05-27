@@ -3,6 +3,7 @@ extends BattlerData
 
 
 export var enemy_name := ""
+export var enemy_id := 0
 
 # For the enemy to draw more cards, the percentage of cards that would bust them must be less than this.
 export var risk_max := 0.25

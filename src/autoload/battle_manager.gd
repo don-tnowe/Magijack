@@ -15,8 +15,7 @@ signal battle_started()
 signal battle_ended()
 
 var battles_completed := 0
-var area_features := ["hp_mp_upgrade", "library", "forge"]
-var area_progress := 0
+var next_feature := ""
 
 var player_hand : CardHandData
 var player_limit_left := 0
@@ -41,16 +40,14 @@ func _ready():
 	connect("battle_started", BattleEnemy, "battle_start")
 	connect("battle_ended", BattlePlayer, "battle_end")
 	connect("battle_ended", BattleEnemy, "battle_end")
+	OverlayStack.open("select_next_area")
 
 	call_deferred("run_start")
 
 
 func run_start():
 	enemy_encounter_count = {}
-	battles_completed = 0
 	BattlePlayer.run_start()
-	OverlayStack.open("select_next_area")
-	OverlayStack.stack[OverlayStack.stack.size() - 1].close()
 
 
 func battle_start():
@@ -79,7 +76,8 @@ func enemy_turn_ended(hand, limit_left, power):
 
 func apply_turn_outcome():
 	if last_turn_outcome == TurnOutcome.DEATH_BY_SPELL:
-		pass
+		# Do nothing - but also change outcome so it doesn't do nothing next turn.
+		last_turn_outcome = TurnOutcome.PLAYER_WIN
 
 	elif enemy_limit_left < 0:
 		BattleEnemy.hp -= max(BattlePlayer.data.greed_damage, 0)
@@ -129,29 +127,24 @@ func victory():
 	start(2)
 	yield(self, "timeout")
 
+	enemy_encounter_count[BattleEnemy.data.enemy_id] = enemy_encounter_count.get(BattleEnemy.data.enemy_id, 0) + 1
 	if BattleEnemy.data.enemy_name == "owleer": Metaprogression.artisan_unlocked = true
 
-	OverlayStack.open("select_next_area")
-
-	if area_progress >= 3:
-		OverlayStack.open("bonfire")
-		area_progress = 0
-		area_features.shuffle()
-
-	else:
-		OverlayStack.open(area_features[area_progress])
-		area_progress += 1
-
-	OverlayStack.open("victory_card", [BattleEnemy.data])
 	battles_completed += 1
+	OverlayStack.open("select_next_area")
+	OverlayStack.open(next_feature)
+	OverlayStack.open("victory_card", [BattleEnemy.data])
 
 
 func defeat():
 	emit_signal("battle_ended")
 	start(2)
 	yield(self, "timeout")
-#	OverlayStack.open("select_next_area")
+	battles_completed = 0
+	OverlayStack.open("select_next_area")
 	OverlayStack.open("select_companion_card", [BattleEnemy.data])
 	OverlayStack.open("select_character")
 	OverlayStack.open("defeat")
+	
+	next_feature = ""
 	Metaprogression.run_ended()
