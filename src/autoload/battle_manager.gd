@@ -124,11 +124,22 @@ func apply_turn_outcome():
 
 func victory():
 	emit_signal("battle_ended")
+
 	start(2)
 	yield(self, "timeout")
 
 	enemy_encounter_count[BattleEnemy.data.enemy_id] = enemy_encounter_count.get(BattleEnemy.data.enemy_id, 0) + 1
 	if BattleEnemy.data.enemy_name == "owleer": Metaprogression.artisan_unlocked = true
+	if BattleEnemy.data.enemy_name == "ending_phoenix": 
+		var node_dialogue = $"/root/root/overlay/control2/dialogue"
+		node_dialogue.ending_dialogue()
+		yield(node_dialogue.node_btn_continue, "pressed")
+		player_hand_power = 0  # Can't hit the bird.
+		player_limit_left = 1  # No, no cheese with guaranteed hits.
+		BattleEnemy.hp = BattleEnemy.data.hpmax
+		BattleEnemy.data.damage = 2002
+		apply_turn_outcome()
+		return
 
 	battles_completed += 1
 	OverlayStack.open("select_next_area")

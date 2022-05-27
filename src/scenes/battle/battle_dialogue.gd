@@ -88,12 +88,21 @@ func starting_dialogue():
 		
 		node_btn_continue.visible = false
 		hide_text()
-		
+
+
+func ending_dialogue():
+	show_text("phoenix_final_defeated")
+	node_player_view.call_deferred("set_draw_available", false)
+	node_player_view.call_deferred("set_endturn_available", false)
+	node_btn_continue.visible = true
+	yield(node_btn_continue, "pressed")
+	hide_text()
 
 
 func show_text(text):
 	node_text.visible_characters = 0
 	node_text.bbcode_text = tr(text)
+	node_text.rect_scale.y = 0
 	visible = false
 	node_anim.play("show")
 	$"arrows".visible = false

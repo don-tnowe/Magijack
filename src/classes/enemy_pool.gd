@@ -13,7 +13,7 @@ func get_random_enemies(level, encounter_count_dict, count):
 	var results = []
 	results.resize(count)
 	for i in count:
-		var remaining_traversal = randi() % weight_sum
+		var remaining_traversal = randi() % weight_sum + 1
 		for x in possible_enemies:
 			if can_place_enemy(x, level, encounter_count_dict):
 				# If enemy was placed in another cell, skip it. Otherwise, count down the path to result

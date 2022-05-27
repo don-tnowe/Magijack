@@ -70,32 +70,32 @@ strength = 0.0
 [sub_resource type="ShortCut" id=58]
 shortcut = SubResource( 57 )
 
-[sub_resource type="AtlasTexture" id=75]
+[sub_resource type="AtlasTexture" id=83]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=76]
+[sub_resource type="AtlasTexture" id=84]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=77]
+[sub_resource type="AtlasTexture" id=85]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=78]
+[sub_resource type="AtlasTexture" id=86]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=79]
+[sub_resource type="AtlasTexture" id=87]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=80]
+[sub_resource type="AtlasTexture" id=88]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 0, 128, 128 )
@@ -1501,9 +1501,9 @@ margin_right = 256.0
 margin_bottom = -112.0
 mouse_filter = 0
 value = 63.0
-texture_under = SubResource( 75 )
-texture_over = SubResource( 76 )
-texture_progress = SubResource( 77 )
+texture_under = SubResource( 83 )
+texture_over = SubResource( 84 )
+texture_progress = SubResource( 85 )
 texture = ExtResource( 4 )
 
 [node name="bar_hp" parent="player_ui/control" instance=ExtResource( 3 )]
@@ -1517,9 +1517,9 @@ margin_right = -128.0
 margin_bottom = -111.0
 mouse_filter = 0
 value = 63.0
-texture_under = SubResource( 78 )
-texture_over = SubResource( 79 )
-texture_progress = SubResource( 80 )
+texture_under = SubResource( 86 )
+texture_over = SubResource( 87 )
+texture_progress = SubResource( 88 )
 
 [node name="flash" type="Sprite" parent="player_ui/control/bar_hp"]
 visible = false
@@ -1580,7 +1580,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 472.336, 70 )
+texture_offset = Vector2( 473.624, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1589,7 +1589,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 431.333, 70 )
+texture_offset = Vector2( 40.8418, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1742,6 +1742,7 @@ margin_bottom = 37.0
 text = "menu_continue"
 
 [node name="arrows" type="Node2D" parent="overlay/control2/dialogue"]
+visible = false
 position = Vector2( 680, 424 )
 rotation = 0.261799
 __meta__ = {
