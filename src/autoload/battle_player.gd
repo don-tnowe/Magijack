@@ -106,12 +106,13 @@ func start_turn():
 
 	start(1.0)
 	yield(self, "timeout")
-	draw_from_deck()
-
-	start(0.2)
-	yield(self, "timeout")
-	draw_from_deck()
-
+	
+	while true:
+		draw_from_deck()
+		if hand_data.cards.size() >= 2: break
+		start(0.2)
+		yield(self, "timeout")
+	
 	view_node.update_all()
 	view_node.set_draw_available(true)
 	view_node.set_endturn_available(true)

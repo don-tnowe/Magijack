@@ -6,7 +6,7 @@ const saved_properties = [
 	"artisan_unlocked"
 ]
 
-var runs_finished := 0
+var runs_finished := -1
 var battles_completed_highscore := 0
 var artisan_unlocked := false
 

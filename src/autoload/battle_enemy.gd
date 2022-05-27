@@ -74,11 +74,12 @@ func start_turn():
 
 	start(1.0)
 	yield(self, "timeout")
-	draw_from_deck()
-
-	start(0.2)
-	yield(self, "timeout")
-	draw_from_deck()
+	
+	while hand_data.cards.size() < 2:
+		draw_from_deck()
+		start(0.2)
+		yield(self, "timeout")
+	
 
 	# Prevent confusing 2-turn-in-a-row insta-hits.
 	if BattleManager.last_turn_outcome == BattleManager.TurnOutcome.ENEMY_OVERLOAD: return

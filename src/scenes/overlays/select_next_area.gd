@@ -28,7 +28,8 @@ func _ready():
 	display_card(choices[1], choices_features[1], 1, level)
 	
 	# Don't show before tutorial.
-	if Metaprogression.runs_finished == 0:
+	if Metaprogression.runs_finished == -1:
+		Metaprogression.runs_finished = 0
 		close()
 
 
@@ -50,7 +51,7 @@ func display_card(enemy, feature, idx, level):
 func close():
 	BattleManager.next_feature = feature_pool[choices_features[current_choice]]
 	BattleEnemy.set_enemy(choices[current_choice])
-	BattleManager.battle_start()
+	BattleManager.call_deferred("battle_start")
 	.close()
 
 

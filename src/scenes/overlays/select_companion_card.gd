@@ -17,5 +17,4 @@ func button_pressed():
 		+ (" +" + str(card.metal_value) if card.metal_value > 0 else "")
 	)
 	BattlePlayer.add_spell(companion_call_spell)
-	BattlePlayer.battle_start()
 	.close()
