@@ -1607,7 +1607,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 115.751, 70 )
+texture_offset = Vector2( 456.867, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1616,7 +1616,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 221.075, 70 )
+texture_offset = Vector2( 94.413, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1719,7 +1719,6 @@ margin_bottom = 280.0
 margin_right = 372.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 372, 128 )
-rect_scale = Vector2( 1, 1e-05 )
 rect_clip_content = false
 custom_fonts/bold_font = ExtResource( 7 )
 custom_fonts/normal_font = ExtResource( 25 )

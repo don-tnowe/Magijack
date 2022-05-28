@@ -1,12 +1,12 @@
-;eo;en
-tutorial_1;;If you need your redemption... you'll have to learn how to battle with [wave]magic[/wave].
-tutorial_2;;At start of turn, we draw two cards. You can sense the opponent's first 2 cards.
-tutorial_3;;The [color=#ffa500]Sum[/color] of card values in one's hand determines who attacks. Dare show me your hand?
-tutorial_4;;Ha! Mine's better. Now try to beat me - draw more cards, don't hesitate.
-tutorial_5;;Overloaded! The [color=#70d6ff]orb below[/color] shows how much [color=#70d6ff]Limit[/color] you have left. Also watch the chances above it when you draw.
-tutorial_6;;If the [color=#ffa500]Sum[/color] of card values goes above [color=#70d6ff]Limit[/color] and the orb gets empty, you expose yourself to attack.
-tutorial_7;;Legends tell, though, that some can [shake]Crit[/shake] if the sum EQUALS to [color=#70d6ff]Limit[/color].
-tutorial_8;;This kind of hits never misses, and deals [shake]additional[/shake] damage. But the risk may outweight the benefit.
-tutorial_9;;[wave]Flawless Beast[/wave] cards have a value of 10! ...But once you go above [color=#70d6ff]Limit[/color], they safely become a 1.
-tutorial_10;;Handy! So consider this when counting your [color=#ffa500]Sum[/color]. And they're pretty. Look, it's me on that card.
-phoenix_final_defeated;;Wow, you got really good with these cards. All these rebirths gave you plenty of skill! I'm sorry, but the only thing ahead is... [color=#444444][shake]another rebirth.[/shake][/color]
+;eo;en;uk
+tutorial_1;;If you need your redemption... you'll have to learn how to battle with [wave]magic[/wave].;Якщо тобі так потрібно повернутися з перемогою... тобі варто навчитися битися [wave]магією[/wave].
+tutorial_2;;At start of turn, we draw two cards. You can sense the opponent's first 2 cards. Theirs are up there, yours are down there.;На початку ходу, кожен бере 2 картки. Ти можеш відчути, які перші 2 картки супротивника. Їхні карти вгорі, твої - унизу.
+tutorial_3;;The [color=#ffa500]Sum[/color] of card values in one's hand determines who attacks. Dare show me your hand?;"[color=#ffa500]Сума[/color] значень на картках у руці визначає, хто атакує. Покажеш руку? "
+tutorial_4;;Ha! Mine's better, [color=#ffa500]5+6 > 2+3[/color]. Now try to beat me - draw more cards, don't hesitate.;Ха! Моя краще, [color=#ffa500]5+6 > 2+3[/color]. Тепер спробуй перемогти мене - добирай карток, скільки зможеш.
+tutorial_5;;Overloaded! The [color=#70d6ff]orb below[/color] shows how much [color=#70d6ff]Limit[/color] you have left. Also watch the chances above it when you draw.;Перевантаження! [color=#70d6ff]Куля унизу[/color] показує, скільки [color=#70d6ff]Ліміту[/color] залишається. І пильнуй за ймовірностями, показаними над ним, коли добираєш.
+tutorial_6;;If the [color=#ffa500]Sum[/color] of card values goes above [color=#70d6ff]Limit[/color] and the orb gets empty, you expose yourself to attack.;Якщо [color=#ffa500]Сума[/color] значень на картках перевищує [color=#70d6ff]Ліміт[/color] і куля стає порожньою, ти стаєш вразливим до удару.
+tutorial_7;;Legends tell, though, that some can [shake]Crit[/shake] if the sum EQUALS to [color=#70d6ff]Limit[/color]. That's when the orb shows a [color=#70d6ff]Zero[/color].;Але за легендою, є чаклуни здатні на [shake]Критичний удар[/shake] якщо сума РІВНА [color=#70d6ff]Ліміту[/color]. Тобто, коли куля показує [color=#70d6ff]Нуль[/color].
+tutorial_8;;This kind of hits never misses, and deals [shake]additional[/shake] damage. But the risk may outweight the benefit.;Такий удар влучає завжди, і ще й наносить [shake]додаткових[/shake] пошкоджень. Але ризик може переважити переваги.
+tutorial_9;;[wave]Flawless Beast[/wave] cards have a value of 10! ...But once you go above [color=#70d6ff]Limit[/color], they safely become a 1.;Картки [wave]Доскональних Звірів[/wave] мають значення 10! ...Але тільки-но ти пересікаєш [color=#70d6ff]Ліміт[/color], така безпечно стає одиницею.
+tutorial_10;;Handy! So consider this when counting your [color=#ffa500]Sum[/color]. And they're pretty. Look, it's me on that card.;Зручненько! Тому враховуй це, коли рахуєш [color=#ffa500]Суму[/color]. А ще вони прекрасні. Дивися, на тій картці я.
+phoenix_final_defeated;;Wow, you got really good with these cards. All these rebirths gave you plenty of skill! I'm sorry, but the only thing ahead is... [color=#444444][shake]another rebirth.[/shake][/color];Нічого собі, непогано володієш картками. Ці переродження дали тобі багато вміння! Але на жаль, далі йде лише... [color=#444444][shake]іще переродження.[/shake][/color]
