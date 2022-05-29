@@ -151,7 +151,6 @@ func defeat():
 	emit_signal("battle_ended")
 	start(2)
 	yield(self, "timeout")
-	battles_completed = 0
 	OverlayStack.open("select_next_area")
 	OverlayStack.open("select_companion_card", [BattleEnemy.data])
 	OverlayStack.open("select_character")
@@ -159,3 +158,4 @@ func defeat():
 	
 	next_feature = ""
 	Metaprogression.run_ended()
+	battles_completed = 0
