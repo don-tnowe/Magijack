@@ -11,7 +11,7 @@ var current_choice = 0
 
 
 func _ready():
-	var level = BattleManager.battles_completed
+	var level = BattleManager.enemy_level
 	choices = enemy_pool.get_random_enemies(level, BattleManager.enemy_encounter_count, 2)
 	if BattleManager.battles_completed % 4 == 3:
 		choices_features = [3, 3]

@@ -104,6 +104,15 @@ func ending_dialogue():
 	hide_text()
 
 
+func loop_dialogue():
+	show_text("phoenix_final_loop")
+	node_player_view.call_deferred("set_draw_available", false)
+	node_player_view.call_deferred("set_endturn_available", false)
+	node_btn_continue.visible = true
+	yield(node_btn_continue, "pressed")
+	hide_text()
+
+
 func show_text(text):
 	node_text.visible_characters = 0
 	node_text.bbcode_text = tr(text)

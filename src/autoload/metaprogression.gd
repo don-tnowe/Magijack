@@ -3,12 +3,14 @@ extends Timer
 const saved_properties = [
 	"runs_finished",
 	"battles_completed_highscore",
-	"artisan_unlocked"
+	"artisan_unlocked",
+	"loop_unlocked"
 ]
 
 var runs_finished := -1
 var battles_completed_highscore := 0
 var artisan_unlocked := false
+var loop_unlocked := false
 
 var companion_card : CardData
 var companion_card_stringified : String

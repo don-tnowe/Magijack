@@ -14,6 +14,7 @@ signal turn_started()
 signal battle_started()
 signal battle_ended()
 
+var enemy_level := 0
 var battles_completed := 0
 var next_feature := ""
 
@@ -131,17 +132,26 @@ func victory():
 	enemy_encounter_count[BattleEnemy.data.enemy_id] = enemy_encounter_count.get(BattleEnemy.data.enemy_id, 0) + 1
 	if BattleEnemy.data.enemy_name == "owleer": Metaprogression.artisan_unlocked = true
 	if BattleEnemy.data.enemy_name == "ending_phoenix": 
-		var node_dialogue = $"/root/root/overlay/control2/dialogue"
-		node_dialogue.ending_dialogue()
-		yield(node_dialogue.node_btn_continue, "pressed")
-		player_hand_power = 0  # Can't hit the bird.
-		player_limit_left = 1  # No, no cheese with guaranteed hits.
-		BattleEnemy.hp = BattleEnemy.data.hpmax
-		BattleEnemy.data.damage = 2002
-		apply_turn_outcome()
-		return
+		if Metaprogression.loop_unlocked:
+			var node_dialogue = $"/root/root/overlay/control2/dialogue"
+			node_dialogue.ending_dialogue(true)
+			yield(node_dialogue.node_btn_continue, "pressed")
+			enemy_level = 0
+			
+		else:
+			var node_dialogue = $"/root/root/overlay/control2/dialogue"
+			node_dialogue.ending_dialogue()
+			yield(node_dialogue.node_btn_continue, "pressed")
+			player_hand_power = 0  # Can't hit the bird.
+			player_limit_left = 1  # No, no cheese with guaranteed hits.
+			BattleEnemy.hp = BattleEnemy.data.hpmax
+			BattleEnemy.data.damage = 2002
+			apply_turn_outcome()
+			Metaprogression.loop_unlocked = true
+			return
 
 	battles_completed += 1
+	enemy_level += 1
 	OverlayStack.open("select_next_area")
 	OverlayStack.open(next_feature)
 	OverlayStack.open("victory_card", [BattleEnemy.data])
@@ -159,3 +169,4 @@ func defeat():
 	next_feature = ""
 	Metaprogression.run_ended()
 	battles_completed = 0
+	enemy_level = 0

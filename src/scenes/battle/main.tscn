@@ -1607,7 +1607,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 456.867, 70 )
+texture_offset = Vector2( 414.219, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1616,7 +1616,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 94.413, 70 )
+texture_offset = Vector2( 300.758, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1803,7 +1803,7 @@ anims/show = SubResource( 73 )
 margin_left = 168.0
 margin_top = 984.0
 margin_right = 632.0
-margin_bottom = 1219.0
+margin_bottom = 1224.0
 rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 24 )
 region_rect = Rect2( 9, 132, 117, 113 )

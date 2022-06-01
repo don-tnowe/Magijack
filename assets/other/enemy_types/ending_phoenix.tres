@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource( 1 )
-hpmax = 90
+hpmax = 80
 limit = 20
 damage = 15
 greed_damage = 15
