@@ -875,6 +875,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../player_ui/control2/control/lightning:texture_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 373.504, 70 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../../player_ui/control2/control/lightning2:texture_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 157.094, 70 ) ]
+}
 
 [sub_resource type="Animation" id=82]
 resource_name = "arrow"
@@ -1607,7 +1631,7 @@ __meta__ = {
 visible = false
 position = Vector2( 496, 280 )
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 495.152, 70 )
+texture_offset = Vector2( 486.917, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1616,7 +1640,7 @@ visible = false
 position = Vector2( 1072.45, 440.259 )
 rotation = -2.61649
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 480.606, 70 )
+texture_offset = Vector2( 386.211, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
