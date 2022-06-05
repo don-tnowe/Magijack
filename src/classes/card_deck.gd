@@ -85,6 +85,36 @@ func remove_cards(cards, depth_of_consequence = 2):
 		array_chosen.erase(x)
 
 
+func random_sharpen(count, can_repeat = false):
+	var upgradeable_cards = []
+	
+	for x in cards_parsed:
+		if x.metal_value < 10:
+			upgradeable_cards.append(x)
+	
+	while !can_repeat && count > upgradeable_cards.size():
+		count -= upgradeable_cards.size()
+		var i = 0  # need separate iterator because of element removal
+		while i < upgradeable_cards.size():
+			upgradeable_cards[i].metal_value += 1
+			if upgradeable_cards[i].metal_value >= 10:
+				upgradeable_cards.remove(i)
+				i -= 1
+			
+			i += 1
+		
+	for i in count:
+		var idx = randi() % upgradeable_cards.size()
+		var card = upgradeable_cards[idx]
+		card.metal_value += 1
+		
+		if !can_repeat || card.metal_value == 10:
+			upgradeable_cards.remove(idx)
+		
+		if upgradeable_cards.size() == 0:
+			break
+
+
 func sneak_cards(cards):
 	for x in cards:
 		cards_draw.push_back(x)

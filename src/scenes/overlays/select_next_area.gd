@@ -42,10 +42,14 @@ func display_card(enemy, feature, idx, level):
 	enemy = enemy.duplicate()
 	choices[idx] = enemy  # So only the enemy that will be chosen gets modified, not the original
 	# TODO: add more enemy types so this is irrelevant
-	enemy.hpmax += floor(enemy.hpmax * (level * 0.1))
-	enemy.damage += floor(enemy.damage * (level * 0.15))
-	enemy.greed_damage += floor(enemy.greed_damage * (level * 0.05))
-	enemy.limit += floor(level * 0.25)
+	
+	var level_for_stats = BattleManager.battles_completed
+	enemy.hpmax += floor(enemy.hpmax * (level_for_stats * 0.15))
+	enemy.damage += floor(enemy.damage * (level_for_stats * 0.15))
+	enemy.greed_damage += floor(enemy.greed_damage * (level_for_stats * 0.05))
+	enemy.limit += floor(level_for_stats * 0.25)
+	if level_for_stats > 8:
+		enemy.deck.random_sharpen((level_for_stats - 8) * 2)
 
 
 func close():
