@@ -146,8 +146,8 @@ func victory():
 			player_limit_left = 1  # No, no cheese with guaranteed hits.
 			BattleEnemy.hp = BattleEnemy.data.hpmax
 			BattleEnemy.data.damage = 2002
-			apply_turn_outcome()
 			Metaprogression.loop_unlocked = true
+			apply_turn_outcome()
 			return
 
 	battles_completed += 1
