@@ -17,7 +17,7 @@ strength = 0.0
 shortcut = SubResource( 16 )
 
 [sub_resource type="Animation" id=14]
-resource_name = "upgrade1"
+resource_name = "upgrade0"
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -46,7 +46,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=15]
-resource_name = "upgrade2"
+resource_name = "upgrade1"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("button_choose/flash:visible")
@@ -111,9 +111,6 @@ text = "forge_prompt"
 align = 1
 valign = 1
 autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="choices_left" type="Label" parent="."]
 anchor_left = 0.5
@@ -148,12 +145,33 @@ __meta__ = {
 [node name="label" parent="button_close" instance=ExtResource( 3 )]
 text = "menu_skip"
 
+[node name="card2" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = -71.9999
+margin_top = 120.0
+margin_right = 79.0001
+margin_bottom = 356.0
+rect_rotation = -10.5977
+
 [node name="card" parent="." instance=ExtResource( 4 )]
 visible = false
 margin_left = -72.0
 margin_top = 128.0
 margin_right = 79.0
 margin_bottom = 364.0
+
+[node name="card_count" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = -408.0
+margin_right = 176.0
+margin_bottom = -334.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 5 )
+text = "x2"
 
 [node name="button_choose" type="Button" parent="."]
 anchor_left = 0.5
@@ -307,15 +325,12 @@ margin_top = -74.0
 custom_fonts/font = ExtResource( 5 )
 text = "+0 -> +1"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="anim" type="AnimationPlayer" parent="."]
-anims/upgrade1 = SubResource( 14 )
-anims/upgrade2 = SubResource( 15 )
+anims/upgrade0 = SubResource( 14 )
+anims/upgrade1 = SubResource( 15 )
 
 [connection signal="pressed" from="button_close" to="." method="close"]
 [connection signal="pressed" from="button_choose" to="." method="choose_card"]
-[connection signal="pressed" from="button_upgrade1" to="." method="upgrade1"]
-[connection signal="pressed" from="button_upgrade2" to="." method="upgrade2"]
+[connection signal="pressed" from="button_upgrade1" to="." method="upgrade" binds= [ 0 ]]
+[connection signal="pressed" from="button_upgrade2" to="." method="upgrade" binds= [ 1 ]]

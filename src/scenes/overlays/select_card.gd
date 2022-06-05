@@ -37,7 +37,10 @@ func initialize(params):
 		
 		else:
 			node.modulate = Color(0.25, 0.25, 0.25, 1.0)
-
+			
+		if output_array.has(x):
+			toggle_card(i)
+	
 	node_card_container.rect_min_size.y = last_card_pos.y
 	get_tree().paused = true
 	update_picks()
@@ -48,7 +51,8 @@ func close():
 	picked_datas.resize(picked_indices.size())
 	for i in picked_indices.size():
 		picked_datas[i] = all_cards[picked_indices[i]]
-		
+	
+	output_array.clear()
 	output_array.append_array(picked_datas)
 	.close()
 
@@ -66,12 +70,16 @@ func update_picks():
 
 func card_input(event, idx):
 	if event is InputEventMouseButton && event.is_pressed():
-		if picked_indices.has(idx):
-			node_card_container.get_child(idx).get_node("border").self_modulate = Color.black
-			picked_indices.erase(idx)
-			
-		else:
-			node_card_container.get_child(idx).get_node("border").self_modulate = Color.white
-			picked_indices.append(idx)
+		toggle_card(idx)
+
+
+func toggle_card(idx):
+	if picked_indices.has(idx):
+		node_card_container.get_child(idx).get_node("border").self_modulate = Color.black
+		picked_indices.erase(idx)
 		
-		update_picks()
+	else:
+		node_card_container.get_child(idx).get_node("border").self_modulate = Color.white
+		picked_indices.append(idx)
+	
+	update_picks()

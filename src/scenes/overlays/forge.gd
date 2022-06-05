@@ -12,10 +12,19 @@ func reopen_overlay():
 func update_gui():
 	$"button_upgrade1".visible = false
 	$"button_upgrade2".visible = false
-		
+	$"card".visible = false
+	$"card2".visible = false
+	$"card_count".visible = false
+	
 	if selected_card_data.size() > 0:
 		$"card".visible = true
 		selected_card_data[0].display_on_card_node($"card")
+		
+		if selected_card_data.size() > 1:
+			$"card2".visible = true
+			selected_card_data[1].display_on_card_node($"card2")
+			$"card_count".visible = true
+			$"card_count".text = "x" + str(selected_card_data.size())
 		
 		if choices_left <= 0:
 			$"choices_left".visible = false
@@ -23,11 +32,20 @@ func update_gui():
 			$"button_close/label"._ready()
 			return
 		
-		if can_upgrade1(selected_card_data[0]):
+		var can_upgrade_count = [0, 0]
+		
+		for x in selected_card_data:
+			if can_upgrade(x, 0):
+				can_upgrade_count[0] += 1
+			
+			if can_upgrade(x, 1):
+				can_upgrade_count[1] += 1
+		
+		if can_upgrade_count[0] > 0:
 			$"button_upgrade1".visible = true
 			$"button_upgrade1/desc2".text = str(selected_card_data[0].value) + " -> " + str(selected_card_data[0].value - 1)
 			
-		if can_upgrade2(selected_card_data[0]):
+		if can_upgrade_count[1] > 0:
 			$"button_upgrade2".visible = true
 			$"button_upgrade2/desc2".text = "+" + str(selected_card_data[0].metal_value) + " -> +" + str(selected_card_data[0].metal_value + 1)
 	
@@ -36,48 +54,46 @@ func update_gui():
 
 func choose_card():
 	$"desc".visible = false
-	selected_card_data.pop_back()
 	OverlayStack.open("select_card", [
 		BattlePlayer.data.deck.cards_parsed,
-		"choose_card_title", selected_card_data, 0, 1,
+		"choose_card_title", selected_card_data, 0, choices_left,
 		funcref(self, "can_any_upgrade")
 		])
 
 
 func can_any_upgrade(card):
-	return can_upgrade1(card) || can_upgrade2(card)
+	return can_upgrade(card, 0) || can_upgrade(card, 1)
 
 
-func can_upgrade1(card):
+func can_upgrade(card, upgrade_type_idx):
+	if choices_left <= 0: return false
 	if card.special_index > 0: return false
-	if card.value >= 11: return false
-	if card.value <= 1: return false
+	if upgrade_type_idx == 0:
+		if card.value >= 11: return false
+		if card.value <= 1: return false
+		
+		return true
 	
-	return true
-
-
-func can_upgrade2(card):
-	if card.special_index > 0: return false
 	if card.metal_value >= 10: return false
 	
 	return true
 
 
-func upgrade1():
+func upgrade(upgrade_type_idx):
 	if choices_left <= 0: return  # Just in case
-	if !can_upgrade1(selected_card_data[0]): return
-	selected_card_data[0].value -= 1
-	choices_left -= 1
-	$"anim".play("upgrade1")
+	
+	for x in selected_card_data:
+		if !can_upgrade(x, upgrade_type_idx):
+			continue
+		
+		choices_left -= 1
+		if upgrade_type_idx == 0:
+			x.value -= 1
+			
+		else:
+			x.metal_value += 1
+	
+	$"anim".play("upgrade" + str(upgrade_type_idx))
 	$"anim".seek(0)
 	update_gui()
 
-
-func upgrade2():
-	if choices_left <= 0: return
-	if !can_upgrade2(selected_card_data[0]): return
-	selected_card_data[0].metal_value += 1
-	choices_left -= 1
-	$"anim".play("upgrade2")
-	$"anim".seek(0)
-	update_gui()
