@@ -43,4 +43,4 @@ func load_game():
 	
 	var dict = file.get_var()
 	for x in saved_properties:
-		set(x, dict[x])
+		set(x, dict.get(x, get(x)))
