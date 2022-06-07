@@ -41,4 +41,4 @@ orange 4+1
 orange 5+1"
 loot_choice_min = 3
 loot_choice_max = 5
-loot_player_choice = 2
+loot_player_choice = 3

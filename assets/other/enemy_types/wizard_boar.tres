@@ -41,4 +41,4 @@ purple 4+1
 orange 4+1"
 loot_choice_min = 2
 loot_choice_max = 4
-loot_player_choice = 2
+loot_player_choice = 3
