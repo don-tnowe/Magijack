@@ -1,9 +1,10 @@
-extends Button
+extends GenericButton
 
 export(int, "Own run", "Own drawpile", "Enemy") var type := 0
 
 
-func _on_button_deck_pressed():
+func button_pressed():
+	.button_pressed()
 	var params = null
 	match type:
 		0:

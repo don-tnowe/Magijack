@@ -64,7 +64,10 @@ func add_card(card_data, is_face_down = false):
 		Tween.TRANS_CUBIC, Tween.EASE_OUT
 	)
 	$"../tween".start()
-
+	
+	$"../sound_draw".pitch_scale = 0.5 * pow(2, hand_data.cards.size() / 6.0)
+	$"../sound_draw".play()
+		
 	if is_players:
 		new_node.connect("mouse_entered", self, "card_mouse_entered", [new_node])
 		get_parent().added_card(
@@ -72,6 +75,9 @@ func add_card(card_data, is_face_down = false):
 			card_data.get_value(new_idx, hand_data, BattlePlayer.data.limit),
 			card_data.get_power(new_idx, hand_data, BattlePlayer.data.limit)
 			)
+		
+		if card_data.metal_value > 0:
+			$"../sound_draw_sharpen".play()
 
 
 func find_unused_card():

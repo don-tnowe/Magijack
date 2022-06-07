@@ -59,6 +59,9 @@ func initialize(type, text, move_time = 0.0, jump_time = 1.0, jump = 96.0, move_
 		Tween.TRANS_QUAD, Tween.EASE_OUT, jump_time + move_time
 		)
 	node_tween.interpolate_callback(
+		$"sound", jump_time + move_time, "play"
+	)
+	node_tween.interpolate_callback(
 		self, jump_time + move_time + 0.25, "queue_free"
 	)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/battle/damage_bubble.tscn" type="PackedScene" id=2]
@@ -21,7 +21,7 @@
 [ext_resource path="res://assets/shaders/offset_with_shadow.tres" type="Shader" id=19]
 [ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=20]
 [ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=21]
-[ext_resource path="res://src/deck_view_button.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/generic_button.tscn" type="PackedScene" id=22]
 [ext_resource path="res://assets/other/theme.tres" type="Theme" id=23]
 [ext_resource path="res://assets/graphics/menus/ui.png" type="Texture" id=24]
 [ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=25]
@@ -29,6 +29,20 @@
 [ext_resource path="res://src/scenes/empty_with_tooltip.gd" type="Script" id=27]
 [ext_resource path="res://src/scenes/battle/select_card_spell.gd" type="Script" id=28]
 [ext_resource path="res://src/scenes/battle/spell_list.gd" type="Script" id=29]
+[ext_resource path="res://src/deck_view_button.gd" type="Script" id=30]
+[ext_resource path="res://assets/audio/licensed/sfx/menu deck view.wav" type="AudioStream" id=31]
+[ext_resource path="res://assets/audio/licensed/sfx/combat overload.wav" type="AudioStream" id=32]
+[ext_resource path="res://assets/audio/licensed/sfx/speech pheo.wav" type="AudioStream" id=33]
+[ext_resource path="res://assets/audio/licensed/sfx/combat swing.wav" type="AudioStream" id=34]
+[ext_resource path="res://assets/audio/licensed/sfx/combat crit.wav" type="AudioStream" id=35]
+[ext_resource path="res://assets/audio/licensed/sfx/combat hit enemy.wav" type="AudioStream" id=36]
+[ext_resource path="res://assets/audio/licensed/sfx/menu deselect card.wav" type="AudioStream" id=37]
+[ext_resource path="res://assets/audio/licensed/sfx/combat hit player.wav" type="AudioStream" id=38]
+[ext_resource path="res://assets/audio/licensed/sfx/card grab.wav" type="AudioStream" id=39]
+[ext_resource path="res://assets/audio/licensed/sfx/card sharpened grab.wav" type="AudioStream" id=40]
+[ext_resource path="res://assets/audio/licensed/sfx/spell setup.wav" type="AudioStream" id=41]
+[ext_resource path="res://assets/audio/licensed/sfx/spell throw.wav" type="AudioStream" id=42]
+[ext_resource path="res://assets/audio/licensed/sfx/menu exit.wav" type="AudioStream" id=43]
 
 [sub_resource type="Gradient" id=66]
 offsets = PoolRealArray( 0, 0.132275, 0.248677, 0.391534, 0.42328, 0.481481, 0.534392, 0.592593, 0.634921, 0.78836, 0.862434, 1 )
@@ -38,64 +52,50 @@ colors = PoolColorArray( 0, 0, 0, 0.8125, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1,
 gradient = SubResource( 66 )
 width = 128
 
-[sub_resource type="InputEventAction" id=48]
+[sub_resource type="InputEventAction" id=89]
 action = "battle_draw"
 pressed = true
-strength = 0.0
 
-[sub_resource type="ShortCut" id=8]
-shortcut = SubResource( 48 )
+[sub_resource type="ShortCut" id=90]
+shortcut = SubResource( 89 )
 
-[sub_resource type="InputEventAction" id=9]
+[sub_resource type="InputEventAction" id=91]
 action = "battle_endturn"
 pressed = true
-strength = 0.0
 
-[sub_resource type="ShortCut" id=10]
-shortcut = SubResource( 9 )
+[sub_resource type="ShortCut" id=92]
+shortcut = SubResource( 91 )
 
-[sub_resource type="InputEventAction" id=55]
-action = "ui_cancel"
-pressed = true
-strength = 0.0
+[sub_resource type="AudioStreamRandomPitch" id=101]
+audio_stream = ExtResource( 40 )
+random_pitch = 1.2
 
-[sub_resource type="ShortCut" id=56]
-shortcut = SubResource( 55 )
-
-[sub_resource type="InputEventAction" id=57]
-action = "ui_accept"
-pressed = true
-strength = 0.0
-
-[sub_resource type="ShortCut" id=58]
-shortcut = SubResource( 57 )
-
-[sub_resource type="AtlasTexture" id=83]
+[sub_resource type="AtlasTexture" id=109]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=84]
+[sub_resource type="AtlasTexture" id=110]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=85]
+[sub_resource type="AtlasTexture" id=111]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=86]
+[sub_resource type="AtlasTexture" id=112]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=87]
+[sub_resource type="AtlasTexture" id=113]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=88]
+[sub_resource type="AtlasTexture" id=114]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 0, 128, 128 )
@@ -358,6 +358,20 @@ tracks/7/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/8/type = "audio"
+tracks/8/path = NodePath("../sound_anim")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 32 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "enemy_win"
@@ -446,6 +460,24 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "audio"
+tracks/7/path = NodePath("../sound_anim")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 34 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 38 )
+} ],
+"times": PoolRealArray( 0, 0.15 )
 }
 
 [sub_resource type="Animation" id=36]
@@ -572,6 +604,42 @@ tracks/9/keys = {
 "update": 0,
 "values": [ 89.9999 ]
 }
+tracks/10/type = "audio"
+tracks/10/path = NodePath("../sound_anim")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 34 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 34 )
+} ],
+"times": PoolRealArray( 0, 0.65 )
+}
+tracks/11/type = "audio"
+tracks/11/path = NodePath("../sound_anim2")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 36 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 35 )
+} ],
+"times": PoolRealArray( 0.2, 0.85 )
+}
 
 [sub_resource type="Animation" id=18]
 resource_name = "player_overload"
@@ -672,6 +740,20 @@ tracks/7/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/8/type = "audio"
+tracks/8/path = NodePath("../sound_anim")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 32 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=27]
 resource_name = "player_win"
@@ -748,6 +830,24 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 0.25, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("../sound_anim")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 34 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 36 )
+} ],
+"times": PoolRealArray( 0, 0.179799 )
 }
 
 [sub_resource type="Animation" id=47]
@@ -853,10 +953,10 @@ tracks/7/keys = {
 [sub_resource type="ShaderMaterial" id=26]
 resource_local_to_scene = true
 shader = ExtResource( 19 )
-shader_param/offset_min = 1.0
-shader_param/offset_max = 1.0
+shader_param/offset_min = 0.0
+shader_param/offset_max = 0.0
 shader_param/bg_scale = 0.2
-shader_param/bg_color = Color( 1, 0.352941, 0, 1 )
+shader_param/bg_color = Color( 0.376471, 0.447059, 0.933333, 1 )
 
 [sub_resource type="Curve" id=35]
 _data = [ Vector2( 0, 0.137427 ), 0.0, 1.07498, 0, 0, Vector2( 1, 1 ), 0.626939, 0.0, 0, 0 ]
@@ -1020,6 +1120,13 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="InputEventAction" id=93]
+action = "view_deck"
+pressed = true
+
+[sub_resource type="ShortCut" id=94]
+shortcut = SubResource( 93 )
+
 [node name="root" type="Node"]
 
 [node name="enemy_ui" type="CanvasLayer" parent="."]
@@ -1057,6 +1164,10 @@ __meta__ = {
 }
 is_players = false
 card_scene = ExtResource( 8 )
+
+[node name="sound_draw" type="AudioStreamPlayer" parent="enemy_ui/control"]
+stream = ExtResource( 39 )
+volume_db = -3.0
 
 [node name="enemy" type="Control" parent="enemy_ui/control"]
 anchor_left = 0.5
@@ -1230,57 +1341,55 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="button_draw" type="Button" parent="player_ui/control"]
-margin_left = 235.0
-margin_top = 420.0
-margin_right = 459.0
-margin_bottom = 500.0
+[node name="button_draw" parent="player_ui/control" instance=ExtResource( 22 )]
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 229.687
+margin_top = -298.577
+margin_right = 464.687
+margin_bottom = -218.577
 rect_rotation = -15.0
-focus_mode = 0
-custom_fonts/font = ExtResource( 7 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 8 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+shortcut = SubResource( 90 )
+click_sound = null
 
 [node name="label" parent="player_ui/control/button_draw" instance=ExtResource( 21 )]
+margin_left = -198.0
+margin_right = 198.0
 text = "button_draw_card"
 
-[node name="button_endturn" type="Button" parent="player_ui/control"]
+[node name="button_endturn" parent="player_ui/control" instance=ExtResource( 22 )]
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-margin_left = -451.0
-margin_top = 361.0
-margin_right = -227.0
-margin_bottom = 441.0
+anchor_bottom = 1.0
+margin_left = -456.313
+margin_top = -360.423
+margin_right = -221.313
+margin_bottom = -280.423
 rect_rotation = 15.0
-focus_mode = 0
-custom_fonts/font = ExtResource( 7 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 10 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+shortcut = SubResource( 92 )
+click_sound = null
 
 [node name="label" parent="player_ui/control/button_endturn" instance=ExtResource( 21 )]
+margin_left = -183.0
+margin_right = 183.0
 text = "button_end_turn"
 
 [node name="button_deck3" parent="player_ui/control" instance=ExtResource( 22 )]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -384.0
-margin_top = -528.0
-margin_right = -192.0
-margin_bottom = -448.0
-shortcut = null
+margin_left = -416.0
+margin_top = -168.0
+margin_right = -181.0
+margin_bottom = -88.0
+rect_scale = Vector2( 0.75, 0.75 )
+script = ExtResource( 30 )
+click_sound = ExtResource( 31 )
 type = 2
 
 [node name="label" parent="player_ui/control/button_deck3" instance=ExtResource( 21 )]
+margin_left = -291.0
+margin_right = 271.0
 text = "button_view_enemy_deck"
 
 [node name="label_power" type="Label" parent="player_ui/control"]
@@ -1329,6 +1438,9 @@ margin_left = 84.0
 margin_top = 29.0
 margin_right = 63.0
 script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="label_damage" type="Label" parent="player_ui/control"]
 anchor_left = 1.0
@@ -1462,45 +1574,38 @@ margin_top = -368.0
 margin_right = 40.0
 margin_bottom = -288.0
 
-[node name="button_cancel" type="Button" parent="player_ui/control/spell_selection"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -296.0
-margin_top = -368.0
-margin_right = -72.0
-margin_bottom = -288.0
-custom_fonts/font = ExtResource( 7 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 56 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[node name="button_cancel" parent="player_ui/control/spell_selection" instance=ExtResource( 22 )]
+margin_left = -304.0
+margin_top = -8.0
+margin_right = -69.0
+margin_bottom = 72.0
+click_sound = ExtResource( 43 )
 
 [node name="label" parent="player_ui/control/spell_selection/button_cancel" instance=ExtResource( 21 )]
+margin_left = -137.0
+margin_right = 142.0
 text = "menu_cancel"
 
-[node name="button_continue" type="Button" parent="player_ui/control/spell_selection"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 64.0
-margin_top = -368.0
-margin_right = 288.0
-margin_bottom = -288.0
-custom_fonts/font = ExtResource( 7 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 58 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[node name="button_continue" parent="player_ui/control/spell_selection" instance=ExtResource( 22 )]
+margin_left = 56.0
+margin_top = -8.0
+margin_right = 291.0
+margin_bottom = 72.0
+click_sound = ExtResource( 42 )
 
 [node name="label" parent="player_ui/control/spell_selection/button_continue" instance=ExtResource( 21 )]
+margin_left = -162.0
+margin_right = 167.0
 text = "menu_continue"
+
+[node name="sound_spellprep" type="AudioStreamPlayer" parent="player_ui/control/spell_selection"]
+stream = ExtResource( 41 )
+volume_db = -9.0
+pitch_scale = 1.5
+
+[node name="sound_cardpick" type="AudioStreamPlayer" parent="player_ui/control/spell_selection"]
+stream = ExtResource( 37 )
+volume_db = -3.0
 
 [node name="hand" type="Control" parent="player_ui/control"]
 anchor_left = 0.5
@@ -1516,6 +1621,16 @@ __meta__ = {
 }
 card_scene = ExtResource( 8 )
 
+[node name="sound_draw" type="AudioStreamPlayer" parent="player_ui/control"]
+stream = ExtResource( 39 )
+
+[node name="sound_draw_sharpen" type="AudioStreamPlayer" parent="player_ui/control"]
+stream = SubResource( 101 )
+
+[node name="sound_cast" type="AudioStreamPlayer" parent="player_ui/control"]
+stream = ExtResource( 42 )
+volume_db = -3.0
+
 [node name="bar_mp" parent="player_ui/control" instance=ExtResource( 3 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -1525,9 +1640,9 @@ margin_right = 256.0
 margin_bottom = -112.0
 mouse_filter = 0
 value = 63.0
-texture_under = SubResource( 83 )
-texture_over = SubResource( 84 )
-texture_progress = SubResource( 85 )
+texture_under = SubResource( 109 )
+texture_over = SubResource( 110 )
+texture_progress = SubResource( 111 )
 texture = ExtResource( 4 )
 
 [node name="bar_hp" parent="player_ui/control" instance=ExtResource( 3 )]
@@ -1541,9 +1656,9 @@ margin_right = -128.0
 margin_bottom = -111.0
 mouse_filter = 0
 value = 63.0
-texture_under = SubResource( 86 )
-texture_over = SubResource( 87 )
-texture_progress = SubResource( 88 )
+texture_under = SubResource( 112 )
+texture_over = SubResource( 113 )
+texture_progress = SubResource( 114 )
 
 [node name="flash" type="Sprite" parent="player_ui/control/bar_hp"]
 visible = false
@@ -1630,17 +1745,18 @@ __meta__ = {
 [node name="lightning" parent="player_ui/control2/control" instance=ExtResource( 17 )]
 visible = false
 position = Vector2( 496, 280 )
+rotation = 1.57079
 scale = Vector2( 0.559227, 0.739531 )
-texture_offset = Vector2( 486.917, 70 )
+texture_offset = Vector2( 373.504, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
 [node name="lightning2" parent="player_ui/control2/control" instance=ExtResource( 17 )]
 visible = false
 position = Vector2( 1072.45, 440.259 )
-rotation = -2.61649
+rotation = 0.439917
 scale = Vector2( 0.640925, 1 )
-texture_offset = Vector2( 386.211, 70 )
+texture_offset = Vector2( 157.094, 70 )
 back_color = Color( 1, 0.211765, 0, 1 )
 processing = false
 
@@ -1697,6 +1813,12 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="sound_anim" type="AudioStreamPlayer" parent="player_ui/control2"]
+stream = ExtResource( 36 )
+
+[node name="sound_anim2" type="AudioStreamPlayer" parent="player_ui/control2"]
+stream = ExtResource( 35 )
 
 [node name="overlay" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -1771,18 +1893,9 @@ patch_margin_top = 88
 patch_margin_right = 92
 patch_margin_bottom = 89
 
-[node name="button" type="Button" parent="overlay/control2/dialogue/center/label"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -148.0
-margin_top = 16.0
-margin_right = 148.0
-margin_bottom = 90.0
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="button" parent="overlay/control2/dialogue/center/label" instance=ExtResource( 22 )]
+margin_top = 77.0
+margin_bottom = 157.0
 
 [node name="label" parent="overlay/control2/dialogue/center/label/button" instance=ExtResource( 21 )]
 margin_left = -196.5
@@ -1823,6 +1936,9 @@ anims/arrow = SubResource( 82 )
 anims/hide = SubResource( 81 )
 anims/show = SubResource( 73 )
 
+[node name="sound" type="AudioStreamPlayer" parent="overlay/control2/dialogue"]
+stream = ExtResource( 33 )
+
 [node name="tooltip" type="NinePatchRect" parent="overlay/control2"]
 margin_left = 168.0
 margin_top = 984.0
@@ -1862,6 +1978,18 @@ __meta__ = {
 }
 
 [node name="button_deck" parent="overlay/control2" instance=ExtResource( 22 )]
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = -87.9999
+margin_right = 267.0
+margin_bottom = -7.99994
+rect_scale = Vector2( 0.8, 0.8 )
+shortcut = SubResource( 94 )
+script = ExtResource( 30 )
+click_sound = ExtResource( 31 )
 
 [node name="label" parent="overlay/control2/button_deck" instance=ExtResource( 21 )]
 text = "button_view_deck"

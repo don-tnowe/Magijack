@@ -27,6 +27,8 @@ func open(spell_data, spell_idx):
 	node_playerview.set_draw_available(false)
 	node_playerview.set_endturn_available(false)
 	update_picks()
+	
+	$"sound_spellprep".play()
 
 
 func submit():
@@ -61,12 +63,15 @@ func card_input(event, card, idx):
 		if picked_cards.has(card):
 			node_handview.used_card_nodes[idx].get_node("border").self_modulate = Color.black
 			picked_cards.erase(card)
+			$"sound_cardpick".pitch_scale = 0.75
 			
 		else:
 			node_handview.used_card_nodes[idx].get_node("border").self_modulate = Color.white
 			picked_cards.append(card)
+			$"sound_cardpick".pitch_scale = 1
 		
 		update_picks()
+		$"sound_cardpick".play()
 
 
 func icon_mouse_entered():

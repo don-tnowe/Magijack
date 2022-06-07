@@ -4,6 +4,8 @@
 [ext_resource path="res://src/scenes/overlays/view_deck.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/generic_button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/audio/licensed/sfx/menu exit.wav" type="AudioStream" id=6]
 
 [sub_resource type="Gradient" id=10]
 offsets = PoolRealArray( 0.0627451, 0.239216, 0.733333, 1 )
@@ -12,14 +14,6 @@ colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 )
 [sub_resource type="GradientTexture" id=9]
 gradient = SubResource( 10 )
 width = 128
-
-[sub_resource type="InputEventAction" id=12]
-action = "ui_cancel"
-pressed = true
-strength = 0.0
-
-[sub_resource type="ShortCut" id=11]
-shortcut = SubResource( 12 )
 
 [node name="bg" type="ColorRect"]
 pause_mode = 2
@@ -105,25 +99,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button_close" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -112.0
-margin_top = -144.0
-margin_right = 112.0
-margin_bottom = -64.0
-custom_fonts/font = ExtResource( 3 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 11 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="button_close" parent="." instance=ExtResource( 5 )]
+margin_top = 216.0
+margin_bottom = 296.0
+click_sound = ExtResource( 6 )
 
 [node name="label" parent="button_close" instance=ExtResource( 4 )]
+margin_left = -127.5
+margin_right = 127.5
 text = "menu_close"
 
 [connection signal="pressed" from="button_close" to="." method="close"]

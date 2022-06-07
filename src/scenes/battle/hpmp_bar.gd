@@ -34,7 +34,9 @@ func set_value(v):
 
 func mouse_entered():
 	TooltipDisplayer.show_unique_node_tooltip(self)
+	$"sound".play()
 
 
 func mouse_exited():
 	TooltipDisplayer.hide_tooltip(self)
+	$"sound".stop()

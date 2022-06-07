@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/scenes/battle/damage_bubble.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/damage_bubble.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/numbers_no_border.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/audio/licensed/sfx/pop.wav" type="AudioStream" id=4]
+
+[sub_resource type="AudioStreamRandomPitch" id=1]
+audio_stream = ExtResource( 4 )
+random_pitch = 1.2
 
 [node name="bubble" type="Node2D"]
 script = ExtResource( 1 )
@@ -37,5 +42,9 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 1 )
+volume_db = -16.0
 
 [node name="tween" type="Tween" parent="."]

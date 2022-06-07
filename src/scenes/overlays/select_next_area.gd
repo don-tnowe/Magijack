@@ -65,5 +65,6 @@ func card_input(event, idx):
 		$"cards".get_child(idx).rect_scale = Vector2(1.2, 1.2)
 		current_choice = idx
 		$"button".visible = true
+		$"sound".play()
 
 

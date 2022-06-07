@@ -82,4 +82,6 @@ func toggle_card(idx):
 		node_card_container.get_child(idx).get_node("border").self_modulate = Color.white
 		picked_indices.append(idx)
 	
+	$"sound".pitch_scale = 0.5 * pow(2, picked_indices.size() / 6.0)
 	update_picks()
+	$"sound".play()

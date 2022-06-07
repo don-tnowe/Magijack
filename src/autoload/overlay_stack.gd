@@ -42,6 +42,11 @@ func open(overlay_name, params = null):
 
 
 func pop():
-	stack.pop_back().queue_free()
+	var deleted_node = stack.pop_back()
 	if stack.size() == 0: return
 	stack[stack.size() - 1].reopen_overlay()
+	
+	# Workaround for button SFX not playing until the end.
+	start(2)
+	yield(self, "timeout")
+	deleted_node.queue_free()

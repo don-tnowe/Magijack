@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/overlays/bonfire.gd" type="Script" id=2]
@@ -6,14 +6,7 @@
 [ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=6]
-
-[sub_resource type="InputEventAction" id=15]
-action = "ui_cancel"
-pressed = true
-strength = 0.0
-
-[sub_resource type="ShortCut" id=13]
-shortcut = SubResource( 15 )
+[ext_resource path="res://src/generic_button.tscn" type="PackedScene" id=7]
 
 [node name="control" type="ColorRect"]
 pause_mode = 2
@@ -110,31 +103,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button_choose" type="Button" parent="choice1"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -112.0
-margin_top = 24.0
-margin_right = 112.0
-margin_bottom = 104.0
-custom_fonts/font = ExtResource( 1 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 13 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="button_choose" parent="choice1" instance=ExtResource( 7 )]
+margin_top = 136.0
+margin_bottom = 216.0
 
 [node name="label" parent="choice1/button_choose" instance=ExtResource( 4 )]
+margin_left = -147.5
+margin_right = 147.5
 text = "menu_choose"
 
 [node name="flash" type="Sprite" parent="choice1/button_choose"]
 visible = false
 self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 112, -144 )
+position = Vector2( 117.5, -144 )
 scale = Vector2( 1.8, 1.8 )
 texture = ExtResource( 5 )
 region_enabled = true
@@ -188,31 +169,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button_choose" type="Button" parent="choice2"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -112.0
-margin_top = 24.0
-margin_right = 112.0
-margin_bottom = 104.0
-custom_fonts/font = ExtResource( 1 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 13 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="button_choose" parent="choice2" instance=ExtResource( 7 )]
+margin_top = 136.0
+margin_bottom = 216.0
 
 [node name="label" parent="choice2/button_choose" instance=ExtResource( 4 )]
+margin_left = -147.5
+margin_right = 147.5
 text = "menu_choose"
 
 [node name="flash" type="Sprite" parent="choice2/button_choose"]
 visible = false
 self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 112, -144 )
+position = Vector2( 117.5, -144 )
 scale = Vector2( 1.8, 1.8 )
 texture = ExtResource( 5 )
 region_enabled = true

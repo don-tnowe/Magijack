@@ -33,12 +33,15 @@ func card_input(event, idx):
 		if picked.has(idx):
 			node_card_parent.get_child(idx).get_node("border").self_modulate = Color.black
 			picked.erase(idx)
+			$"sound_card".pitch_scale = 0.75
 			
 		else:
 			node_card_parent.get_child(idx).get_node("border").self_modulate = Color.white
 			picked.append(idx)
+			$"sound_card".pitch_scale = 1.0
 		
 		update_picks()
+		$"sound_card".play()
 
 
 func update_picks():

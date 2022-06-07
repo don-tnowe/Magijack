@@ -7,6 +7,8 @@ onready var node_btn_continue = $"center/label/button"
 onready var node_text = $"center/label"
 onready var node_anim = $"anim"
 
+var text_wait = 99999
+
 
 func _ready():
 	if Metaprogression.runs_finished == 0:
@@ -54,8 +56,8 @@ func starting_dialogue():
 	hide_text()
 	
 	# Player learns about overloading and crits.
-	# 4 + 6 + 6 = 16, so Crit.
-	BattlePlayer.data.deck.sneak_cards([CardData.new(1, 6), CardData.new(2, 6), CardData.new(0, 4)])
+	# 2 + 2 + 4 + 6 + 2 = 16, so Crit.
+	BattlePlayer.data.deck.sneak_cards([CardData.new(1, 2), CardData.new(2, 2), CardData.new(0, 4), CardData.new(1, 6), CardData.new(3, 2)])
 	yield(BattlePlayer, "card_drawn")
 	yield(BattlePlayer, "card_drawn")
 	node_player_view.call_deferred("set_draw_available", false)
@@ -110,13 +112,16 @@ func show_text(text):
 	node_text.rect_scale.y = 0
 	visible = false
 	node_anim.play("show")
+	node_anim.seek(0)
 	$"arrows".visible = false
+	text_wait = 25
 	set_process(true)
 
 
 func hide_text():
 	node_anim.play("hide")
 	$"arrows".visible = false
+	$"sound".stop()
 	set_process(false)
 
 
@@ -126,4 +131,24 @@ func show_arrow(pos):
 
 
 func _process(delta):
+	if text_wait > 0:
+		text_wait -= 1
+		$"sound".stop()
+		return
+	
+	var last_char = node_text.text[node_text.visible_characters]
 	node_text.visible_characters += 1
+	
+	match last_char:
+		" ":
+			text_wait = 1
+			$"sound".play(randf() * 0.66)
+		".":
+			text_wait = 15
+			$"sound".play(randf() * 0.66)
+		_:
+			pass
+	
+	if node_text.percent_visible >= 1.0:
+		$"sound".play(0.62)
+		set_process(false)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/overlays/select_next_area.gd" type="Script" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://assets/graphics/feature_cards.png" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/enemies/enemy_portraits.png" type="Texture" id=5]
 [ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/generic_button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/audio/licensed/sfx/menu deselect card.wav" type="AudioStream" id=8]
+
+[sub_resource type="AudioStreamRandomPitch" id=1]
+audio_stream = ExtResource( 8 )
+random_pitch = 1.6
 
 [node name="control" type="ColorRect"]
 pause_mode = 2
@@ -106,22 +112,20 @@ hframes = 4
 vframes = 2
 frame = 1
 
-[node name="button" type="Button" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
+[node name="button" parent="." instance=ExtResource( 7 )]
 margin_left = -152.0
-margin_top = -160.0
+margin_top = 200.0
 margin_right = 160.0
-margin_bottom = -86.0
+margin_bottom = 280.0
 
 [node name="label" parent="button" instance=ExtResource( 6 )]
 margin_left = -168.0
-margin_top = -45.0
+margin_top = -47.0
 margin_right = 161.0
-margin_bottom = 37.0
+margin_bottom = 35.0
 text = "menu_continue"
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 1 )
 
 [connection signal="pressed" from="button" to="." method="close"]

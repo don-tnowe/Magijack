@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/scenes/overlays/forge.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=2]
@@ -7,14 +7,14 @@
 [ext_resource path="res://assets/fonts/numbers.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/graphics/battle/sprite_fx.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=7]
+[ext_resource path="res://src/generic_button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/audio/licensed/sfx/menu deck view.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/licensed/sfx/menu exit.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/licensed/sfx/forge.wav" type="AudioStream" id=11]
 
-[sub_resource type="InputEventAction" id=16]
-action = "ui_cancel"
-pressed = true
-strength = 0.0
-
-[sub_resource type="ShortCut" id=13]
-shortcut = SubResource( 16 )
+[sub_resource type="AudioStreamRandomPitch" id=16]
+audio_stream = ExtResource( 11 )
+random_pitch = 1.25
 
 [sub_resource type="Animation" id=14]
 resource_name = "upgrade0"
@@ -125,24 +125,16 @@ custom_fonts/font = ExtResource( 2 )
 text = "victory_choices_left"
 align = 1
 
-[node name="button_close" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 88.0
-margin_top = -200.0
-margin_right = 312.0
-margin_bottom = -120.0
-custom_fonts/font = ExtResource( 2 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 13 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[node name="button_close" parent="." instance=ExtResource( 8 )]
+margin_left = 80.0
+margin_top = 160.0
+margin_right = 315.0
+margin_bottom = 240.0
+click_sound = ExtResource( 10 )
 
 [node name="label" parent="button_close" instance=ExtResource( 3 )]
+margin_left = -114.5
+margin_right = 119.5
 text = "menu_skip"
 
 [node name="card2" parent="." instance=ExtResource( 4 )]
@@ -173,50 +165,35 @@ rect_scale = Vector2( 0.75, 0.75 )
 custom_fonts/font = ExtResource( 5 )
 text = "x2"
 
-[node name="button_choose" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -112.0
-margin_top = -328.0
-margin_right = 112.0
-margin_bottom = -248.0
-custom_fonts/font = ExtResource( 2 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 13 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[node name="button_choose" parent="." instance=ExtResource( 8 )]
+margin_top = 32.0
+margin_bottom = 112.0
+click_sound = ExtResource( 9 )
 
 [node name="label" parent="button_choose" instance=ExtResource( 3 )]
+margin_left = -147.5
+margin_right = 147.5
 text = "menu_choose"
 
 [node name="flash" type="Sprite" parent="button_choose"]
 visible = false
 self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 112, -144 )
+position = Vector2( 117.5, -72 )
 scale = Vector2( 1.8, 1.8 )
 texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 8, 0, 184, 191 )
 
-[node name="button_upgrade1" type="Button" parent="."]
+[node name="button_upgrade1" parent="." instance=ExtResource( 8 )]
+anchor_left = 0.0
 anchor_top = 1.0
+anchor_right = 0.0
 anchor_bottom = 1.0
 margin_left = 72.0
 margin_top = -560.0
 margin_right = 488.0
 margin_bottom = -248.0
-custom_fonts/font = ExtResource( 2 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 13 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+click_sound = SubResource( 16 )
 
 [node name="title" type="Label" parent="button_upgrade1"]
 anchor_left = 0.5
@@ -264,7 +241,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button_upgrade2" type="Button" parent="."]
+[node name="button_upgrade2" parent="." instance=ExtResource( 8 )]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -273,23 +250,16 @@ margin_left = -488.0
 margin_top = -560.0
 margin_right = -72.0
 margin_bottom = -248.0
-custom_fonts/font = ExtResource( 2 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 13 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+click_sound = SubResource( 16 )
 
 [node name="title" type="Label" parent="button_upgrade2"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -208.0
+margin_left = -238.0
 margin_top = -312.0
-margin_right = 208.0
+margin_right = 238.0
 margin_bottom = -238.0
 grow_horizontal = 2
 custom_fonts/font = ExtResource( 2 )

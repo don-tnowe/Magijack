@@ -30,6 +30,7 @@ func spell_pressed(idx):
 	TooltipDisplayer.pause_mode = Node.PAUSE_MODE_PROCESS
 	selected_spell_idx = idx
 	spell_nodes[idx].get_parent().rect_scale = Vector2(1.35, 1.35)
+	$"sound".play()
 
 
 func close():

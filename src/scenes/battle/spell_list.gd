@@ -15,7 +15,6 @@ func _ready():
 
 func initialize():
 	battler = BattlePlayer
-#	Screw this signal garbage nonsense. I'm just gonna make explicit method calls so i can actually control the call order
 	BattlePlayer.state.connect("turn_started", self, "update_cooldowns")
 	BattlePlayer.connect("new_spell_acquired", self, "update_view")
 #	BattlePlayer.state.connect("turn_started", self, "update_view")
@@ -76,6 +75,7 @@ func spell_cast_start(idx):
 		battler.state.spell_cooldowns[idx] = spell.cooldown
 		update_cooldowns()
 		get_parent().update_all()
+		$"../sound_cast".play()
 		
 	else:
 		overlay.open(spell, idx)
