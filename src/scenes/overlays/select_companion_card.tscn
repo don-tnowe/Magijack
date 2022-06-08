@@ -6,14 +6,8 @@
 [ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/other/spells/companion_call.tres" type="Resource" id=6]
-
-[sub_resource type="InputEventAction" id=12]
-action = "ui_cancel"
-pressed = true
-strength = 0.0
-
-[sub_resource type="ShortCut" id=13]
-shortcut = SubResource( 12 )
+[ext_resource path="res://assets/audio/licensed/sfx/card grab.wav" type="AudioStream" id=7]
+[ext_resource path="res://src/generic_button.tscn" type="PackedScene" id=8]
 
 [node name="control" type="ColorRect"]
 pause_mode = 2
@@ -68,24 +62,16 @@ margin_top = 0.0
 margin_right = 151.0
 margin_bottom = 236.0
 
-[node name="button_close" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -112.0
-margin_top = -152.0
-margin_right = 112.0
-margin_bottom = -72.0
-custom_fonts/font = ExtResource( 2 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 13 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[node name="button_close" parent="." instance=ExtResource( 8 )]
+margin_top = 208.0
+margin_bottom = 288.0
 
 [node name="label" parent="button_close" instance=ExtResource( 3 )]
+margin_left = -164.5
+margin_right = 164.5
 text = "menu_continue"
+
+[node name="sound_card" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 
 [connection signal="pressed" from="button_close" to="." method="button_pressed"]
