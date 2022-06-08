@@ -45,8 +45,8 @@ func display_card(enemy, feature, idx, level):
 	
 	var level_for_stats = BattleManager.battles_completed
 	enemy.hpmax += floor(enemy.hpmax * (level_for_stats * 0.15))
-	enemy.damage += floor(enemy.damage * (level_for_stats * 0.15))
-	enemy.greed_damage += floor(enemy.greed_damage * (level_for_stats * 0.05))
+	enemy.damage += floor(enemy.damage * (level_for_stats * 0.05))
+	enemy.greed_damage += floor(enemy.greed_damage * (level_for_stats * 0.04))
 	enemy.limit += floor(level_for_stats * 0.25)
 	if level_for_stats > 8:
 		enemy.deck.random_sharpen((level_for_stats - 8) * 2)
