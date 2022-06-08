@@ -27,6 +27,6 @@ func initialize(params):
 		if dont_darken != null && !dont_darken.has(x):
 			node.modulate = Color(0.25, 0.25, 0.25, 1.0)
 
-	node_card_container.rect_min_size.y = last_card_pos.y
+	node_card_container.rect_min_size.y = last_card_pos.y + card_size.y
 	$"title".text = params[1]
 	get_tree().paused = true

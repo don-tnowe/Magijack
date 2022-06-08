@@ -70,32 +70,32 @@ shortcut = SubResource( 91 )
 audio_stream = ExtResource( 40 )
 random_pitch = 1.2
 
-[sub_resource type="AtlasTexture" id=109]
+[sub_resource type="AtlasTexture" id=102]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=110]
+[sub_resource type="AtlasTexture" id=103]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=111]
+[sub_resource type="AtlasTexture" id=104]
 resource_local_to_scene = true
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=112]
+[sub_resource type="AtlasTexture" id=105]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 128, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=113]
+[sub_resource type="AtlasTexture" id=106]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 256, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=114]
+[sub_resource type="AtlasTexture" id=107]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
 region = Rect2( 384, 0, 128, 128 )
@@ -1325,11 +1325,10 @@ anchor_bottom = 1.0
 margin_left = 480.0
 margin_top = -368.0
 margin_right = -480.0
-margin_bottom = -272.0
+margin_bottom = -264.0
 mouse_filter = 2
 script = ExtResource( 29 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 scene_spellview = ExtResource( 26 )
@@ -1640,9 +1639,9 @@ margin_right = 256.0
 margin_bottom = -112.0
 mouse_filter = 0
 value = 63.0
-texture_under = SubResource( 109 )
-texture_over = SubResource( 110 )
-texture_progress = SubResource( 111 )
+texture_under = SubResource( 102 )
+texture_over = SubResource( 103 )
+texture_progress = SubResource( 104 )
 texture = ExtResource( 4 )
 
 [node name="bar_hp" parent="player_ui/control" instance=ExtResource( 3 )]
@@ -1656,9 +1655,9 @@ margin_right = -128.0
 margin_bottom = -111.0
 mouse_filter = 0
 value = 63.0
-texture_under = SubResource( 112 )
-texture_over = SubResource( 113 )
-texture_progress = SubResource( 114 )
+texture_under = SubResource( 105 )
+texture_over = SubResource( 106 )
+texture_progress = SubResource( 107 )
 
 [node name="flash" type="Sprite" parent="player_ui/control/bar_hp"]
 visible = false
