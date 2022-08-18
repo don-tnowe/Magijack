@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/scenes/card_view.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/overlays/view_deck.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=4]

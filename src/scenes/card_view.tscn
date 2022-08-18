@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/graphics/card/card_decorations.png" type="Texture" id=1]
 [ext_resource path="res://assets/graphics/card/card_base.png" type="Texture" id=2]
 [ext_resource path="res://assets/graphics/card/values_suits.png" type="Texture" id=3]
-[ext_resource path="res://src/scenes/card.gd" type="Script" id=4]
+[ext_resource path="res://src/scenes/card_view.gd" type="Script" id=4]
 [ext_resource path="res://assets/graphics/card/flawless_beasts.png" type="Texture" id=5]
 
 [node name="card" type="Control"]

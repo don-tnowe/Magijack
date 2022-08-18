@@ -3,7 +3,7 @@
 [ext_resource path="res://src/scenes/overlays/victory_card.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/normal.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/scenes/scale_to_parent_text.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/scenes/card.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/scenes/card_view.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/body.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/generic_button.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/licensed/sfx/menu exit.wav" type="AudioStream" id=7]
