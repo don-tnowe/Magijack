@@ -55,7 +55,11 @@ func close():
 
 
 func update_picks():
-	$"button_continue".disabled = !(picked_cards.size() >= spell_casting.cost_min && picked_cards.size() <= spell_casting.cost_max && spell_casting.can_cast_with_selection(picked_cards))
+	$"button_continue".disabled = !(
+		picked_cards.size() >= spell_casting.cost_min 
+		&& picked_cards.size() <= spell_casting.cost_max 
+		&& spell_casting.can_cast_with_selection(picked_cards)
+	)
 
 
 func card_input(event, card, idx):

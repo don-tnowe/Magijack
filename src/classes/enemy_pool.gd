@@ -34,4 +34,4 @@ func can_place_enemy(enemy, level, encounter_count_dict):
 		level >= enemy.min_level 
 		&& level <= enemy.max_level 
 		&& encounter_count_dict.get(enemy.enemy_id, 0) < enemy.max_run_encounters
-		)
+	)

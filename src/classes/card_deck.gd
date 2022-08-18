@@ -125,4 +125,4 @@ func get_random_basic_card():
 		randi() % 4, 
 		randi() % 12, 
 		randi() % 4 if randi() % 4 == 0 else 0
-		)
+	)

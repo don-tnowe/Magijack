@@ -49,7 +49,7 @@ func get_card_target_position(card_idx, common_offset):
 		+ card_h_offset 
 		+ common_offset,
 		card_selected_v_offset if selected_card_idx == card_idx else 0
-		) - used_card_nodes[card_idx].rect_size * 0.5
+	) - used_card_nodes[card_idx].rect_size * 0.5
 
 
 func add_card(card_data, is_face_down = false):
@@ -82,7 +82,7 @@ func add_card(card_data, is_face_down = false):
 			get_card_target_position(new_idx, 0) + rect_global_position + Vector2(96, 48), 
 			card_data.get_value(new_idx, hand_data, BattlePlayer.data.limit),
 			card_data.get_power(new_idx, hand_data, BattlePlayer.data.limit)
-			)
+		)
 		
 		if card_data.metal_value > 0:
 			$"../sound_draw_sharpen".play()
