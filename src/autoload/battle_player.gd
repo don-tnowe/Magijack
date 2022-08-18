@@ -34,7 +34,7 @@ func run_start():
 	data.deck.stringified = between_runs_data.deck.stringified
 	data.deck.initialize()
 
-	if data.spells[0].spell_id == 4:  # If it's Artisan (starts with Sharpen spell)
+	if data.character_id == 2:  # If it's Artisan
 		data.deck.random_sharpen(5)
 
 	data.spells = data.spells.duplicate()

@@ -1,6 +1,8 @@
 class_name BattlerData
 extends Resource
 
+export var character_id := 0
+
 export var hpmax := 60
 export var limit := 16
 

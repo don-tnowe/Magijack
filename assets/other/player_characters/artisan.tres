@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource( 1 )
+character_id = 2
 hpmax = 40
 limit = 16
 damage = 8
