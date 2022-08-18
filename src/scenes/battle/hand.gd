@@ -24,9 +24,17 @@ func _ready():
 
 
 func _process(delta):
-	var selection_offset = 0 if selected_card_idx == -1 else card_selected_idx_to_offset * (selected_card_idx - used_card_nodes.size() * 0.5)
+	var selection_offset = card_selected_idx_to_offset * (selected_card_idx - used_card_nodes.size() * 0.5)
+	if selected_card_idx == -1:
+		selection_offset = 0
+
 	for i in used_card_nodes.size():
-		var selection_distance_offset = 48 * sign(i - selected_card_idx)  # Move cards away from selected card to see it better
+		# Move cards away from selected card to see it better
+		var selection_distance_offset = 48 * sign(i - selected_card_idx)  
+		# This makes card selection really wonky, so disable when needed.
+		if has_node("../spell_selection") && $"../spell_selection".visible:
+			selection_distance_offset = 0
+
 		used_card_nodes[i].rect_position = lerp(
 			used_card_nodes[i].rect_position,
 			get_card_target_position(i, selection_offset + selection_distance_offset),
@@ -49,7 +57,7 @@ func add_card(card_data, is_face_down = false):
 	var new_idx = hand_data.add_card(card_data, get_limit())
 	used_card_nodes.append(new_node)
 	for x in used_card_nodes:
-		x.raise()  # Keep 'em ordered.
+		x.raise()  # Order cards in the scene tree
 	
 	new_node.visible = true
 	new_node.rect_position = Vector2(-640, -128)
@@ -130,7 +138,7 @@ func discard_card_animation(card_idx, animation = 0):
 				node, "visible",
 				true, false, 1.5
 			)
-	$"../tween".start()  # Didn't forget.	
+	$"../tween".start()
 	selected_card_idx = -1
 
 

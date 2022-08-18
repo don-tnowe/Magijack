@@ -22,17 +22,11 @@ func enemy_overload(limit_over, limit):
 func player_overload(limit_over, limit):
 	node_anim.play("player_overload")
 	node_anim.seek(0)
-#	node_anim2.play("outcome_text")
-#	node_outcome_nums.text = str(limit) + " + " + str(-limit_over) 
-#	node_outcome_text.text = "battle_outcome_overload_player"
 
 
 func player_crit():
 	node_anim.play("player_crit")
 	node_anim.seek(0)
-#	node_anim2.play("outcome_text")
-#	node_outcome_nums.text = "!!!"
-#	node_outcome_text.text = "battle_outcome_crit"
 
 
 func player_win(player, enemy):
@@ -56,7 +50,3 @@ func tie(player, enemy):
 	node_anim.seek(0)
 	node_outcome_nums.text = str(player) + " vs " + str(enemy) 
 	node_outcome_text.text = "battle_outcome_draw"
-
-
-
-

@@ -1,7 +1,6 @@
 extends OverlayBase
 
 export(Array, Resource) var characters
-# so i made a field called "enemy_name" so i cant make a "player_name" because the class extends the other so enemies will have a player name too but i dont wanna eit places where its enemy_name
 export(Array, Resource) var character_names = ["fool", "arsonist", "artisan"]
 
 var selected_idx = -1

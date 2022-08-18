@@ -88,17 +88,17 @@ region = Rect2( 0, 0, 128, 128 )
 [sub_resource type="AtlasTexture" id=105]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
-region = Rect2( 384, 128, 128, 128 )
+region = Rect2( 0, 128, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=106]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
-region = Rect2( 384, 256, 128, 128 )
+region = Rect2( 0, 256, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=107]
 resource_local_to_scene = true
 atlas = ExtResource( 5 )
-region = Rect2( 384, 0, 128, 128 )
+region = Rect2( 0, 0, 128, 128 )
 
 [sub_resource type="Animation" id=19]
 length = 0.001
@@ -1913,7 +1913,6 @@ __meta__ = {
 [node name="arrow2" type="Sprite" parent="overlay/control2/dialogue/arrows"]
 self_modulate = Color( 0.164706, 0.705882, 1, 0 )
 position = Vector2( -162.894, 22.8617 )
-rotation = -2.05954e-08
 scale = Vector2( 3, 3 )
 texture = ExtResource( 20 )
 offset = Vector2( 1.75146, -5.48665 )
@@ -1922,7 +1921,6 @@ region_rect = Rect2( 199, 7, 250, 87 )
 
 [node name="arrow" type="Sprite" parent="overlay/control2/dialogue/arrows"]
 position = Vector2( 4.57254, -0.029068 )
-rotation = -2.19711e-08
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 20 )
 offset = Vector2( -107.878, 9.45238 )
@@ -1989,6 +1987,7 @@ rect_scale = Vector2( 0.8, 0.8 )
 shortcut = SubResource( 94 )
 script = ExtResource( 30 )
 click_sound = ExtResource( 31 )
+type = 0
 
 [node name="label" parent="overlay/control2/button_deck" instance=ExtResource( 21 )]
 text = "button_view_deck"

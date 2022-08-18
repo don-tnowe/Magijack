@@ -41,7 +41,6 @@ func display_card(enemy, feature, idx, level):
 	
 	enemy = enemy.duplicate()
 	choices[idx] = enemy  # So only the enemy that will be chosen gets modified, not the original
-	# TODO: add more enemy types so this is irrelevant
 	
 	var level_for_stats = BattleManager.battles_completed
 	enemy.hpmax += floor(enemy.hpmax * (level_for_stats * 0.15))
@@ -66,5 +65,3 @@ func card_input(event, idx):
 		current_choice = idx
 		$"button".visible = true
 		$"sound".play()
-
-

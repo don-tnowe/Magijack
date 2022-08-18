@@ -4,8 +4,6 @@ extends Reference
 signal turn_started()
 signal battle_started()
 
-# This is the class that should've got some methods and fields common for player and enemy. But oh well
-
 var spell_cooldowns := []
 
 var status_draws := []

@@ -17,7 +17,6 @@ func initialize():
 	battler = BattlePlayer
 	BattlePlayer.state.connect("turn_started", self, "update_cooldowns")
 	BattlePlayer.connect("new_spell_acquired", self, "update_view")
-#	BattlePlayer.state.connect("turn_started", self, "update_view")
 	BattlePlayer.connect("card_drawn", self, "player_drawn_card")
 	call_deferred("update_view")
 

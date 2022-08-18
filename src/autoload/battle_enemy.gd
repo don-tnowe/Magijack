@@ -80,7 +80,6 @@ func start_turn():
 		start(0.2)
 		yield(self, "timeout")
 	
-
 	# Prevent confusing 2-turn-in-a-row insta-hits.
 	if BattleManager.last_turn_outcome == BattleManager.TurnOutcome.ENEMY_OVERLOAD: return
 
@@ -90,7 +89,7 @@ func start_turn():
 		if !try_safe_draw():
 			break
 
-# If diddn't draw, returns false.
+# If didn't draw, returns false.
 func try_safe_draw(face_up = false) -> bool:
 	var overload_chance = data.deck.get_crit_overload_chance(hand_data, data.limit)[1]
 	if overload_chance > data.risk_max:
